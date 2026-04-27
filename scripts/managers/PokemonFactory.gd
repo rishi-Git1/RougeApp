@@ -13,15 +13,19 @@ var moves: Array = []
 var abilities: Array = []
 var natures: Array = []
 var types: Array = []
+var supported_ability_names: Array[String] = []
+var ability_effects: AbilityEffects
 
 
 func _init() -> void:
 	rng.randomize()
+	ability_effects = AbilityEffects.new()
 	pokedex = _load_json_array(POKEDEX_PATH)
 	moves = _load_json_array(MOVES_PATH)
 	abilities = _load_json_array(ABILITIES_PATH)
 	natures = _load_json_array(NATURES_PATH)
 	types = _load_json_array(TYPES_PATH)
+	supported_ability_names = ability_effects.extract_supported_abilities(abilities)
 
 
 func build_randomized_pokemon(pokedex_id: int, level: int) -> Dictionary:
@@ -46,6 +50,9 @@ func build_randomized_pokemon(pokedex_id: int, level: int) -> Dictionary:
 		"base_stats": base_entry["base_stats"],
 		"stats": stats,
 		"current_hp": int(stats["hp"]),
+		"status": "",
+		"sleep_turns": 0,
+		"toxic_counter": 0,
 		"stat_stages": {
 			"atk": 0,
 			"def": 0,
@@ -147,7 +154,24 @@ func _pick_four_moves_with_damage_guard() -> Array:
 
 
 func _is_banned_move(move_data: Dictionary) -> bool:
+	var move_id: int = int(move_data.get("id", 0))
+	# Canonical Z-Move ranges in this dataset.
+	if move_id >= 622 and move_id <= 658:
+		return true
+	if move_id >= 695 and move_id <= 703:
+		return true
+	if move_id >= 719 and move_id <= 728:
+		return true
+
 	var move_name: String = str(move_data.get("name", "")).to_lower()
+	# Dynamax/Max move exclusions.
+	if move_name.begins_with("max "):
+		return true
+	if move_name.begins_with("g-max "):
+		return true
+	if move_name == "max guard":
+		return true
+
 	var z_move_names := {
 		"breakneck blitz  physical": true,
 		"breakneck blitz  special": true,
@@ -196,23 +220,24 @@ func _is_banned_move(move_data: Dictionary) -> bool:
 		"oceanic operetta": true,
 		"splintered stormshards": true,
 		"let's snuggle forever": true,
+		"lets snuggle forever": true,
 		"clangorous soulblaze": true,
 		"guardian of alola": true,
 		"searing sunraze smash": true,
 		"menacing moonraze maelstrom": true,
 		"light that burns the sky": true,
-		"soul-stealing 7-star strike": true
+		"soul-stealing 7-star strike": true,
+		"soul stealing 7 star strike": true,
+		"10,000,000 volt thunderbolt": true,
+		"10 000 000 volt thunderbolt": true
 	}
 	return z_move_names.has(move_name)
 
 
 func _pick_ability_name() -> String:
-	if abilities.is_empty():
-		return "None"
-	var raw = abilities[rng.randi_range(0, abilities.size() - 1)]
-	if typeof(raw) == TYPE_DICTIONARY:
-		return str(raw.get("name", "None"))
-	return str(raw)
+	if supported_ability_names.is_empty():
+		return "Moxie"
+	return supported_ability_names[rng.randi_range(0, supported_ability_names.size() - 1)]
 
 
 func scaled_stats(base_stats: Dictionary, level: int) -> Dictionary:

@@ -44,6 +44,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.24, 0.4, 0.52, 1)
 
+[node name="BackgroundImage" type="TextureRect" parent="BattleRoot"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
 [node name="FloorLabel" type="Label" parent="BattleRoot"]
 layout_mode = 1
 anchors_preset = 1
@@ -310,24 +321,40 @@ text = "Quit"
 visible = false
 layout_mode = 2
 columns = 2
-theme_override_constants/h_separation = 8
-theme_override_constants/v_separation = 8
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 18
+theme_override_constants/v_separation = 12
 
 [node name="Move1" type="Button" parent="BattleRoot/BottomBar/VBox/MoveGrid"]
+custom_minimum_size = Vector2(220, 52)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Move 1"
 
 [node name="Move2" type="Button" parent="BattleRoot/BottomBar/VBox/MoveGrid"]
+custom_minimum_size = Vector2(220, 52)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Move 2"
 
 [node name="Move3" type="Button" parent="BattleRoot/BottomBar/VBox/MoveGrid"]
+custom_minimum_size = Vector2(220, 52)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Move 3"
 
 [node name="Move4" type="Button" parent="BattleRoot/BottomBar/VBox/MoveGrid"]
+custom_minimum_size = Vector2(220, 52)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Move 4"
+
+[node name="MoveBackButton" type="Button" parent="BattleRoot/BottomBar/VBox"]
+visible = false
+custom_minimum_size = Vector2(220, 44)
+layout_mode = 2
+size_flags_horizontal = 1
+text = "Back"
 
 [node name="StartScreen" type="Control" parent="."]
 layout_mode = 1

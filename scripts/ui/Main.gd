@@ -1,7 +1,9 @@
 extends Control
 
 const SETTINGS_PATH := "user://ui_settings.cfg"
+const CUSTOM_BG_TEXTURE_PATH := "res://assets/backgrounds/battle_bg.png"
 const BG_PRESETS := [
+	{"name": "Custom PNG", "texture_path": CUSTOM_BG_TEXTURE_PATH},
 	{"name": "Forest Blue", "color": Color(0.24, 0.4, 0.52, 1.0)},
 	{"name": "Sky Blue", "color": Color(0.33, 0.52, 0.66, 1.0)},
 	{"name": "Light Cyan", "color": Color(0.42, 0.62, 0.72, 1.0)},
@@ -19,6 +21,7 @@ const BG_PRESETS := [
 @onready var start_status_label: Label = $StartScreen/Panel/VBox/StatusLabel
 
 @onready var team_select_screen: Control = $TeamSelectScreen
+@onready var team_select_scroll: ScrollContainer = $TeamSelectScreen/Margin/VBox/Scroll
 @onready var team_select_grid: GridContainer = $TeamSelectScreen/Margin/VBox/Scroll/Grid
 @onready var team_select_chosen_label: Label = $TeamSelectScreen/Margin/VBox/ChosenLabel
 @onready var team_select_start_button: Button = $TeamSelectScreen/Margin/VBox/Buttons/StartButton
@@ -30,6 +33,7 @@ const BG_PRESETS := [
 
 @onready var battle_root: Control = $BattleRoot
 @onready var background_rect: ColorRect = $BattleRoot/Background
+@onready var background_image: TextureRect = $BattleRoot/BackgroundImage
 @onready var bottom_bar: PanelContainer = $BattleRoot/BottomBar
 @onready var flash_overlay: ColorRect = $BattleRoot/FlashOverlay
 @onready var move_hover_panel: PanelContainer = $BattleRoot/MoveHoverPanel
@@ -46,9 +50,11 @@ const BG_PRESETS := [
 @onready var enemy_status: RichTextLabel = $BattleRoot/EnemyStatus/VBox/Info
 @onready var enemy_hp: ProgressBar = $BattleRoot/EnemyStatus/VBox/HP
 @onready var enemy_stages: Label = $BattleRoot/EnemyStatus/VBox/Stages
+@onready var enemy_status_panel: PanelContainer = $BattleRoot/EnemyStatus
 @onready var player_status: RichTextLabel = $BattleRoot/PlayerStatus/VBox/Info
 @onready var player_hp: ProgressBar = $BattleRoot/PlayerStatus/VBox/HP
 @onready var player_stages: Label = $BattleRoot/PlayerStatus/VBox/Stages
+@onready var player_status_panel: PanelContainer = $BattleRoot/PlayerStatus
 
 @onready var message_label: RichTextLabel = $BattleRoot/BottomBar/VBox/Message
 @onready var message_timer: Timer = $BattleRoot/BottomBar/VBox/MessageTimer
@@ -57,7 +63,9 @@ const BG_PRESETS := [
 @onready var run_button: Button = $BattleRoot/BottomBar/VBox/ActionButtons/Run
 @onready var status_button: Button = $BattleRoot/BottomBar/VBox/ActionButtons/Status
 @onready var quit_button: Button = $BattleRoot/BottomBar/VBox/ActionButtons/Quit
+@onready var action_buttons_row: HBoxContainer = $BattleRoot/BottomBar/VBox/ActionButtons
 @onready var move_grid: GridContainer = $BattleRoot/BottomBar/VBox/MoveGrid
+@onready var move_back_button: Button = $BattleRoot/BottomBar/VBox/MoveBackButton
 @onready var move_buttons: Array[Button] = [
 	$BattleRoot/BottomBar/VBox/MoveGrid/Move1 as Button,
 	$BattleRoot/BottomBar/VBox/MoveGrid/Move2 as Button,
@@ -114,8 +122,8 @@ func _ready() -> void:
 	_set_bottom_panel_text_white()
 	_setup_settings_menu()
 	_load_user_settings()
-	_force_all_text_white(self)
 	_setup_move_hover_panel_style()
+	_apply_pretty_styles()
 
 	run_manager.run_started.connect(_on_run_started)
 	run_manager.run_ended.connect(_on_run_ended)
@@ -137,6 +145,7 @@ func _ready() -> void:
 	new_run_button.pressed.connect(_on_new_run_pressed)
 	team_select_start_button.pressed.connect(_on_team_select_start_pressed)
 	team_select_cancel_button.pressed.connect(_on_team_select_cancel_pressed)
+	team_select_scroll.resized.connect(_update_team_select_grid_columns)
 	switch_cancel_button.pressed.connect(_on_switch_cancel_pressed)
 	fight_button.pressed.connect(func() -> void: run_manager.begin_fight_choice())
 	switch_button.pressed.connect(func() -> void: run_manager.begin_switch_choice())
@@ -157,11 +166,13 @@ func _ready() -> void:
 		move_buttons[idx].pressed.connect(_on_move_pressed.bind(idx))
 		move_buttons[idx].mouse_entered.connect(_on_move_hover_entered.bind(idx))
 		move_buttons[idx].mouse_exited.connect(_on_move_hover_exited)
+	move_back_button.pressed.connect(_on_move_back_pressed)
 	message_timer.timeout.connect(func() -> void: message_label.text = "")
 
 	_show_only_screen("start")
 	_refresh_start_status()
 	run_manager.emit_current_state()
+	call_deferred("_configure_team_select_scroll_behavior")
 
 
 func _show_only_screen(mode: String) -> void:
@@ -184,6 +195,7 @@ func _on_new_run_pressed() -> void:
 	selected_team_ids.clear()
 	_populate_team_select_grid()
 	_refresh_team_select_ui()
+	_update_team_select_grid_columns()
 	_show_only_screen("team_select")
 
 
@@ -237,7 +249,7 @@ func _on_team_changed(team: Array) -> void:
 
 
 func _on_enemy_changed(summary: String) -> void:
-	enemy_status.text = _plain_text(summary)
+	enemy_status.text = summary
 	var state: Dictionary = run_manager.get_battle_state()
 	current_enemy_id = int(state.get("enemy_id", 0))
 	if current_enemy_id > 0:
@@ -274,6 +286,7 @@ func _on_battle_state_changed(state: Dictionary) -> void:
 	var waiting_switch: bool = bool(state.get("awaiting_switch_choice", false))
 
 	move_grid.visible = waiting_move
+	move_back_button.visible = waiting_move
 	if not waiting_move:
 		move_hover_panel.visible = false
 	if waiting_switch:
@@ -287,8 +300,11 @@ func _on_battle_state_changed(state: Dictionary) -> void:
 	run_button.disabled = not in_run
 	status_button.disabled = not in_run
 	quit_button.disabled = false
+	action_buttons_row.visible = not waiting_move
+	_set_bottom_bar_mode(waiting_move)
 
 	var move_names: Array = state.get("move_names", [])
+	var move_types: Array = state.get("move_types", [])
 	var move_tooltips: Array = state.get("move_tooltips", [])
 	move_hover_details.clear()
 	for i in range(move_tooltips.size()):
@@ -298,6 +314,14 @@ func _on_battle_state_changed(state: Dictionary) -> void:
 		if idx < move_names.size():
 			btn.visible = true
 			btn.text = str(move_names[idx])
+			var move_type: String = "Normal"
+			if idx < move_types.size():
+				move_type = str(move_types[idx])
+			var move_color := Color.from_string(run_manager.get_type_color_hex(move_type), Color.WHITE)
+			btn.add_theme_color_override("font_color", move_color)
+			btn.add_theme_color_override("font_hover_color", move_color)
+			btn.add_theme_color_override("font_pressed_color", move_color)
+			btn.add_theme_color_override("font_disabled_color", move_color)
 			if idx < move_tooltips.size():
 				btn.tooltip_text = str(move_tooltips[idx])
 			else:
@@ -378,6 +402,11 @@ func _on_move_pressed(move_index: int) -> void:
 	run_manager.use_move(move_index)
 
 
+func _on_move_back_pressed() -> void:
+	move_hover_panel.visible = false
+	run_manager.cancel_fight_choice()
+
+
 func _on_move_hover_entered(move_index: int) -> void:
 	if move_grid.visible == false:
 		return
@@ -439,6 +468,7 @@ func _populate_team_select_grid() -> void:
 		_force_control_white(button)
 		team_select_buttons_by_id[dex_id] = button
 		sprite_service.request_sprite(dex_id)
+	_update_team_select_grid_columns()
 
 
 func _on_team_select_species_pressed(dex_id: int) -> void:
@@ -464,6 +494,17 @@ func _refresh_team_select_ui() -> void:
 			button.modulate = Color(0.65, 1.0, 0.65, 1.0)
 		else:
 			button.modulate = Color(1, 1, 1, 1)
+
+
+func _configure_team_select_scroll_behavior() -> void:
+	# Vertical-only scrolling in team selection.
+	team_select_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	team_select_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	_update_team_select_grid_columns()
+
+
+func _update_team_select_grid_columns() -> void:
+	team_select_grid.columns = 7
 
 
 func _populate_switch_grid() -> void:
@@ -530,7 +571,7 @@ func _pokemon_tooltip(mon: Dictionary) -> String:
 
 
 func _colorize_type(type_name: String) -> String:
-	return type_name
+	return "[color=%s]%s[/color]" % [run_manager.get_type_color_hex(type_name), type_name]
 
 
 func _configure_window_behavior() -> void:
@@ -546,7 +587,12 @@ func _setup_settings_menu() -> void:
 	settings_background_picker.clear()
 	for idx in range(BG_PRESETS.size()):
 		var preset: Dictionary = BG_PRESETS[idx]
-		settings_background_picker.add_item(str(preset.get("name", "Preset")), idx)
+		var label: String = str(preset.get("name", "Preset"))
+		if preset.has("texture_path"):
+			var texture_path: String = str(preset.get("texture_path", ""))
+			if not ResourceLoader.exists(texture_path):
+				label += " (missing)"
+		settings_background_picker.add_item(label, idx)
 	settings_music_picker.clear()
 	for theme_id in range(2, 8):
 		var label := "menu_theme_%d" % theme_id
@@ -585,6 +631,18 @@ func _save_user_settings() -> void:
 
 func _apply_background_preset(preset_index: int) -> void:
 	var preset: Dictionary = BG_PRESETS[preset_index]
+	if preset.has("texture_path"):
+		var texture_path: String = str(preset.get("texture_path", ""))
+		if ResourceLoader.exists(texture_path):
+			var texture: Texture2D = load(texture_path) as Texture2D
+			if texture != null:
+				background_image.texture = texture
+				background_image.visible = true
+				background_rect.visible = false
+				return
+	background_image.visible = false
+	background_image.texture = null
+	background_rect.visible = true
 	background_rect.color = preset.get("color", Color(0.24, 0.4, 0.52, 1.0))
 
 
@@ -729,9 +787,101 @@ func _setup_move_hover_panel_style() -> void:
 	panel_style.border_width_top = 2
 	panel_style.border_width_right = 2
 	panel_style.border_width_bottom = 2
+	panel_style.content_margin_left = 12
+	panel_style.content_margin_top = 10
+	panel_style.content_margin_right = 12
+	panel_style.content_margin_bottom = 10
 	panel_style.border_color = Color(0, 0, 0, 1)
 	move_hover_panel.add_theme_stylebox_override("panel", panel_style)
 	move_hover_text.add_theme_color_override("font_color", Color(0, 0, 0, 1))
+
+
+func _set_bottom_bar_mode(waiting_move: bool) -> void:
+	var bar_style := StyleBoxFlat.new()
+	bar_style.corner_radius_top_left = 18
+	bar_style.corner_radius_top_right = 18
+	bar_style.corner_radius_bottom_left = 0
+	bar_style.corner_radius_bottom_right = 0
+	bar_style.border_width_left = 2
+	bar_style.border_width_top = 2
+	bar_style.border_width_right = 2
+	bar_style.border_width_bottom = 0
+	bar_style.content_margin_left = 18
+	bar_style.content_margin_top = 14
+	bar_style.content_margin_right = 18
+	bar_style.content_margin_bottom = 14
+	bar_style.border_color = Color(0.2, 0.2, 0.25, 1)
+	if waiting_move:
+		bar_style.bg_color = Color(0.82, 0.82, 0.9, 0.95)
+	else:
+		bar_style.bg_color = Color(0.08, 0.08, 0.1, 0.98)
+	bottom_bar.add_theme_stylebox_override("panel", bar_style)
+
+
+func _apply_pretty_styles() -> void:
+	_apply_rounded_panel(enemy_status_panel, Color(0.07, 0.07, 0.1, 0.85))
+	_apply_rounded_panel(player_status_panel, Color(0.07, 0.07, 0.1, 0.85))
+	_apply_rounded_panel($SettingsScreen/Panel, Color(0.1, 0.1, 0.13, 0.96))
+	_apply_rounded_panel($UnlockPopup/Panel, Color(0.1, 0.1, 0.13, 0.96))
+	_apply_rounded_panel($EvolutionPopup/Panel, Color(0.1, 0.1, 0.13, 0.96))
+	_apply_rounded_panel($StatusPopup/Panel, Color(0.1, 0.1, 0.13, 0.96))
+	_set_bottom_bar_mode(false)
+	var action_buttons: Array[Button] = [fight_button, switch_button, run_button, status_button, quit_button]
+	for idx in range(action_buttons.size()):
+		_apply_rounded_button(action_buttons[idx], Color(0.16, 0.16, 0.2, 1.0))
+	for idx in range(move_buttons.size()):
+		_apply_rounded_button(move_buttons[idx], Color(0.93, 0.93, 0.98, 0.98))
+	_apply_rounded_button(move_back_button, Color(0.16, 0.16, 0.2, 1.0))
+
+
+func _apply_rounded_panel(panel: PanelContainer, bg_color: Color) -> void:
+	var style := StyleBoxFlat.new()
+	style.bg_color = bg_color
+	style.corner_radius_top_left = 14
+	style.corner_radius_top_right = 14
+	style.corner_radius_bottom_left = 14
+	style.corner_radius_bottom_right = 14
+	style.border_width_left = 2
+	style.border_width_top = 2
+	style.border_width_right = 2
+	style.border_width_bottom = 2
+	style.content_margin_left = 14
+	style.content_margin_top = 12
+	style.content_margin_right = 14
+	style.content_margin_bottom = 12
+	style.border_color = Color(0.22, 0.22, 0.27, 1)
+	panel.add_theme_stylebox_override("panel", style)
+
+
+func _apply_rounded_button(btn: Button, bg_color: Color) -> void:
+	var style_normal := StyleBoxFlat.new()
+	style_normal.bg_color = bg_color
+	style_normal.corner_radius_top_left = 10
+	style_normal.corner_radius_top_right = 10
+	style_normal.corner_radius_bottom_left = 10
+	style_normal.corner_radius_bottom_right = 10
+	style_normal.border_width_left = 2
+	style_normal.border_width_top = 2
+	style_normal.border_width_right = 2
+	style_normal.border_width_bottom = 2
+	style_normal.content_margin_left = 12
+	style_normal.content_margin_top = 8
+	style_normal.content_margin_right = 12
+	style_normal.content_margin_bottom = 8
+	style_normal.border_color = Color(0.2, 0.2, 0.25, 1)
+	var style_hover := style_normal.duplicate()
+	style_hover.bg_color = bg_color.lightened(0.08)
+	btn.add_theme_stylebox_override("normal", style_normal)
+	btn.add_theme_stylebox_override("hover", style_hover)
+	btn.add_theme_stylebox_override("pressed", style_hover)
+
+
+func _force_control_white(control_node: Control) -> void:
+	var white := Color(1, 1, 1, 1)
+	control_node.add_theme_color_override("font_color", white)
+	control_node.add_theme_color_override("font_hover_color", white)
+	control_node.add_theme_color_override("font_pressed_color", white)
+	control_node.add_theme_color_override("font_disabled_color", white)
 
 
 func _set_bottom_panel_text_white() -> void:
@@ -749,25 +899,10 @@ func _set_bottom_panel_text_white() -> void:
 		move_btn.add_theme_color_override("font_hover_color", white)
 		move_btn.add_theme_color_override("font_pressed_color", white)
 		move_btn.add_theme_color_override("font_disabled_color", white)
-
-
-func _force_all_text_white(node: Node) -> void:
-	var white := Color(1, 1, 1, 1)
-	if node is Control:
-		_force_control_white(node as Control)
-	for child in node.get_children():
-		_force_all_text_white(child)
-
-
-func _force_control_white(control_node: Control) -> void:
-	var white := Color(1, 1, 1, 1)
-	control_node.add_theme_color_override("font_color", white)
-	control_node.add_theme_color_override("font_hover_color", white)
-	control_node.add_theme_color_override("font_pressed_color", white)
-	control_node.add_theme_color_override("font_disabled_color", white)
-	control_node.add_theme_color_override("font_focus_color", white)
-	control_node.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
-	control_node.add_theme_color_override("default_color", white)
+	move_back_button.add_theme_color_override("font_color", white)
+	move_back_button.add_theme_color_override("font_hover_color", white)
+	move_back_button.add_theme_color_override("font_pressed_color", white)
+	move_back_button.add_theme_color_override("font_disabled_color", white)
 
 
 func _plain_text(value: String) -> String:
