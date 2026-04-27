@@ -1,0 +1,623 @@
+[gd_scene load_steps=5 format=3 uid="uid://bud0n7rd2vp4x"]
+
+[ext_resource type="Script" path="res://scripts/ui/Main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/managers/RunManager.gd" id="2_run"]
+[ext_resource type="Script" path="res://scripts/managers/SpriteService.gd" id="3_sprite"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="RunManager" type="Node" parent="."]
+script = ExtResource("2_run")
+
+[node name="SpriteService" type="Node" parent="."]
+script = ExtResource("3_sprite")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+autoplay = false
+
+[node name="MusicPlayerB" type="AudioStreamPlayer" parent="."]
+volume_db = -40.0
+autoplay = false
+
+[node name="BattleRoot" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="BattleRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24, 0.4, 0.52, 1)
+
+[node name="FloorLabel" type="Label" parent="BattleRoot"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 54.0
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 30
+text = "Floor 1"
+
+[node name="SettingsButton" type="Button" parent="BattleRoot"]
+layout_mode = 1
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 148.0
+offset_bottom = 62.0
+text = "Settings"
+
+[node name="SettingsScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fade" type="ColorRect" parent="SettingsScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.76)
+
+[node name="Panel" type="PanelContainer" parent="SettingsScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -170.0
+offset_right = 260.0
+offset_bottom = 170.0
+
+[node name="VBox" type="VBoxContainer" parent="SettingsScreen/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="SettingsScreen/Panel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Settings"
+
+[node name="BackgroundLabel" type="Label" parent="SettingsScreen/Panel/VBox"]
+layout_mode = 2
+text = "Battle Background"
+
+[node name="BackgroundPicker" type="OptionButton" parent="SettingsScreen/Panel/VBox"]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="SettingsScreen/Panel/VBox"]
+layout_mode = 2
+text = "Background Music"
+
+[node name="MusicPicker" type="OptionButton" parent="SettingsScreen/Panel/VBox"]
+layout_mode = 2
+
+[node name="MusicToggle" type="CheckButton" parent="SettingsScreen/Panel/VBox"]
+layout_mode = 2
+button_pressed = true
+text = "Music Enabled"
+
+[node name="CloseButton" type="Button" parent="SettingsScreen/Panel/VBox"]
+layout_mode = 2
+text = "Close"
+
+[node name="EnemyStatus" type="PanelContainer" parent="BattleRoot"]
+layout_mode = 1
+offset_left = 24.0
+offset_top = 84.0
+offset_right = 520.0
+offset_bottom = 280.0
+
+[node name="VBox" type="VBoxContainer" parent="BattleRoot/EnemyStatus"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Info" type="RichTextLabel" parent="BattleRoot/EnemyStatus/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 86)
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+text = "Wild: -"
+
+[node name="HP" type="ProgressBar" parent="BattleRoot/EnemyStatus/VBox"]
+layout_mode = 2
+max_value = 100.0
+value = 0.0
+show_percentage = true
+
+[node name="Stages" type="Label" parent="BattleRoot/EnemyStatus/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Enemy stages: -"
+
+[node name="EnemySprite" type="TextureRect" parent="BattleRoot"]
+layout_mode = 1
+anchors_preset = 9
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 120.0
+offset_top = -205.0
+offset_right = 360.0
+offset_bottom = -5.0
+stretch_mode = 5
+expand_mode = 1
+
+[node name="PlayerSprite" type="TextureRect" parent="BattleRoot"]
+layout_mode = 1
+anchors_preset = 9
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = 10.0
+offset_right = -130.0
+offset_bottom = 240.0
+stretch_mode = 5
+expand_mode = 1
+
+[node name="PlayerStatus" type="PanelContainer" parent="BattleRoot"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -520.0
+offset_top = -402.0
+offset_right = -24.0
+offset_bottom = -236.0
+
+[node name="VBox" type="VBoxContainer" parent="BattleRoot/PlayerStatus"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Info" type="RichTextLabel" parent="BattleRoot/PlayerStatus/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 74)
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+text = "Active: -"
+
+[node name="HP" type="ProgressBar" parent="BattleRoot/PlayerStatus/VBox"]
+layout_mode = 2
+max_value = 100.0
+value = 0.0
+show_percentage = true
+
+[node name="Stages" type="Label" parent="BattleRoot/PlayerStatus/VBox"]
+layout_mode = 2
+autowrap_mode = 2
+text = "Your stages: -"
+
+[node name="BottomBar" type="PanelContainer" parent="BattleRoot"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -210.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="FlashOverlay" type="ColorRect" parent="BattleRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="MoveHoverPanel" type="PanelContainer" parent="BattleRoot"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -390.0
+offset_right = 260.0
+offset_bottom = -230.0
+mouse_filter = 2
+
+[node name="MoveHoverText" type="Label" parent="BattleRoot/MoveHoverPanel"]
+custom_minimum_size = Vector2(500, 140)
+layout_mode = 2
+autowrap_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="BattleRoot/BottomBar"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Message" type="RichTextLabel" parent="BattleRoot/BottomBar/VBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+text = ""
+
+[node name="MessageTimer" type="Timer" parent="BattleRoot/BottomBar/VBox"]
+wait_time = 2.4
+one_shot = true
+
+[node name="ActionButtons" type="HBoxContainer" parent="BattleRoot/BottomBar/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Fight" type="Button" parent="BattleRoot/BottomBar/VBox/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fight"
+
+[node name="Switch" type="Button" parent="BattleRoot/BottomBar/VBox/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Switch"
+
+[node name="Run" type="Button" parent="BattleRoot/BottomBar/VBox/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Run"
+
+[node name="Status" type="Button" parent="BattleRoot/BottomBar/VBox/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Status"
+
+[node name="Quit" type="Button" parent="BattleRoot/BottomBar/VBox/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit"
+
+[node name="MoveGrid" type="GridContainer" parent="BattleRoot/BottomBar/VBox"]
+visible = false
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="Move1" type="Button" parent="BattleRoot/BottomBar/VBox/MoveGrid"]
+layout_mode = 2
+text = "Move 1"
+
+[node name="Move2" type="Button" parent="BattleRoot/BottomBar/VBox/MoveGrid"]
+layout_mode = 2
+text = "Move 2"
+
+[node name="Move3" type="Button" parent="BattleRoot/BottomBar/VBox/MoveGrid"]
+layout_mode = 2
+text = "Move 3"
+
+[node name="Move4" type="Button" parent="BattleRoot/BottomBar/VBox/MoveGrid"]
+layout_mode = 2
+text = "Move 4"
+
+[node name="StartScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fade" type="ColorRect" parent="StartScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.72)
+
+[node name="Panel" type="PanelContainer" parent="StartScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -150.0
+offset_right = 280.0
+offset_bottom = 150.0
+
+[node name="VBox" type="VBoxContainer" parent="StartScreen/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="StartScreen/Panel/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+text = "Chaos Battle Run"
+
+[node name="Buttons" type="HBoxContainer" parent="StartScreen/Panel/VBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="ContinueButton" type="Button" parent="StartScreen/Panel/VBox/Buttons"]
+layout_mode = 2
+text = "Continue"
+
+[node name="NewRunButton" type="Button" parent="StartScreen/Panel/VBox/Buttons"]
+layout_mode = 2
+text = "New Run"
+
+[node name="StatusLabel" type="Label" parent="StartScreen/Panel/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Checking save data..."
+
+[node name="TeamSelectScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="TeamSelectScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="TeamSelectScreen/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="TeamSelectScreen/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Select Your Team (2-6)"
+
+[node name="ChosenLabel" type="Label" parent="TeamSelectScreen/Margin/VBox"]
+layout_mode = 2
+text = "Selected: 0/6"
+
+[node name="Scroll" type="ScrollContainer" parent="TeamSelectScreen/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Grid" type="GridContainer" parent="TeamSelectScreen/Margin/VBox/Scroll"]
+layout_mode = 2
+columns = 10
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="Buttons" type="HBoxContainer" parent="TeamSelectScreen/Margin/VBox"]
+layout_mode = 2
+alignment = 2
+theme_override_constants/separation = 8
+
+[node name="CancelButton" type="Button" parent="TeamSelectScreen/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="StartButton" type="Button" parent="TeamSelectScreen/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "Start Run"
+
+[node name="SwitchScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="SwitchScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="SwitchScreen/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="SwitchScreen/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Choose Pokemon to Switch"
+
+[node name="Scroll" type="ScrollContainer" parent="SwitchScreen/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Grid" type="GridContainer" parent="SwitchScreen/Margin/VBox/Scroll"]
+layout_mode = 2
+columns = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="Buttons" type="HBoxContainer" parent="SwitchScreen/Margin/VBox"]
+layout_mode = 2
+alignment = 2
+
+[node name="CancelButton" type="Button" parent="SwitchScreen/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "Back"
+
+[node name="StatusPopup" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="StatusPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -180.0
+offset_right = 330.0
+offset_bottom = 180.0
+
+[node name="VBox" type="VBoxContainer" parent="StatusPopup/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Text" type="RichTextLabel" parent="StatusPopup/Panel/VBox"]
+custom_minimum_size = Vector2(0, 260)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = true
+
+[node name="CloseButton" type="Button" parent="StatusPopup/Panel/VBox"]
+layout_mode = 2
+text = "Close"
+
+[node name="UnlockPopup" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="UnlockPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -160.0
+offset_right = 320.0
+offset_bottom = 160.0
+
+[node name="VBox" type="VBoxContainer" parent="UnlockPopup/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Sprite" type="TextureRect" parent="UnlockPopup/Panel/VBox"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+stretch_mode = 5
+expand_mode = 1
+
+[node name="Text" type="RichTextLabel" parent="UnlockPopup/Panel/VBox"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = true
+
+[node name="Buttons" type="HBoxContainer" parent="UnlockPopup/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AddButton" type="Button" parent="UnlockPopup/Panel/VBox/Buttons"]
+layout_mode = 2
+text = "Add To Team"
+
+[node name="SkipButton" type="Button" parent="UnlockPopup/Panel/VBox/Buttons"]
+layout_mode = 2
+text = "Keep In Reserve"
+
+[node name="EvolutionPopup" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="EvolutionPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -160.0
+offset_right = 320.0
+offset_bottom = 160.0
+
+[node name="VBox" type="VBoxContainer" parent="EvolutionPopup/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Text" type="RichTextLabel" parent="EvolutionPopup/Panel/VBox"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = true
+
+[node name="Buttons" type="HBoxContainer" parent="EvolutionPopup/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="YesButton" type="Button" parent="EvolutionPopup/Panel/VBox/Buttons"]
+layout_mode = 2
+text = "Evolve"
+
+[node name="NoButton" type="Button" parent="EvolutionPopup/Panel/VBox/Buttons"]
+layout_mode = 2
+text = "Not Now"

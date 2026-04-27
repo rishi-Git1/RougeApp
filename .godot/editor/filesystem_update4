@@ -1,0 +1,3 @@
+res://scripts/ui/Main.gd
+res://scripts/managers/RunManager.gd
+res://scripts/managers/PokemonFactory.gd
