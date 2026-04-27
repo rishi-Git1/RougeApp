@@ -1,4 +1,4 @@
-res://scripts/ui/Main.gd
-res://scripts/managers/RunManager.gd
+res://scripts/battle/AbilityEffects.gd
 res://scripts/managers/PokemonFactory.gd
-res://scripts/battle/MoveEffects.gd
+res://scripts/managers/RunManager.gd
+res://scripts/ui/Main.gd

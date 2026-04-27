@@ -34,7 +34,11 @@ func build_randomized_pokemon(pokedex_id: int, level: int) -> Dictionary:
 		return {}
 
 	var assigned_types: Array = _pick_two_types()
-	var assigned_moves: Array = _pick_four_moves_with_damage_guard()
+	var assigned_moves: Array = _pick_four_moves_for_types(assigned_types)
+	var move_pp: Array[int] = []
+	for idx in range(assigned_moves.size()):
+		var move_data: Dictionary = assigned_moves[idx]
+		move_pp.append(max(1, int(move_data.get("pp", 1))))
 	var ability: String = _pick_ability_name()
 	var nature: String = str(natures[rng.randi_range(0, natures.size() - 1)])
 	var stats: Dictionary = scaled_stats(base_entry["base_stats"], level)
@@ -45,6 +49,8 @@ func build_randomized_pokemon(pokedex_id: int, level: int) -> Dictionary:
 		"level": level,
 		"types": assigned_types,
 		"moves": assigned_moves,
+		"move_pp": move_pp.duplicate(),
+		"move_pp_max": move_pp.duplicate(),
 		"ability": ability,
 		"nature": nature,
 		"base_stats": base_entry["base_stats"],
@@ -121,36 +127,83 @@ func _pick_two_types() -> Array:
 	return [first, second]
 
 
-func _pick_four_moves_with_damage_guard() -> Array:
+func _pick_four_moves_for_types(assigned_types: Array) -> Array:
 	var picks: Array = []
-	var has_damaging := false
-	var available_indices: Array[int] = []
+	var used_move_ids: Dictionary = {}
+	var type_one: String = "Normal"
+	var type_two: String = "Normal"
+	if assigned_types.size() > 0:
+		type_one = str(assigned_types[0])
+	if assigned_types.size() > 1:
+		type_two = str(assigned_types[1])
+	var type_one_damaging: Array[int] = _collect_move_indices(type_one, false)
+	var type_two_damaging: Array[int] = _collect_move_indices(type_two, false)
+	var status_moves: Array[int] = _collect_move_indices("", true)
+	var all_damaging: Array[int] = _collect_move_indices("", false)
 
+	# 1) Type one damaging move.
+	_append_random_move_from_pools(picks, used_move_ids, [type_one_damaging, all_damaging, status_moves])
+	# 2) Type two damaging move.
+	_append_random_move_from_pools(picks, used_move_ids, [type_two_damaging, all_damaging, status_moves])
+	# 3) Random status move.
+	_append_random_move_from_pools(picks, used_move_ids, [status_moves, all_damaging])
+	# 4) Random damaging move.
+	_append_random_move_from_pools(picks, used_move_ids, [all_damaging, status_moves])
+
+	while picks.size() < 4:
+		var fallback_indices: Array[int] = _collect_move_indices("", false)
+		if fallback_indices.is_empty():
+			fallback_indices = _collect_move_indices("", true)
+		var fallback_move: Dictionary = _pick_random_move_from_indices(fallback_indices, used_move_ids)
+		if fallback_move.is_empty():
+			break
+		picks.append(fallback_move)
+
+	return picks
+
+
+func _collect_move_indices(required_type: String, status_only: bool) -> Array[int]:
+	var result: Array[int] = []
 	for idx in range(moves.size()):
 		var move_data: Dictionary = moves[idx]
 		if _is_banned_move(move_data):
 			continue
-		available_indices.append(idx)
+		var is_status: bool = str(move_data.get("category", "Status")) == "Status"
+		if status_only and not is_status:
+			continue
+		if not status_only and is_status:
+			continue
+		if not required_type.is_empty() and str(move_data.get("type", "")) != required_type:
+			continue
+		result.append(idx)
+	return result
 
-	while picks.size() < 4 and available_indices.size() > 0:
-		var random_slot: int = rng.randi_range(0, available_indices.size() - 1)
-		var move_idx: int = available_indices[random_slot]
-		available_indices.remove_at(random_slot)
 
+func _append_random_move_from_pools(picks: Array, used_move_ids: Dictionary, pools: Array) -> void:
+	for pool_idx in range(pools.size()):
+		var indices: Array[int] = pools[pool_idx]
+		var selected: Dictionary = _pick_random_move_from_indices(indices, used_move_ids)
+		if selected.is_empty():
+			continue
+		picks.append(selected)
+		return
+
+
+func _pick_random_move_from_indices(indices: Array[int], used_move_ids: Dictionary) -> Dictionary:
+	if indices.is_empty():
+		return {}
+	var available: Array[int] = indices.duplicate()
+	while available.is_empty() == false:
+		var roll: int = rng.randi_range(0, available.size() - 1)
+		var move_idx: int = int(available[roll])
+		available.remove_at(roll)
 		var move_data: Dictionary = moves[move_idx]
-		picks.append(move_data)
-		if str(move_data["category"]) != "Status":
-			has_damaging = true
-
-	if not has_damaging:
-		for idx in range(available_indices.size()):
-			var move_idx: int = available_indices[idx]
-			var move_data: Dictionary = moves[move_idx]
-			if str(move_data["category"]) != "Status":
-				picks[0] = move_data
-				break
-
-	return picks
+		var move_id: int = int(move_data.get("id", 0))
+		if used_move_ids.has(move_id):
+			continue
+		used_move_ids[move_id] = true
+		return move_data
+	return {}
 
 
 func _is_banned_move(move_data: Dictionary) -> bool:

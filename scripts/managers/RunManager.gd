@@ -219,6 +219,14 @@ func use_move(move_index: int) -> void:
 	if attacker_idx < 0:
 		_end_run("All team members fainted. Run over.")
 		return
+	var preview_player_mon: Dictionary = active_team[attacker_idx]
+	_ensure_status_state(preview_player_mon)
+	var preview_queued: Dictionary = preview_player_mon.get("queued_move", {})
+	if preview_queued.is_empty() and not _has_pp_for_move(preview_player_mon, move_index):
+		_emit_battle_log("That move is out of PP.", true)
+		emit_signal("battle_log_changed", _battle_log_text())
+		_emit_battle_state()
+		return
 	active_team_index = attacker_idx
 	awaiting_move_choice = false
 	awaiting_switch_choice = false
@@ -233,6 +241,12 @@ func use_move(move_index: int) -> void:
 			player_move = queued.duplicate(true)
 			player_mon["queued_move"] = {}
 			active_team[active_team_index] = player_mon
+		else:
+			_consume_pp_for_move(player_mon, move_index)
+			active_team[active_team_index] = player_mon
+	else:
+		_consume_pp_for_move(player_mon, move_index)
+		active_team[active_team_index] = player_mon
 
 	var player_first: bool = int(player_mon["stats"]["spe"]) >= int(enemy_mon["stats"]["spe"])
 	if player_first:
@@ -582,13 +596,15 @@ func _enemy_summary_text() -> String:
 		return "No active encounter."
 	var hp_now: int = int(current_enemy["current_hp"])
 	var hp_max: int = int(current_enemy["stats"]["hp"])
+	var status_badge: String = _status_badge_for_mon(current_enemy)
 	var boss_prefix: String = "Wild"
 	if bool(current_enemy.get("is_boss_encounter", false)):
 		boss_prefix = "Boss"
-	return "%s %s Lv.%d | HP %d/%d | %s/%s | %s" % [
+	return "%s %s Lv.%d %s | HP %d/%d | %s/%s | %s" % [
 		boss_prefix,
 		str(current_enemy["name"]),
 		int(current_enemy["level"]),
+		status_badge,
 		hp_now,
 		hp_max,
 		_colorize_type_name(str(current_enemy["types"][0])),
@@ -602,6 +618,12 @@ func _full_team_heal() -> void:
 		var mon: Dictionary = active_team[idx]
 		var hp_max: int = int(mon.get("stats", {}).get("hp", 1))
 		mon["current_hp"] = hp_max
+		_ensure_move_pp_state(mon)
+		var pp_max: Array = mon.get("move_pp_max", [])
+		var restored_pp: Array = []
+		for pp_idx in range(pp_max.size()):
+			restored_pp.append(int(pp_max[pp_idx]))
+		mon["move_pp"] = restored_pp
 		active_team[idx] = mon
 
 
@@ -761,11 +783,19 @@ func _resolve_enemy_attack() -> void:
 
 	var enemy_move: Dictionary = {}
 	var queued_enemy_move: Dictionary = current_enemy.get("queued_move", {})
+	var enemy_move_index: int = -1
 	if queued_enemy_move.is_empty() == false:
 		enemy_move = queued_enemy_move.duplicate(true)
 		current_enemy["queued_move"] = {}
 	else:
-		enemy_move = _pick_enemy_move(current_enemy)
+		enemy_move_index = _pick_enemy_move_index(current_enemy)
+		if enemy_move_index < 0:
+			_emit_battle_log("%s has no PP left!" % str(current_enemy.get("name", "Pokemon")), true)
+			active_team[active_team_index] = defender
+			return
+		var enemy_moves: Array = current_enemy.get("moves", [])
+		enemy_move = enemy_moves[enemy_move_index]
+		_consume_pp_for_move(current_enemy, enemy_move_index)
 	var move_plain_name: String = str(enemy_move.get("name", "Move"))
 	var move_name := _colorize_move_name(enemy_move)
 
@@ -890,23 +920,32 @@ func _is_blocked_by_semi_invulnerability(attacker_move: Dictionary, defender: Di
 	return not move_effects.can_hit_semi_invulnerable(move_name, defender_state)
 
 
-func _pick_enemy_move(pokemon: Dictionary) -> Dictionary:
+func _pick_enemy_move_index(pokemon: Dictionary) -> int:
 	var moves_list: Array = pokemon["moves"]
 	var damaging_indices: Array[int] = []
+	var usable_indices: Array[int] = []
 	for idx in range(moves_list.size()):
 		var move_data: Dictionary = moves_list[idx]
+		if not _has_pp_for_move(pokemon, idx):
+			continue
+		usable_indices.append(idx)
 		if int(move_data.get("power", 0)) > 0:
 			damaging_indices.append(idx)
 	if damaging_indices.is_empty():
-		return moves_list[0]
+		if usable_indices.is_empty():
+			return -1
+		return usable_indices[rng.randi_range(0, usable_indices.size() - 1)]
 	var random_idx: int = damaging_indices[rng.randi_range(0, damaging_indices.size() - 1)]
-	return moves_list[random_idx]
+	return random_idx
 
 
 func _pick_player_move(pokemon: Dictionary, move_index: int) -> Dictionary:
 	var moves_list: Array = pokemon["moves"]
 	if move_index < 0 or move_index >= moves_list.size():
-		return _pick_enemy_move(pokemon)
+		var fallback_idx: int = _pick_enemy_move_index(pokemon)
+		if fallback_idx < 0:
+			return {}
+		return moves_list[fallback_idx]
 	return moves_list[move_index]
 
 
@@ -1251,6 +1290,7 @@ func _ensure_status_state(mon: Dictionary) -> void:
 	if mon.is_empty():
 		return
 	_sanitize_mon_ability(mon)
+	_ensure_move_pp_state(mon)
 	if not mon.has("status"):
 		mon["status"] = ""
 	if not mon.has("sleep_turns"):
@@ -1278,6 +1318,49 @@ func _sanitize_mon_ability(mon: Dictionary) -> void:
 	if ability_effects.is_supported_ability(ability_name):
 		return
 	mon["ability"] = "Moxie"
+
+
+func _ensure_move_pp_state(mon: Dictionary) -> void:
+	var moves_list: Array = mon.get("moves", [])
+	var pp_max: Array = mon.get("move_pp_max", [])
+	var pp_now: Array = mon.get("move_pp", [])
+	if pp_max.size() != moves_list.size():
+		pp_max.clear()
+		for idx in range(moves_list.size()):
+			var move_data: Dictionary = moves_list[idx]
+			pp_max.append(max(1, int(move_data.get("pp", 1))))
+	if pp_now.size() != moves_list.size():
+		pp_now.clear()
+		for idx in range(pp_max.size()):
+			pp_now.append(int(pp_max[idx]))
+	for idx in range(moves_list.size()):
+		var max_pp: int = max(1, int(pp_max[idx]))
+		pp_max[idx] = max_pp
+		var cur_pp: int = int(pp_now[idx])
+		pp_now[idx] = clamp(cur_pp, 0, max_pp)
+	mon["move_pp_max"] = pp_max
+	mon["move_pp"] = pp_now
+
+
+func _has_pp_for_move(mon: Dictionary, move_index: int) -> bool:
+	_ensure_move_pp_state(mon)
+	var pp_now: Array = mon.get("move_pp", [])
+	if move_index < 0 or move_index >= pp_now.size():
+		return false
+	return int(pp_now[move_index]) > 0
+
+
+func _consume_pp_for_move(mon: Dictionary, move_index: int) -> bool:
+	_ensure_move_pp_state(mon)
+	var pp_now: Array = mon.get("move_pp", [])
+	if move_index < 0 or move_index >= pp_now.size():
+		return false
+	var value: int = int(pp_now[move_index])
+	if value <= 0:
+		return false
+	pp_now[move_index] = value - 1
+	mon["move_pp"] = pp_now
+	return true
 
 
 func _can_act_due_to_status(mon: Dictionary, is_player_side: bool) -> bool:
@@ -2036,11 +2119,23 @@ func get_battle_state() -> Dictionary:
 		active_summary = active_team[active_team_index]
 
 	var move_names: Array[String] = []
+	var move_can_use: Array[bool] = []
 	if active_summary.is_empty() == false:
+		_ensure_move_pp_state(active_summary)
 		var moves_list: Array = active_summary["moves"]
+		var pp_now: Array = active_summary.get("move_pp", [])
+		var pp_max: Array = active_summary.get("move_pp_max", [])
 		for idx in range(moves_list.size()):
 			var move_data: Dictionary = moves_list[idx]
-			move_names.append(str(move_data.get("name", "Move")))
+			var move_name: String = str(move_data.get("name", "Move"))
+			var cur_pp: int = 0
+			var max_pp: int = int(move_data.get("pp", 1))
+			if idx < pp_now.size():
+				cur_pp = int(pp_now[idx])
+			if idx < pp_max.size():
+				max_pp = int(pp_max[idx])
+			move_names.append("%s (%d/%d)" % [move_name, cur_pp, max_pp])
+			move_can_use.append(cur_pp > 0)
 
 	return {
 		"floor": floor_level,
@@ -2049,12 +2144,14 @@ func get_battle_state() -> Dictionary:
 		"awaiting_switch_choice": awaiting_switch_choice,
 		"switches_used_this_floor": switches_used_this_floor,
 		"move_names": move_names,
+		"move_can_use": move_can_use,
 		"move_types": _active_move_types(active_summary),
 		"move_tooltips": _active_move_tooltips(active_summary),
 		"switch_targets": get_available_switch_indices(),
 		"active_id": int(active_summary.get("id", 0)),
 		"active_name": str(active_summary.get("name", "")),
 		"active_level": int(active_summary.get("level", 0)),
+		"active_status": _status_badge_for_mon(active_summary),
 		"active_ability": str(active_summary.get("ability", "")),
 		"active_hp": int(active_summary.get("current_hp", 0)),
 		"active_hp_max": int(active_summary.get("stats", {}).get("hp", 0)),
@@ -2064,6 +2161,7 @@ func get_battle_state() -> Dictionary:
 		"enemy_id": int(current_enemy.get("id", 0)),
 		"enemy_name": str(current_enemy.get("name", "")),
 		"enemy_level": int(current_enemy.get("level", 0)),
+		"enemy_status": _status_badge_for_mon(current_enemy),
 		"enemy_hp": int(current_enemy.get("current_hp", 0)),
 		"enemy_hp_max": int(current_enemy.get("stats", {}).get("hp", 0)),
 		"enemy_stage_text": _stage_summary_text(current_enemy),
@@ -2073,6 +2171,25 @@ func get_battle_state() -> Dictionary:
 		"terrain": current_terrain,
 		"terrain_turns": terrain_turns_remaining
 	}
+
+
+func _status_badge_for_mon(mon: Dictionary) -> String:
+	if mon.is_empty():
+		return "[color=#9AA0A6][OK][/color]"
+	var status_name: String = str(mon.get("status", "")).to_lower()
+	if status_name == "burn":
+		return "[color=#EF6C00][BRN][/color]"
+	if status_name == "paralysis":
+		return "[color=#FBC02D][PAR][/color]"
+	if status_name == "sleep":
+		return "[color=#5C6BC0][SLP][/color]"
+	if status_name == "freeze":
+		return "[color=#4FC3F7][FRZ][/color]"
+	if status_name == "poison":
+		if int(mon.get("toxic_counter", 0)) > 0:
+			return "[color=#8E24AA][TOX][/color]"
+		return "[color=#AB47BC][PSN][/color]"
+	return "[color=#9AA0A6][OK][/color]"
 
 
 func get_current_offer_id() -> int:
@@ -2342,15 +2459,19 @@ func _emit_run_save_debug() -> void:
 func _sanitize_loaded_abilities() -> void:
 	for idx in range(active_team.size()):
 		var mon: Dictionary = active_team[idx]
+		_ensure_status_state(mon)
 		_sanitize_mon_ability(mon)
 		active_team[idx] = mon
 	for idx in range(unlocked_roster.size()):
 		var mon: Dictionary = unlocked_roster[idx]
+		_ensure_status_state(mon)
 		_sanitize_mon_ability(mon)
 		unlocked_roster[idx] = mon
 	if current_enemy.is_empty() == false:
+		_ensure_status_state(current_enemy)
 		_sanitize_mon_ability(current_enemy)
 	if current_offer.is_empty() == false:
+		_ensure_status_state(current_offer)
 		_sanitize_mon_ability(current_offer)
 
 
@@ -2403,21 +2524,29 @@ func _active_move_tooltips(active_summary: Dictionary) -> Array[String]:
 	var result: Array[String] = []
 	if active_summary.is_empty():
 		return result
+	_ensure_move_pp_state(active_summary)
 	var moves_list: Array = active_summary.get("moves", [])
+	var pp_now: Array = active_summary.get("move_pp", [])
+	var pp_max: Array = active_summary.get("move_pp_max", [])
 	for idx in range(moves_list.size()):
 		var move_data: Dictionary = moves_list[idx]
-		result.append(_move_tooltip_text(move_data))
+		var cur_pp: int = 0
+		var max_pp: int = int(move_data.get("pp", 1))
+		if idx < pp_now.size():
+			cur_pp = int(pp_now[idx])
+		if idx < pp_max.size():
+			max_pp = int(pp_max[idx])
+		result.append(_move_tooltip_text(move_data, cur_pp, max_pp))
 	return result
 
 
-func _move_tooltip_text(move_data: Dictionary) -> String:
+func _move_tooltip_text(move_data: Dictionary, current_pp: int, max_pp: int) -> String:
 	var move_name_text: String = str(move_data.get("name", "Move"))
 	var move_type: String = str(move_data.get("type", "Normal"))
 	var category: String = str(move_data.get("category", "Status"))
 	var power: int = int(move_data.get("power", 0))
 	var accuracy: int = int(move_data.get("accuracy", 100))
 	var effect_chance: int = int(move_data.get("effect_chance", 100))
-	var pp: int = int(move_data.get("pp", 0))
 	var changes: Array = move_data.get("stat_changes", [])
 	var stat_parts: Array[String] = []
 	for idx in range(changes.size()):
@@ -2431,13 +2560,14 @@ func _move_tooltip_text(move_data: Dictionary) -> String:
 	var stat_text: String = "-"
 	if stat_parts.is_empty() == false:
 		stat_text = ", ".join(stat_parts)
-	return "%s\nType: %s | Category: %s\nPower: %d | Accuracy: %d | PP: %d\nEffect Chance: %d%%\nStat Changes: %s" % [
+	return "%s\nType: %s | Category: %s\nPower: %d | Accuracy: %d | PP: %d/%d\nEffect Chance: %d%%\nStat Changes: %s" % [
 		move_name_text,
 		move_type,
 		category,
 		power,
 		accuracy,
-		pp,
+		current_pp,
+		max_pp,
 		effect_chance,
 		stat_text
 	]

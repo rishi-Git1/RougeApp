@@ -304,6 +304,7 @@ func _on_battle_state_changed(state: Dictionary) -> void:
 	_set_bottom_bar_mode(waiting_move)
 
 	var move_names: Array = state.get("move_names", [])
+	var move_can_use: Array = state.get("move_can_use", [])
 	var move_types: Array = state.get("move_types", [])
 	var move_tooltips: Array = state.get("move_tooltips", [])
 	move_hover_details.clear()
@@ -314,6 +315,10 @@ func _on_battle_state_changed(state: Dictionary) -> void:
 		if idx < move_names.size():
 			btn.visible = true
 			btn.text = str(move_names[idx])
+			var has_pp: bool = true
+			if idx < move_can_use.size():
+				has_pp = bool(move_can_use[idx])
+			btn.disabled = not has_pp
 			var move_type: String = "Normal"
 			if idx < move_types.size():
 				move_type = str(move_types[idx])
@@ -328,11 +333,13 @@ func _on_battle_state_changed(state: Dictionary) -> void:
 				btn.tooltip_text = ""
 		else:
 			btn.visible = false
+			btn.disabled = false
 			btn.tooltip_text = ""
 
-	player_status.text = "Active %s Lv.%d | HP %d/%d | %s/%s | %s" % [
+	player_status.text = "Active %s Lv.%d %s | HP %d/%d | %s/%s | %s" % [
 		str(state.get("active_name", "-")),
 		int(state.get("active_level", 0)),
+		str(state.get("active_status", "[OK]")),
 		int(state.get("active_hp", 0)),
 		int(state.get("active_hp_max", 0)),
 		_colorize_type(str(state.get("active_type_1", "Normal"))),

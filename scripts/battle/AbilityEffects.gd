@@ -1,12 +1,7 @@
 extends RefCounted
 class_name AbilityEffects
 
-const WEATHER_SETTER_ABILITIES := {
-	"drizzle": "rain",
-	"drought": "sun",
-	"sand stream": "sandstorm",
-	"snow warning": "hail"
-}
+const WEATHER_SETTER_ABILITIES := {}
 
 const TYPE_IMMUNITY_ABILITIES := {
 	"ground": ["levitate"],
@@ -42,10 +37,6 @@ const IMPLEMENTED_ABILITIES := {
 	"moxie": true,
 	"rock head": true,
 	"intimidate": true,
-	"drizzle": true,
-	"drought": true,
-	"sand stream": true,
-	"snow warning": true,
 	"battle armor": true,
 	"shell armor": true,
 	"inner focus": true,
