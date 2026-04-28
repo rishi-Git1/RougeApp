@@ -6,6 +6,9 @@ const MOVES_PATH := "res://data/moves.json"
 const ABILITIES_PATH := "res://data/abilities.json"
 const NATURES_PATH := "res://data/natures.json"
 const TYPES_PATH := "res://data/types.json"
+const SPECIES_PROFILES_PATH := "res://data/species_profiles.json"
+const DEFAULT_IV := 31
+const DEFAULT_EV := 0
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var pokedex: Array = []
@@ -15,6 +18,9 @@ var natures: Array = []
 var types: Array = []
 var supported_ability_names: Array[String] = []
 var ability_effects: AbilityEffects
+var move_index_by_norm_name: Dictionary = {}
+var move_index_by_id: Dictionary = {}
+var species_profiles_by_id: Dictionary = {}
 
 
 func _init() -> void:
@@ -26,6 +32,8 @@ func _init() -> void:
 	natures = _load_json_array(NATURES_PATH)
 	types = _load_json_array(TYPES_PATH)
 	supported_ability_names = ability_effects.extract_supported_abilities(abilities)
+	_build_move_indexes()
+	_load_species_profiles()
 
 
 func build_randomized_pokemon(pokedex_id: int, level: int) -> Dictionary:
@@ -33,13 +41,13 @@ func build_randomized_pokemon(pokedex_id: int, level: int) -> Dictionary:
 	if base_entry.is_empty():
 		return {}
 
-	var assigned_types: Array = _pick_two_types()
-	var assigned_moves: Array = _pick_four_moves_for_types(assigned_types)
+	var assigned_types: Array = _types_for_species(pokedex_id)
+	var assigned_moves: Array = _pick_species_moves_for_level(pokedex_id, level, assigned_types)
 	var move_pp: Array[int] = []
 	for idx in range(assigned_moves.size()):
 		var move_data: Dictionary = assigned_moves[idx]
 		move_pp.append(max(1, int(move_data.get("pp", 1))))
-	var ability: String = _pick_ability_name()
+	var ability: String = _pick_species_ability_name(pokedex_id)
 	var nature: String = str(natures[rng.randi_range(0, natures.size() - 1)])
 	var stats: Dictionary = scaled_stats(base_entry["base_stats"], level)
 
@@ -81,11 +89,18 @@ func summarize_pokemon(pokemon: Dictionary) -> String:
 		var move_data: Dictionary = pokemon_moves[idx]
 		move_names.append(str(move_data["name"]))
 
-	return "%s (Lv.%d)\nTypes: %s / %s\nAbility: %s\nNature: %s\nMoves: %s" % [
+	var type_list: Array = pokemon.get("types", [])
+	var type_text: String = "Unknown"
+	if type_list.is_empty() == false:
+		var names: Array[String] = []
+		for idx in range(type_list.size()):
+			names.append(str(type_list[idx]))
+		type_text = " / ".join(names)
+
+	return "%s (Lv.%d)\nTypes: %s\nAbility: %s\nNature: %s\nMoves: %s" % [
 		pokemon["name"],
 		pokemon["level"],
-		pokemon["types"][0],
-		pokemon["types"][1],
+		type_text,
 		pokemon["ability"],
 		pokemon["nature"],
 		", ".join(move_names)
@@ -119,12 +134,66 @@ func get_random_pokedex_id() -> int:
 	return int(entry["id"])
 
 
-func _pick_two_types() -> Array:
-	var first: String = str(types[rng.randi_range(0, types.size() - 1)])
-	var second: String = first
-	while second == first:
-		second = str(types[rng.randi_range(0, types.size() - 1)])
-	return [first, second]
+func _types_for_species(pokedex_id: int) -> Array:
+	var profile: Dictionary = _species_profile_for_id(pokedex_id)
+	var raw_types: Array = profile.get("types", [])
+	var resolved: Array = []
+	for idx in range(raw_types.size()):
+		var type_name: String = str(raw_types[idx]).strip_edges()
+		if type_name.is_empty():
+			continue
+		resolved.append(type_name)
+	if resolved.is_empty():
+		resolved.append("Normal")
+	return resolved
+
+
+func _pick_species_moves_for_level(pokedex_id: int, level: int, species_types: Array) -> Array:
+	var profile: Dictionary = _species_profile_for_id(pokedex_id)
+	var learnset: Array = profile.get("level_up_moves", [])
+	var eligible: Array = []
+	for idx in range(learnset.size()):
+		var row_value = learnset[idx]
+		if typeof(row_value) != TYPE_DICTIONARY:
+			continue
+		var row: Dictionary = row_value
+		var learn_level: int = int(row.get("level", 0))
+		if learn_level > level:
+			continue
+		var resolved: Dictionary = _resolve_move_from_profile_row(row)
+		if resolved.is_empty():
+			continue
+		eligible.append(resolved)
+	if eligible.is_empty():
+		return _pick_four_moves_for_types(species_types)
+
+	var picks_reversed: Array = []
+	var used: Dictionary = {}
+	for idx in range(eligible.size() - 1, -1, -1):
+		var move_data: Dictionary = eligible[idx]
+		var move_key: String = _normalize_key(str(move_data.get("name", "")))
+		if used.has(move_key):
+			continue
+		used[move_key] = true
+		picks_reversed.append(move_data)
+		if picks_reversed.size() >= 4:
+			break
+
+	var picks: Array = []
+	for idx in range(picks_reversed.size() - 1, -1, -1):
+		picks.append(picks_reversed[idx])
+	return picks
+
+
+func _resolve_move_from_profile_row(row: Dictionary) -> Dictionary:
+	var move_id: int = int(row.get("id", 0))
+	if move_id > 0 and move_index_by_id.has(move_id):
+		return move_index_by_id[move_id]
+	var move_name: String = str(row.get("name", ""))
+	var move_key: String = _normalize_key(move_name)
+	if move_index_by_norm_name.has(move_key):
+		return move_index_by_norm_name[move_key]
+	return {}
 
 
 func _pick_four_moves_for_types(assigned_types: Array) -> Array:
@@ -160,6 +229,26 @@ func _pick_four_moves_for_types(assigned_types: Array) -> Array:
 		picks.append(fallback_move)
 
 	return picks
+
+
+func _pick_species_ability_name(pokedex_id: int) -> String:
+	var profile: Dictionary = _species_profile_for_id(pokedex_id)
+	var ability_rows: Array = profile.get("abilities", [])
+	var pool: Array[String] = []
+	for idx in range(ability_rows.size()):
+		var row_value = ability_rows[idx]
+		if typeof(row_value) != TYPE_DICTIONARY:
+			continue
+		var row: Dictionary = row_value
+		if bool(row.get("is_hidden", false)):
+			continue
+		var ability_name: String = str(row.get("name", "")).strip_edges()
+		if ability_name.is_empty():
+			continue
+		pool.append(ability_name)
+	if pool.is_empty() == false:
+		return pool[rng.randi_range(0, pool.size() - 1)]
+	return _pick_ability_name()
 
 
 func _collect_move_indices(required_type: String, status_only: bool) -> Array[int]:
@@ -287,6 +376,64 @@ func _is_banned_move(move_data: Dictionary) -> bool:
 	return z_move_names.has(move_name)
 
 
+func _build_move_indexes() -> void:
+	move_index_by_norm_name.clear()
+	move_index_by_id.clear()
+	for idx in range(moves.size()):
+		var move_value = moves[idx]
+		if typeof(move_value) != TYPE_DICTIONARY:
+			continue
+		var move_data: Dictionary = move_value
+		var move_id: int = int(move_data.get("id", 0))
+		if move_id > 0:
+			move_index_by_id[move_id] = move_data
+		var key: String = _normalize_key(str(move_data.get("name", "")))
+		if key.is_empty():
+			continue
+		move_index_by_norm_name[key] = move_data
+
+
+func _load_species_profiles() -> void:
+	species_profiles_by_id.clear()
+	if not FileAccess.file_exists(SPECIES_PROFILES_PATH):
+		return
+	var file := FileAccess.open(SPECIES_PROFILES_PATH, FileAccess.READ)
+	var parsed = JSON.parse_string(file.get_as_text())
+	var rows: Array = []
+	if typeof(parsed) == TYPE_ARRAY:
+		rows = parsed
+	elif typeof(parsed) == TYPE_DICTIONARY:
+		rows = parsed.get("entries", [])
+	for idx in range(rows.size()):
+		var row_value = rows[idx]
+		if typeof(row_value) != TYPE_DICTIONARY:
+			continue
+		var row: Dictionary = row_value
+		var species_id: int = int(row.get("id", 0))
+		if species_id <= 0:
+			continue
+		species_profiles_by_id[species_id] = row
+
+
+func _species_profile_for_id(pokedex_id: int) -> Dictionary:
+	if species_profiles_by_id.has(pokedex_id):
+		return species_profiles_by_id[pokedex_id]
+	return {}
+
+
+func _normalize_key(value: String) -> String:
+	var lower: String = value.to_lower()
+	var out := ""
+	for idx in range(lower.length()):
+		var ch: String = lower[idx]
+		var code: int = ch.unicode_at(0)
+		var is_number: bool = code >= 48 and code <= 57
+		var is_letter: bool = code >= 97 and code <= 122
+		if is_number or is_letter:
+			out += ch
+	return out
+
+
 func _pick_ability_name() -> String:
 	if supported_ability_names.is_empty():
 		return "Moxie"
@@ -294,13 +441,22 @@ func _pick_ability_name() -> String:
 
 
 func scaled_stats(base_stats: Dictionary, level: int) -> Dictionary:
+	var clamped_level: int = clamp(level, 1, 100)
+	var iv: float = float(DEFAULT_IV)
+	var ev_quarter: float = float(DEFAULT_EV) / 4.0
+	var hp: int = int(floor((((2.0 * float(base_stats["hp"]) + iv + ev_quarter) * float(clamped_level)) / 100.0) + float(clamped_level) + 10.0))
+	var atk: int = int(floor((((2.0 * float(base_stats["atk"]) + iv + ev_quarter) * float(clamped_level)) / 100.0) + 5.0))
+	var defense: int = int(floor((((2.0 * float(base_stats["def"]) + iv + ev_quarter) * float(clamped_level)) / 100.0) + 5.0))
+	var spa: int = int(floor((((2.0 * float(base_stats["spa"]) + iv + ev_quarter) * float(clamped_level)) / 100.0) + 5.0))
+	var spd: int = int(floor((((2.0 * float(base_stats["spd"]) + iv + ev_quarter) * float(clamped_level)) / 100.0) + 5.0))
+	var spe: int = int(floor((((2.0 * float(base_stats["spe"]) + iv + ev_quarter) * float(clamped_level)) / 100.0) + 5.0))
 	return {
-		"hp": int((base_stats["hp"] * level) / 50.0) + 10,
-		"atk": int((base_stats["atk"] * level) / 50.0) + 5,
-		"def": int((base_stats["def"] * level) / 50.0) + 5,
-		"spa": int((base_stats["spa"] * level) / 50.0) + 5,
-		"spd": int((base_stats["spd"] * level) / 50.0) + 5,
-		"spe": int((base_stats["spe"] * level) / 50.0) + 5
+		"hp": max(1, hp),
+		"atk": max(1, atk),
+		"def": max(1, defense),
+		"spa": max(1, spa),
+		"spd": max(1, spd),
+		"spe": max(1, spe)
 	}
 
 

@@ -14,6 +14,7 @@ signal evolution_offer_created(summary: String)
 signal evolution_offer_closed()
 signal permanent_unlocks_changed(unlocks: Array[int])
 signal run_save_debug_changed(text: String)
+signal single_battle_finished(result: String)
 
 const TEAM_SIZE := 6
 const MAX_FLOOR := 50
@@ -97,6 +98,7 @@ var player_side_hazards: Dictionary = {"stealth_rock": false, "spikes": 0, "toxi
 var enemy_side_hazards: Dictionary = {"stealth_rock": false, "spikes": 0, "toxic_spikes": 0, "sticky_web": false}
 var player_protect_active: bool = false
 var enemy_protect_active: bool = false
+var single_battle_mode: bool = false
 
 var factory: PokemonFactory
 var move_effects: MoveEffects
@@ -134,6 +136,7 @@ func start_new_run_with_team(selected_species_ids: Array[int]) -> void:
 
 
 func start_new_run_with_pokemon(selected_pokemon: Array) -> void:
+	single_battle_mode = false
 	floor_level = 1
 	active_team.clear()
 	unlocked_roster.clear()
@@ -185,6 +188,49 @@ func start_new_run_with_pokemon(selected_pokemon: Array) -> void:
 	emit_signal("battle_log_changed", _battle_log_text())
 	_emit_battle_state()
 	emit_signal("permanent_unlocks_changed", permanent_unlocked_ids.duplicate())
+
+
+func start_single_battle(player_team: Array, enemy_pokemon: Dictionary) -> void:
+	single_battle_mode = true
+	floor_level = 1
+	active_team.clear()
+	unlocked_roster.clear()
+	battle_log_lines.clear()
+	current_offer = {}
+	current_evolution_offer = {}
+	pending_evolution_queue.clear()
+	current_enemy = {}
+	active_team_index = 0
+	awaiting_move_choice = false
+	awaiting_switch_choice = false
+	forced_switch_pending = false
+	switches_used_this_floor = 0
+	runs_in_current_stretch = 0
+	_reset_battlefield_for_new_encounter()
+
+	for idx in range(player_team.size()):
+		var mon_value = player_team[idx]
+		if typeof(mon_value) != TYPE_DICTIONARY:
+			continue
+		var mon: Dictionary = mon_value.duplicate(true)
+		_ensure_status_state(mon)
+		_reset_battle_volatile_state(mon)
+		active_team.append(mon)
+		unlocked_roster.append(mon.duplicate(true))
+	if active_team.is_empty():
+		return
+
+	current_enemy = enemy_pokemon.duplicate(true)
+	_ensure_status_state(current_enemy)
+	_reset_battle_volatile_state(current_enemy)
+	run_in_progress = true
+	_emit_battle_log("A rival challenges you!", false)
+	emit_signal("run_started")
+	emit_signal("floor_changed", floor_level)
+	emit_signal("team_changed", active_team.duplicate(true))
+	emit_signal("enemy_changed", _enemy_summary_text())
+	emit_signal("battle_log_changed", _battle_log_text())
+	_emit_battle_state()
 
 
 func begin_fight_choice() -> void:
@@ -254,6 +300,9 @@ func use_move(move_index: int) -> void:
 		if _is_fainted(current_enemy):
 			_apply_ko_ability_boost(active_team[active_team_index], true)
 			_emit_battle_log("Wild %s fainted." % str(current_enemy["name"]), true)
+			if single_battle_mode:
+				_finish_single_battle("win")
+				return
 			_advance_floor(true)
 			return
 		_resolve_enemy_attack()
@@ -275,6 +324,9 @@ func use_move(move_index: int) -> void:
 	if _is_fainted(current_enemy):
 		_apply_ko_ability_boost(active_team[active_team_index], true)
 		_emit_battle_log("Wild %s fainted." % str(current_enemy["name"]), true)
+		if single_battle_mode:
+			_finish_single_battle("win")
+			return
 		_advance_floor(true)
 		return
 	if _is_fainted(active_team[active_team_index]):
@@ -600,15 +652,21 @@ func _enemy_summary_text() -> String:
 	var boss_prefix: String = "Wild"
 	if bool(current_enemy.get("is_boss_encounter", false)):
 		boss_prefix = "Boss"
-	return "%s %s Lv.%d %s | HP %d/%d | %s/%s | %s" % [
+	var enemy_types: Array = current_enemy.get("types", [])
+	var type_parts: Array[String] = []
+	for idx in range(enemy_types.size()):
+		type_parts.append(_colorize_type_name(str(enemy_types[idx])))
+	var type_text: String = "Unknown"
+	if type_parts.is_empty() == false:
+		type_text = "/".join(type_parts)
+	return "%s %s Lv.%d %s | HP %d/%d | %s | %s" % [
 		boss_prefix,
 		str(current_enemy["name"]),
 		int(current_enemy["level"]),
 		status_badge,
 		hp_now,
 		hp_max,
-		_colorize_type_name(str(current_enemy["types"][0])),
-		_colorize_type_name(str(current_enemy["types"][1])),
+		type_text,
 		str(current_enemy["ability"])
 	]
 
@@ -618,6 +676,15 @@ func _full_team_heal() -> void:
 		var mon: Dictionary = active_team[idx]
 		var hp_max: int = int(mon.get("stats", {}).get("hp", 1))
 		mon["current_hp"] = hp_max
+		mon["status"] = ""
+		mon["sleep_turns"] = 0
+		mon["toxic_counter"] = 0
+		mon["flinch"] = false
+		mon["trapped_turns"] = 0
+		mon["trapped_by"] = ""
+		mon["must_recharge"] = false
+		mon["queued_move"] = {}
+		mon["semi_invulnerable_state"] = ""
 		_ensure_move_pp_state(mon)
 		var pp_max: Array = mon.get("move_pp_max", [])
 		var restored_pp: Array = []
@@ -625,6 +692,13 @@ func _full_team_heal() -> void:
 			restored_pp.append(int(pp_max[pp_idx]))
 		mon["move_pp"] = restored_pp
 		active_team[idx] = mon
+
+
+func heal_active_team_full() -> void:
+	_full_team_heal()
+	emit_signal("team_changed", active_team.duplicate(true))
+	emit_signal("battle_log_changed", _battle_log_text())
+	_emit_battle_state()
 
 
 func _boss_hp_multiplier_for_floor(floor_level_value: int) -> float:
@@ -1315,9 +1389,8 @@ func _ensure_status_state(mon: Dictionary) -> void:
 
 func _sanitize_mon_ability(mon: Dictionary) -> void:
 	var ability_name: String = str(mon.get("ability", ""))
-	if ability_effects.is_supported_ability(ability_name):
-		return
-	mon["ability"] = "Moxie"
+	if ability_name.is_empty():
+		mon["ability"] = "Moxie"
 
 
 func _ensure_move_pp_state(mon: Dictionary) -> void:
@@ -1976,10 +2049,14 @@ func _handle_player_faint() -> void:
 		forced_switch_pending = true
 		_emit_battle_log("Choose a Pokemon to continue the fight.", true)
 	else:
+		if single_battle_mode:
+			_finish_single_battle("lose")
+			return
 		_end_run("All team members fainted. Run over.")
 
 
 func _end_run(message: String) -> void:
+	single_battle_mode = false
 	run_in_progress = false
 	current_enemy = {}
 	current_offer = {}
@@ -2006,6 +2083,16 @@ func _end_run(message: String) -> void:
 	_emit_battle_state()
 	emit_signal("run_ended", message)
 	_save_run_state()
+
+
+func _finish_single_battle(result: String) -> void:
+	var message: String = "Battle finished."
+	if result == "win":
+		message = "You won the battle!"
+	elif result == "lose":
+		message = "You lost the battle."
+	_end_run(message)
+	emit_signal("single_battle_finished", result)
 
 
 func _emit_battle_log(message: String, append: bool) -> void:
@@ -2091,12 +2178,18 @@ func get_randomized_pokemon_tooltip(pokemon: Dictionary) -> String:
 	for idx in range(moves_list.size()):
 		var move_data: Dictionary = moves_list[idx]
 		move_names.append(str(move_data.get("name", "Move")))
-	return "#%03d %s (Lv.%d)\nType: %s/%s\nHP: %d/%d\nAbility: %s\nNature: %s\nMoves: %s" % [
+	var type_parts: Array[String] = []
+	var mon_types: Array = pokemon.get("types", [])
+	for idx in range(mon_types.size()):
+		type_parts.append(str(mon_types[idx]))
+	var type_text: String = "Unknown"
+	if type_parts.is_empty() == false:
+		type_text = "/".join(type_parts)
+	return "#%03d %s (Lv.%d)\nType: %s\nHP: %d/%d\nAbility: %s\nNature: %s\nMoves: %s" % [
 		int(pokemon.get("id", 0)),
 		str(pokemon.get("name", "Pokemon")),
 		int(pokemon.get("level", 1)),
-		str(pokemon.get("types", ["", ""])[0]),
-		str(pokemon.get("types", ["", ""])[1]),
+		type_text,
 		hp_now,
 		hp_max,
 		str(pokemon.get("ability", "Unknown")),
@@ -2111,6 +2204,10 @@ func has_active_run() -> bool:
 
 func get_active_team_index() -> int:
 	return active_team_index
+
+
+func get_active_team_snapshot() -> Array:
+	return active_team.duplicate(true)
 
 
 func get_battle_state() -> Dictionary:
@@ -2155,8 +2252,8 @@ func get_battle_state() -> Dictionary:
 		"active_ability": str(active_summary.get("ability", "")),
 		"active_hp": int(active_summary.get("current_hp", 0)),
 		"active_hp_max": int(active_summary.get("stats", {}).get("hp", 0)),
-		"active_type_1": str(active_summary.get("types", ["", ""])[0]),
-		"active_type_2": str(active_summary.get("types", ["", ""])[1]),
+		"active_type_1": _type_name_at(active_summary, 0),
+		"active_type_2": _type_name_at(active_summary, 1),
 		"active_stage_text": _stage_summary_text(active_summary),
 		"enemy_id": int(current_enemy.get("id", 0)),
 		"enemy_name": str(current_enemy.get("name", "")),
@@ -2171,6 +2268,13 @@ func get_battle_state() -> Dictionary:
 		"terrain": current_terrain,
 		"terrain_turns": terrain_turns_remaining
 	}
+
+
+func _type_name_at(mon: Dictionary, index: int) -> String:
+	var types_list: Array = mon.get("types", [])
+	if index < 0 or index >= types_list.size():
+		return ""
+	return str(types_list[index])
 
 
 func _status_badge_for_mon(mon: Dictionary) -> String:
