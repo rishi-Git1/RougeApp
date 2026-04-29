@@ -173,6 +173,8 @@ func start_new_run_with_pokemon(selected_pokemon: Array) -> void:
 			starters.append(starter)
 	for idx in range(starters.size()):
 		var starter: Dictionary = starters[idx]
+		_ensure_status_state(starter)
+		_ensure_experience_state(starter)
 		unlocked_roster.append(starter)
 		active_team.append(starter)
 
@@ -190,7 +192,7 @@ func start_new_run_with_pokemon(selected_pokemon: Array) -> void:
 	emit_signal("permanent_unlocks_changed", permanent_unlocked_ids.duplicate())
 
 
-func start_single_battle(player_team: Array, enemy_pokemon: Dictionary) -> void:
+func start_single_battle(player_team: Array, enemy_pokemon: Dictionary, enemy_is_trainer_owned: bool = true, opening_log: String = "A rival challenges you!") -> void:
 	single_battle_mode = true
 	floor_level = 1
 	active_team.clear()
@@ -214,6 +216,7 @@ func start_single_battle(player_team: Array, enemy_pokemon: Dictionary) -> void:
 			continue
 		var mon: Dictionary = mon_value.duplicate(true)
 		_ensure_status_state(mon)
+		_ensure_experience_state(mon)
 		_reset_battle_volatile_state(mon)
 		active_team.append(mon)
 		unlocked_roster.append(mon.duplicate(true))
@@ -222,9 +225,11 @@ func start_single_battle(player_team: Array, enemy_pokemon: Dictionary) -> void:
 
 	current_enemy = enemy_pokemon.duplicate(true)
 	_ensure_status_state(current_enemy)
+	_ensure_experience_state(current_enemy)
+	current_enemy["trainer_owned"] = enemy_is_trainer_owned
 	_reset_battle_volatile_state(current_enemy)
 	run_in_progress = true
-	_emit_battle_log("A rival challenges you!", false)
+	_emit_battle_log(opening_log, false)
 	emit_signal("run_started")
 	emit_signal("floor_changed", floor_level)
 	emit_signal("team_changed", active_team.duplicate(true))
@@ -300,10 +305,11 @@ func use_move(move_index: int) -> void:
 		if _is_fainted(current_enemy):
 			_apply_ko_ability_boost(active_team[active_team_index], true)
 			_emit_battle_log("Wild %s fainted." % str(current_enemy["name"]), true)
+			_award_experience_for_defeated_enemy()
 			if single_battle_mode:
 				_finish_single_battle("win")
 				return
-			_advance_floor(true)
+			_advance_floor(false)
 			return
 		_resolve_enemy_attack()
 	else:
@@ -324,10 +330,11 @@ func use_move(move_index: int) -> void:
 	if _is_fainted(current_enemy):
 		_apply_ko_ability_boost(active_team[active_team_index], true)
 		_emit_battle_log("Wild %s fainted." % str(current_enemy["name"]), true)
+		_award_experience_for_defeated_enemy()
 		if single_battle_mode:
 			_finish_single_battle("win")
 			return
-		_advance_floor(true)
+		_advance_floor(false)
 		return
 	if _is_fainted(active_team[active_team_index]):
 		_handle_player_faint()
@@ -557,6 +564,66 @@ func _grant_global_level_up() -> void:
 	pending_evolution_queue = queued
 
 
+func _award_experience_for_defeated_enemy() -> void:
+	if active_team_index < 0 or active_team_index >= active_team.size():
+		return
+	if current_enemy.is_empty():
+		return
+	var mon: Dictionary = active_team[active_team_index]
+	_ensure_status_state(mon)
+	_ensure_experience_state(mon)
+	var gain: int = _experience_gain_for_enemy(current_enemy)
+	if gain <= 0:
+		return
+	var current_exp: int = int(mon.get("experience", 0))
+	mon["experience"] = current_exp + gain
+	_emit_battle_log("%s gained %d EXP." % [str(mon.get("name", "Pokemon")), gain], true)
+	var levels_gained: int = _apply_level_ups_from_experience(mon, active_team_index)
+	if levels_gained > 0:
+		_emit_battle_log("%s grew to Lv.%d." % [str(mon.get("name", "Pokemon")), int(mon.get("level", 1))], true)
+	active_team[active_team_index] = mon
+	if active_team_index < unlocked_roster.size():
+		unlocked_roster[active_team_index] = mon.duplicate(true)
+	if pending_evolution_queue.is_empty() == false and current_evolution_offer.is_empty():
+		_maybe_show_next_evolution_offer()
+
+
+func _experience_gain_for_enemy(defeated_enemy: Dictionary) -> int:
+	var species_id: int = int(defeated_enemy.get("id", 0))
+	var base_exp: int = int(defeated_enemy.get("base_experience_yield", factory.get_base_experience_yield_for_species(species_id)))
+	var level: int = int(defeated_enemy.get("level", 1))
+	var gain: int = int(floor((float(base_exp) * float(level)) / 7.0))
+	if bool(defeated_enemy.get("trainer_owned", false)):
+		gain = int(floor(float(gain) * 1.5))
+	return max(1, gain)
+
+
+func _apply_level_ups_from_experience(mon: Dictionary, team_index: int) -> int:
+	_ensure_experience_state(mon)
+	var levels_gained: int = 0
+	var growth_rate: String = str(mon.get("growth_rate", "medium"))
+	while int(mon.get("level", 1)) < 100:
+		var level_now: int = int(mon.get("level", 1))
+		var next_total: int = factory.experience_for_level(level_now + 1, growth_rate)
+		if int(mon.get("experience", 0)) < next_total:
+			break
+		var previous_max_hp: int = int(mon.get("stats", {}).get("hp", 1))
+		var previous_hp: int = int(mon.get("current_hp", previous_max_hp))
+		mon["level"] = level_now + 1
+		mon["stats"] = factory.scaled_stats(mon.get("base_stats", {}), int(mon.get("level", 1)))
+		var new_max_hp: int = int(mon.get("stats", {}).get("hp", previous_max_hp))
+		var hp_gain: int = max(1, new_max_hp - previous_max_hp)
+		if previous_hp <= 0:
+			mon["current_hp"] = 0
+		else:
+			mon["current_hp"] = min(new_max_hp, previous_hp + hp_gain)
+		var evo_offer: Dictionary = _build_evolution_offer_for_member(team_index, mon)
+		if evo_offer.is_empty() == false:
+			pending_evolution_queue.append(evo_offer)
+		levels_gained += 1
+	return levels_gained
+
+
 func _advance_floor(grant_level_up: bool) -> void:
 	awaiting_move_choice = false
 	awaiting_switch_choice = false
@@ -620,6 +687,7 @@ func _spawn_enemy_for_current_floor() -> void:
 		current_enemy = {}
 		return
 	current_enemy = factory.build_randomized_pokemon(enemy_id, floor_level)
+	current_enemy["trainer_owned"] = false
 	var hp_multiplier: float = _boss_hp_multiplier_for_floor(floor_level)
 	if hp_multiplier > 1.0:
 		var old_hp_max: int = int(current_enemy.get("stats", {}).get("hp", 1))
@@ -634,6 +702,7 @@ func _spawn_enemy_for_current_floor() -> void:
 		current_enemy["is_boss_encounter"] = false
 		current_enemy["boss_hp_multiplier"] = 1.0
 	_ensure_status_state(current_enemy)
+	_ensure_experience_state(current_enemy)
 	_reset_battle_volatile_state(current_enemy)
 	if active_team_index >= 0 and active_team_index < active_team.size():
 		var player_active: Dictionary = active_team[active_team_index]
@@ -1385,6 +1454,25 @@ func _ensure_status_state(mon: Dictionary) -> void:
 		mon["semi_invulnerable_state"] = ""
 	if not mon.has("flash_fire_active"):
 		mon["flash_fire_active"] = false
+
+
+func _ensure_experience_state(mon: Dictionary) -> void:
+	var species_id: int = int(mon.get("id", 0))
+	var growth_rate: String = str(mon.get("growth_rate", ""))
+	if growth_rate.is_empty():
+		growth_rate = factory.get_growth_rate_for_species(species_id)
+	mon["growth_rate"] = growth_rate
+	var base_exp: int = int(mon.get("base_experience_yield", 0))
+	if base_exp <= 0:
+		base_exp = factory.get_base_experience_yield_for_species(species_id)
+	mon["base_experience_yield"] = max(1, base_exp)
+	var level: int = clamp(int(mon.get("level", 1)), 1, 100)
+	mon["level"] = level
+	var minimum_exp: int = factory.experience_for_level(level, growth_rate)
+	var current_exp: int = int(mon.get("experience", minimum_exp))
+	if current_exp < minimum_exp:
+		current_exp = minimum_exp
+	mon["experience"] = current_exp
 
 
 func _sanitize_mon_ability(mon: Dictionary) -> void:
@@ -2564,18 +2652,22 @@ func _sanitize_loaded_abilities() -> void:
 	for idx in range(active_team.size()):
 		var mon: Dictionary = active_team[idx]
 		_ensure_status_state(mon)
+		_ensure_experience_state(mon)
 		_sanitize_mon_ability(mon)
 		active_team[idx] = mon
 	for idx in range(unlocked_roster.size()):
 		var mon: Dictionary = unlocked_roster[idx]
 		_ensure_status_state(mon)
+		_ensure_experience_state(mon)
 		_sanitize_mon_ability(mon)
 		unlocked_roster[idx] = mon
 	if current_enemy.is_empty() == false:
 		_ensure_status_state(current_enemy)
+		_ensure_experience_state(current_enemy)
 		_sanitize_mon_ability(current_enemy)
 	if current_offer.is_empty() == false:
 		_ensure_status_state(current_offer)
+		_ensure_experience_state(current_offer)
 		_sanitize_mon_ability(current_offer)
 
 

@@ -1,11 +1,14 @@
 extends Control
 
 const SETTINGS_PATH := "user://ui_settings.cfg"
+const PROJECT_STATE_PATH := "user://project_mode_state.json"
 const CUSTOM_BG_TEXTURE_PATH := "res://assets/backgrounds/battle_bg.png"
 const LOCKED_THEME_ID := 3
 const PROJECT_WORLD_SIZE := Vector2(2600, 1900)
 const PROJECT_PATH_WIDTH := 42.0
 const PROJECT_PLAYER_SPEED := 280.0
+const PROJECT_ENCOUNTER_STEP_DISTANCE := 18.0
+const PROJECT_GRASS_ENCOUNTER_CHANCE := 0.06
 const PALLET_TOWN_SIZE := Vector2(760, 560)
 const ROUTE_ONE_SIZE := Vector2(260, 700)
 const PROJECT_STARTER_IDS: Array[int] = [1, 4, 7, 152, 155, 158, 252, 255, 258, 387, 390, 393, 495, 498, 501, 650, 653, 656, 722, 725, 728, 810, 813, 816, 906, 909, 912]
@@ -15,9 +18,9 @@ const PROJECT_LOCATION_POSITIONS := {
 	"Victory Road": Vector2(220, 260),
 	"Route 23": Vector2(220, 430),
 	"Route 22": Vector2(360, 560),
-	"Viridian City": Vector2(520, 700),
-	"Viridian Forest": Vector2(520, 540),
-	"Pewter City": Vector2(700, 420),
+	"Viridian City": Vector2(520, 300),
+	"Viridian Forest": Vector2(520, 200),
+	"Pewter City": Vector2(700, 300),
 	"Route 3": Vector2(900, 420),
 	"Mt. Moon": Vector2(1100, 420),
 	"Route 4": Vector2(1300, 420),
@@ -51,7 +54,7 @@ const PROJECT_LOCATION_POSITIONS := {
 	"Cinnabar Island": Vector2(500, 1760),
 	"Route 21": Vector2(500, 1700),
 	"Pallet Town": Vector2(500, 1360),
-	"Route 1": Vector2(520, 900)
+	"Route 1": Vector2(520, 740)
 }
 const PROJECT_CONNECTIONS := [
 	["Pallet Town", "Route 1"],
@@ -224,6 +227,7 @@ var project_interior_root: Control
 var project_walkable_rects: Array[Rect2] = []
 var project_blocked_rects: Array[Rect2] = []
 var project_one_way_ledge_rects: Array[Rect2] = []
+var project_route_one_grass_rects: Array[Rect2] = []
 var project_location_centers: Dictionary = {}
 var project_overworld_doors: Array[Dictionary] = []
 var project_current_interior: String = ""
@@ -242,10 +246,15 @@ var project_starter_grid: GridContainer
 var project_story_stage: String = "none"
 var project_player_starter_id: int = 0
 var project_rival_battle_completed: bool = false
+var project_battle_return_context: String = ""
+var project_step_distance_accum: float = 0.0
 var project_menu_overlay: Control
 var project_menu_content_label: Label
 var project_menu_buttons_by_page: Dictionary = {}
 var project_menu_current_page: String = "Party"
+var project_menu_save_button: Button
+var project_menu_clear_button: Button
+var project_menu_save_status_label: Label
 var project_menu_party_scroll: ScrollContainer
 var project_menu_party_list: VBoxContainer
 var project_menu_detail_overlay: Control
@@ -254,10 +263,12 @@ var battle_end_overlay: Control
 var battle_end_label: Label
 var pending_battle_end_action: String = ""
 var music_rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var project_rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 
 func _ready() -> void:
 	music_rng.randomize()
+	project_rng.randomize()
 	_configure_window_behavior()
 	fallback_texture = load("res://icon.svg") as Texture2D
 	var bar_style := StyleBoxFlat.new()
@@ -361,13 +372,15 @@ func _on_mode_project_pressed() -> void:
 	current_game_mode = "project"
 	battle_message_queue.clear()
 	last_battle_log_lines.clear()
-	project_story_stage = "lab_intro"
-	project_player_starter_id = 0
-	_reset_project_player_position()
 	_show_only_screen("project")
-	project_return_overworld_pos = _overworld_return_for_interior("player_house")
-	_enter_project_interior("player_house")
-	project_door_cooldown = 0.35
+	if not _load_project_mode_state():
+		project_story_stage = "lab_intro"
+		project_player_starter_id = 0
+		project_rival_battle_completed = false
+		_reset_project_player_position()
+		project_return_overworld_pos = _overworld_return_for_interior("player_house")
+		_enter_project_interior("player_house")
+		project_door_cooldown = 0.35
 	if encounter_database != null and encounter_database.is_loaded():
 		var total_slots: int = encounter_database.get_location_methods().size()
 		$ProjectScreen/Panel/VBox/Message.text = "Prototype map view (Pokemon Red style).\nMove with Arrow Keys or WASD.\nPress E to interact with doors.\nEncounter slots loaded: %d" % total_slots
@@ -418,21 +431,28 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _move_project_player(delta: Vector2) -> void:
+	var start_pos: Vector2 = project_player_rect.position
 	var next_pos: Vector2 = project_player_rect.position + delta
-	var player_center: Vector2 = next_pos + (project_player_rect.size * 0.5)
+	var next_rect: Rect2 = Rect2(next_pos, project_player_rect.size)
 	var current_center: Vector2 = project_player_rect.position + (project_player_rect.size * 0.5)
-	if _is_project_walkable(player_center) and _can_cross_one_way_ledges(current_center, player_center):
+	var next_center: Vector2 = next_pos + (project_player_rect.size * 0.5)
+	if _is_project_rect_walkable(next_rect) and _can_cross_one_way_ledges(current_center, next_center):
 		project_player_rect.position = next_pos
 		return
 	var split_x_pos: Vector2 = Vector2(next_pos.x, project_player_rect.position.y)
+	var split_x_rect: Rect2 = Rect2(split_x_pos, project_player_rect.size)
 	var split_x_center: Vector2 = split_x_pos + (project_player_rect.size * 0.5)
-	if _is_project_walkable(split_x_center) and _can_cross_one_way_ledges(current_center, split_x_center):
+	if _is_project_rect_walkable(split_x_rect) and _can_cross_one_way_ledges(current_center, split_x_center):
 		project_player_rect.position.x = split_x_pos.x
 	var split_y_pos: Vector2 = Vector2(project_player_rect.position.x, next_pos.y)
+	var split_y_rect: Rect2 = Rect2(split_y_pos, project_player_rect.size)
 	var split_y_center: Vector2 = split_y_pos + (project_player_rect.size * 0.5)
 	var updated_center: Vector2 = project_player_rect.position + (project_player_rect.size * 0.5)
-	if _is_project_walkable(split_y_center) and _can_cross_one_way_ledges(updated_center, split_y_center):
+	if _is_project_rect_walkable(split_y_rect) and _can_cross_one_way_ledges(updated_center, split_y_center):
 		project_player_rect.position.y = split_y_pos.y
+	var moved_distance: float = start_pos.distance_to(project_player_rect.position)
+	if moved_distance > 0.0:
+		_maybe_trigger_project_grass_encounter(moved_distance)
 
 
 func _reset_project_player_position() -> void:
@@ -463,10 +483,12 @@ func _build_project_world() -> void:
 	project_walkable_rects.clear()
 	project_blocked_rects.clear()
 	project_one_way_ledge_rects.clear()
+	project_route_one_grass_rects.clear()
 	project_location_centers.clear()
 	project_overworld_doors.clear()
 	project_current_interior = ""
 	project_door_cooldown = 0.0
+	project_step_distance_accum = 0.0
 	project_world = Control.new()
 	project_world.name = "GeneratedWorld"
 	project_world.custom_minimum_size = PROJECT_WORLD_SIZE
@@ -539,7 +561,7 @@ func _add_path_segment(start_pos: Vector2, end_pos: Vector2) -> void:
 		rect.position = Vector2(start_pos.x - PROJECT_PATH_WIDTH * 0.5, top)
 		rect.size = Vector2(PROJECT_PATH_WIDTH, abs(end_pos.y - start_pos.y))
 	project_world.add_child(rect)
-	project_walkable_rects.append(Rect2(rect.position, rect.size).grow(10))
+	project_walkable_rects.append(Rect2(rect.position, rect.size))
 
 
 func _add_project_locations() -> void:
@@ -565,7 +587,7 @@ func _add_project_locations() -> void:
 		style.border_width_bottom = 3
 		panel.add_theme_stylebox_override("panel", style)
 		project_world.add_child(panel)
-		project_walkable_rects.append(Rect2(panel.position, panel.size).grow(8))
+		project_walkable_rects.append(Rect2(panel.position, panel.size))
 		if _is_town_like_location(location_name):
 			var label := Label.new()
 			label.text = location_name
@@ -596,6 +618,10 @@ func _is_town_like_location(location_name: String) -> bool:
 func _is_project_walkable(world_point: Vector2) -> bool:
 	if not project_current_interior.is_empty():
 		return project_interior_bounds.has_point(world_point)
+	if world_point.x < 1.0 or world_point.y < 1.0:
+		return false
+	if world_point.x > PROJECT_WORLD_SIZE.x - 1.0 or world_point.y > PROJECT_WORLD_SIZE.y - 1.0:
+		return false
 	if not _is_route_one_unlocked() and _route_one_gate_rect().has_point(world_point):
 		return false
 	for idx in range(project_blocked_rects.size()):
@@ -607,6 +633,31 @@ func _is_project_walkable(world_point: Vector2) -> bool:
 		if rect.has_point(world_point):
 			return true
 	return false
+
+
+func _is_project_rect_walkable(world_rect: Rect2) -> bool:
+	if not project_current_interior.is_empty():
+		return project_interior_bounds.encloses(world_rect)
+	var world_bounds: Rect2 = Rect2(Vector2.ZERO, PROJECT_WORLD_SIZE)
+	if not world_bounds.encloses(world_rect):
+		return false
+	if not _is_route_one_unlocked() and world_rect.intersects(_route_one_gate_rect()):
+		return false
+	for idx in range(project_blocked_rects.size()):
+		var blocked: Rect2 = project_blocked_rects[idx]
+		if blocked.intersects(world_rect):
+			return false
+	var corners: Array[Vector2] = [
+		world_rect.position + Vector2(1, 1),
+		world_rect.position + Vector2(world_rect.size.x - 1, 1),
+		world_rect.position + Vector2(1, world_rect.size.y - 1),
+		world_rect.position + Vector2(world_rect.size.x - 1, world_rect.size.y - 1)
+	]
+	for corner_idx in range(corners.size()):
+		var corner: Vector2 = corners[corner_idx]
+		if not _is_project_walkable(corner):
+			return false
+	return true
 
 
 func _update_project_camera() -> void:
@@ -639,7 +690,7 @@ func _add_pallet_town_layout(center: Vector2) -> void:
 	town_style.border_width_bottom = 4
 	town_panel.add_theme_stylebox_override("panel", town_style)
 	project_world.add_child(town_panel)
-	project_walkable_rects.append(Rect2(town_panel.position, town_panel.size).grow(8))
+	project_walkable_rects.append(Rect2(town_panel.position, town_panel.size))
 
 	var pond := ColorRect.new()
 	pond.position = top_left + Vector2(72, 360)
@@ -690,7 +741,7 @@ func _add_project_building(rect: Rect2, label_text: String) -> void:
 	name_label.size = Vector2(rect.size.x - 24, 26)
 	name_label.add_theme_color_override("font_color", Color(0, 0, 0, 1))
 	project_world.add_child(name_label)
-	project_walkable_rects.append(rect.grow(4))
+	project_walkable_rects.append(rect)
 
 
 func _add_door_marker(door_rect: Rect2) -> void:
@@ -761,6 +812,7 @@ func _add_route_one_grass(rect: Rect2, color: Color) -> void:
 	grass.size = rect.size
 	grass.color = color
 	project_world.add_child(grass)
+	project_route_one_grass_rects.append(rect)
 
 
 func _add_route_one_decor(rect: Rect2, color: Color) -> void:
@@ -815,6 +867,64 @@ func _is_route_one_unlocked() -> bool:
 	return project_rival_battle_completed
 
 
+func _is_player_in_route_one_grass() -> bool:
+	if not project_current_interior.is_empty():
+		return false
+	var player_rect: Rect2 = Rect2(project_player_rect.position, project_player_rect.size)
+	for idx in range(project_route_one_grass_rects.size()):
+		var grass_rect: Rect2 = project_route_one_grass_rects[idx]
+		if player_rect.intersects(grass_rect):
+			return true
+	return false
+
+
+func _project_living_party_snapshot() -> Array:
+	var team: Array = run_manager.get_active_team_snapshot()
+	var living: Array = []
+	for idx in range(team.size()):
+		var mon_value = team[idx]
+		if typeof(mon_value) != TYPE_DICTIONARY:
+			continue
+		var mon: Dictionary = mon_value
+		if int(mon.get("current_hp", 0)) <= 0:
+			continue
+		living.append(mon.duplicate(true))
+	return living
+
+
+func _maybe_trigger_project_grass_encounter(moved_distance: float) -> void:
+	if not _is_route_one_unlocked():
+		return
+	if not _is_player_in_route_one_grass():
+		project_step_distance_accum = 0.0
+		return
+	if encounter_database == null or not encounter_database.is_loaded():
+		return
+	project_step_distance_accum += moved_distance
+	while project_step_distance_accum >= PROJECT_ENCOUNTER_STEP_DISTANCE:
+		project_step_distance_accum -= PROJECT_ENCOUNTER_STEP_DISTANCE
+		if project_rng.randf() > PROJECT_GRASS_ENCOUNTER_CHANCE:
+			continue
+		var encounter: Dictionary = encounter_database.roll_encounter("Route 1", "Grass")
+		var species_id: int = int(encounter.get("pokedex_id", 0))
+		if species_id <= 0:
+			continue
+		var party: Array = _project_living_party_snapshot()
+		if party.is_empty():
+			return
+		var lead_level: int = int((party[0] as Dictionary).get("level", 5))
+		var wild_level: int = clamp(lead_level, 2, 100)
+		var enemy_mon: Dictionary = run_manager.factory.build_randomized_pokemon(species_id, wild_level)
+		if enemy_mon.is_empty():
+			return
+		enemy_mon["trainer_owned"] = false
+		project_battle_return_context = "overworld"
+		project_step_distance_accum = 0.0
+		run_manager.start_single_battle(party, enemy_mon, false, "A wild %s appeared!" % str(enemy_mon.get("name", "Pokemon")))
+		_show_only_screen("battle")
+		return
+
+
 func _try_project_interact() -> void:
 	if project_door_cooldown > 0.0:
 		return
@@ -825,15 +935,22 @@ func _try_project_interact() -> void:
 		for idx in range(project_overworld_doors.size()):
 			var door: Dictionary = project_overworld_doors[idx]
 			var door_rect: Rect2 = door.get("rect", Rect2())
-			if player_rect.intersects(door_rect):
+			var interact_rect: Rect2 = _door_interact_rect(door_rect)
+			if player_rect.intersects(interact_rect):
 				project_return_overworld_pos = Vector2(door.get("return_pos", project_player_rect.position))
 				_enter_project_interior(str(door.get("interior", "")))
 				project_door_cooldown = 0.45
 				return
 	else:
-		if player_rect.intersects(project_interior_exit_rect):
+		var exit_interact_rect: Rect2 = _door_interact_rect(project_interior_exit_rect)
+		if player_rect.intersects(exit_interact_rect):
 			_exit_project_interior()
 			project_door_cooldown = 0.45
+
+
+func _door_interact_rect(door_rect: Rect2) -> Rect2:
+	# Larger invisible interaction zone while keeping the visible door marker unchanged.
+	return door_rect.grow_individual(12.0, 20.0, 12.0, 8.0)
 
 
 func _try_project_story_interact() -> bool:
@@ -1112,6 +1229,25 @@ func _build_project_menu_ui() -> void:
 	project_menu_content_label.add_theme_font_size_override("font_size", 22)
 	project_menu_content_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 	root.add_child(project_menu_content_label)
+	project_menu_save_button = Button.new()
+	project_menu_save_button.text = "Save Game"
+	project_menu_save_button.custom_minimum_size = Vector2(220, 46)
+	project_menu_save_button.visible = false
+	project_menu_save_button.pressed.connect(_on_project_save_pressed)
+	root.add_child(project_menu_save_button)
+	project_menu_clear_button = Button.new()
+	project_menu_clear_button.text = "Clear Save Data"
+	project_menu_clear_button.custom_minimum_size = Vector2(220, 46)
+	project_menu_clear_button.visible = false
+	project_menu_clear_button.pressed.connect(_on_project_clear_save_pressed)
+	root.add_child(project_menu_clear_button)
+	project_menu_save_status_label = Label.new()
+	project_menu_save_status_label.custom_minimum_size = Vector2(980, 32)
+	project_menu_save_status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	project_menu_save_status_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+	project_menu_save_status_label.visible = false
+	project_menu_save_status_label.text = ""
+	root.add_child(project_menu_save_status_label)
 	project_menu_party_scroll = ScrollContainer.new()
 	project_menu_party_scroll.custom_minimum_size = Vector2(980, 420)
 	project_menu_party_scroll.visible = false
@@ -1194,9 +1330,19 @@ func _on_project_menu_page_pressed(page_name: String) -> void:
 func _set_project_menu_page(page_name: String) -> void:
 	project_menu_current_page = page_name
 	var is_party_page: bool = project_menu_current_page == "Party"
+	var is_save_page: bool = project_menu_current_page == "Save"
 	if project_menu_content_label != null:
 		project_menu_content_label.visible = not is_party_page
-		project_menu_content_label.text = "%s page\n(placeholder for now)" % page_name
+		if is_save_page:
+			project_menu_content_label.text = "Save your current progress."
+		else:
+			project_menu_content_label.text = "%s page\n(placeholder for now)" % page_name
+	if project_menu_save_button != null:
+		project_menu_save_button.visible = is_save_page
+	if project_menu_clear_button != null:
+		project_menu_clear_button.visible = is_save_page
+	if project_menu_save_status_label != null:
+		project_menu_save_status_label.visible = is_save_page
 	if project_menu_party_scroll != null:
 		project_menu_party_scroll.visible = is_party_page
 	if is_party_page:
@@ -1302,6 +1448,94 @@ func _hide_project_menu_detail() -> void:
 		project_menu_detail_overlay.visible = false
 
 
+func _on_project_save_pressed() -> void:
+	run_manager.force_save_to_disk()
+	var saved: bool = _save_project_mode_state()
+	if project_menu_save_status_label == null:
+		return
+	if saved:
+		project_menu_save_status_label.text = "Saved: %s" % Time.get_datetime_string_from_system()
+	else:
+		project_menu_save_status_label.text = "Save failed."
+
+
+func _on_project_clear_save_pressed() -> void:
+	run_manager.clear_all_save_data()
+	_clear_project_mode_state_file()
+	project_story_stage = "lab_intro"
+	project_player_starter_id = 0
+	project_rival_battle_completed = false
+	project_return_overworld_pos = _overworld_return_for_interior("player_house")
+	_enter_project_interior("player_house")
+	project_door_cooldown = 0.35
+	if project_menu_save_status_label != null:
+		project_menu_save_status_label.text = "Save data cleared."
+
+
+func _save_project_mode_state() -> bool:
+	var payload: Dictionary = {
+		"story_stage": project_story_stage,
+		"player_starter_id": project_player_starter_id,
+		"rival_battle_completed": project_rival_battle_completed,
+		"current_interior": project_current_interior,
+		"return_overworld_x": project_return_overworld_pos.x,
+		"return_overworld_y": project_return_overworld_pos.y,
+		"player_x": project_player_rect.position.x,
+		"player_y": project_player_rect.position.y
+	}
+	var file := FileAccess.open(PROJECT_STATE_PATH, FileAccess.WRITE)
+	if file == null:
+		return false
+	file.store_string(JSON.stringify(payload))
+	return true
+
+
+func _clear_project_mode_state_file() -> void:
+	if not FileAccess.file_exists(PROJECT_STATE_PATH):
+		return
+	DirAccess.remove_absolute(PROJECT_STATE_PATH)
+
+
+func _load_project_mode_state() -> bool:
+	if not FileAccess.file_exists(PROJECT_STATE_PATH):
+		return false
+	var file := FileAccess.open(PROJECT_STATE_PATH, FileAccess.READ)
+	if file == null:
+		return false
+	var parsed = JSON.parse_string(file.get_as_text())
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return false
+	var payload: Dictionary = parsed
+	project_story_stage = str(payload.get("story_stage", "lab_intro"))
+	project_player_starter_id = int(payload.get("player_starter_id", 0))
+	project_rival_battle_completed = bool(payload.get("rival_battle_completed", false))
+	project_return_overworld_pos = Vector2(
+		float(payload.get("return_overworld_x", 0.0)),
+		float(payload.get("return_overworld_y", 0.0))
+	)
+	var player_pos := Vector2(
+		float(payload.get("player_x", 0.0)),
+		float(payload.get("player_y", 0.0))
+	)
+	var saved_interior: String = str(payload.get("current_interior", ""))
+	if saved_interior.is_empty():
+		project_current_interior = ""
+		project_world.visible = true
+		project_interior_root.visible = false
+		var old_parent: Node = project_player_rect.get_parent()
+		if old_parent != project_world:
+			old_parent.remove_child(project_player_rect)
+			project_world.add_child(project_player_rect)
+		project_player_rect.position = player_pos
+		_update_project_camera()
+		project_door_cooldown = 0.25
+		return true
+	_enter_project_interior(saved_interior)
+	project_player_rect.position = player_pos
+	project_door_cooldown = 0.25
+	return true
+
+
 func _populate_project_starter_buttons() -> void:
 	for child in project_starter_grid.get_children():
 		child.queue_free()
@@ -1387,6 +1621,7 @@ func _start_project_rival_battle() -> void:
 	var rival_id: int = _rival_starter_for_player(project_player_starter_id)
 	var player_mon: Dictionary = run_manager.factory.build_randomized_pokemon(project_player_starter_id, 5)
 	var rival_mon: Dictionary = run_manager.factory.build_randomized_pokemon(rival_id, 5)
+	project_battle_return_context = "lab_story"
 	run_manager.start_single_battle([player_mon], rival_mon)
 	_show_only_screen("battle")
 
@@ -1413,7 +1648,10 @@ func _on_single_battle_finished(_result: String) -> void:
 		result_text = "You won the battle!"
 	elif _result == "lose":
 		result_text = "You lost the battle."
-	_show_battle_end_message(result_text, "project_return_lab")
+	if project_battle_return_context == "lab_story":
+		_show_battle_end_message(result_text, "project_return_lab")
+	else:
+		_show_battle_end_message(result_text, "project_return_overworld")
 
 
 func _build_battle_end_ui() -> void:
@@ -1478,6 +1716,11 @@ func _on_battle_end_continue_pressed() -> void:
 		project_door_cooldown = 0.35
 		project_story_stage = "post_rival_battle"
 		_begin_project_dialog(["Good battle boys. I'll heal your team. Now can you go get me my parcel from Viridian City?"], "oak_post_battle_heal")
+		project_battle_return_context = ""
+		return
+	if action == "project_return_overworld":
+		_show_only_screen("project")
+		project_battle_return_context = ""
 		return
 	_show_only_screen("start")
 	_refresh_start_status()

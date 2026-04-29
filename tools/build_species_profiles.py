@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 POKEDEX_PATH = ROOT / "data" / "pokedex.json"
 OUTPUT_PATH = ROOT / "data" / "species_profiles.json"
 POKEAPI_POKEMON_URL = "https://pokeapi.co/api/v2/pokemon/{pokemon_id}"
+POKEAPI_SPECIES_URL = "https://pokeapi.co/api/v2/pokemon-species/{species_id}"
 
 VERSION_GROUP_PRIORITY = [
     "scarlet-violet",
@@ -53,6 +54,12 @@ def read_pokedex_ids() -> list[int]:
 
 def fetch_pokemon_payload(session: requests.Session, pokemon_id: int) -> dict[str, Any]:
     response = session.get(POKEAPI_POKEMON_URL.format(pokemon_id=pokemon_id), timeout=30)
+    response.raise_for_status()
+    return response.json()
+
+
+def fetch_species_payload(session: requests.Session, species_id: int) -> dict[str, Any]:
+    response = session.get(POKEAPI_SPECIES_URL.format(species_id=species_id), timeout=30)
     response.raise_for_status()
     return response.json()
 
@@ -123,15 +130,18 @@ def extract_level_up_moves(payload: dict[str, Any]) -> list[dict[str, Any]]:
     return picks
 
 
-def build_entry(payload: dict[str, Any]) -> dict[str, Any]:
-    pokemon_id = int(payload.get("id", 0))
-    pokemon_name = title_from_api_name(str(payload.get("name", "")))
+def build_entry(pokemon_payload: dict[str, Any], species_payload: dict[str, Any]) -> dict[str, Any]:
+    pokemon_id = int(pokemon_payload.get("id", 0))
+    pokemon_name = title_from_api_name(str(pokemon_payload.get("name", "")))
+    growth_rate = str(species_payload.get("growth_rate", {}).get("name", "medium")).strip().lower()
     return {
         "id": pokemon_id,
         "name": pokemon_name,
-        "types": extract_types(payload),
-        "abilities": extract_abilities(payload),
-        "level_up_moves": extract_level_up_moves(payload),
+        "base_experience": int(pokemon_payload.get("base_experience", 64) or 64),
+        "growth_rate": growth_rate if growth_rate else "medium",
+        "types": extract_types(pokemon_payload),
+        "abilities": extract_abilities(pokemon_payload),
+        "level_up_moves": extract_level_up_moves(pokemon_payload),
     }
 
 
@@ -146,8 +156,9 @@ def main() -> None:
     with requests.Session() as session:
         for index, pokemon_id in enumerate(pokemon_ids, start=1):
             try:
-                payload = fetch_pokemon_payload(session, pokemon_id)
-                entries.append(build_entry(payload))
+                pokemon_payload = fetch_pokemon_payload(session, pokemon_id)
+                species_payload = fetch_species_payload(session, pokemon_id)
+                entries.append(build_entry(pokemon_payload, species_payload))
             except Exception as exc:  # noqa: BLE001
                 errors.append({"id": pokemon_id, "error": str(exc)})
             if index % 25 == 0:

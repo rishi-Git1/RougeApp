@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-28T05:08:26.840443+00:00",
+  "generated_at": "2026-04-28T16:44:07.472636+00:00",
   "source": "https://pokeapi.co/api/v2/pokemon/{id}",
   "version_group_priority": [
     "scarlet-violet",
@@ -18,6 +18,8 @@
     {
       "id": 1,
       "name": "Bulbasaur",
+      "base_experience": 64,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Poison"
@@ -136,6 +138,8 @@
     {
       "id": 2,
       "name": "Ivysaur",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Poison"
@@ -254,6 +258,8 @@
     {
       "id": 3,
       "name": "Venusaur",
+      "base_experience": 236,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Poison"
@@ -384,6 +390,8 @@
     {
       "id": 4,
       "name": "Charmander",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -489,6 +497,8 @@
     {
       "id": 5,
       "name": "Charmeleon",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -594,6 +604,8 @@
     {
       "id": 6,
       "name": "Charizard",
+      "base_experience": 240,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Flying"
@@ -730,6 +742,8 @@
     {
       "id": 7,
       "name": "Squirtle",
+      "base_experience": 63,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -847,6 +861,8 @@
     {
       "id": 8,
       "name": "Wartortle",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -964,6 +980,8 @@
     {
       "id": 9,
       "name": "Blastoise",
+      "base_experience": 239,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -1087,6 +1105,8 @@
     {
       "id": 10,
       "name": "Caterpie",
+      "base_experience": 39,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -1126,6 +1146,8 @@
     {
       "id": 11,
       "name": "Metapod",
+      "base_experience": 72,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -1148,6 +1170,8 @@
     {
       "id": 12,
       "name": "Butterfree",
+      "base_experience": 178,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Flying"
@@ -1290,6 +1314,8 @@
     {
       "id": 13,
       "name": "Weedle",
+      "base_experience": 39,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Poison"
@@ -1330,6 +1356,8 @@
     {
       "id": 14,
       "name": "Kakuna",
+      "base_experience": 72,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Poison"
@@ -1353,6 +1381,8 @@
     {
       "id": 15,
       "name": "Beedrill",
+      "base_experience": 178,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Poison"
@@ -1453,6 +1483,8 @@
     {
       "id": 16,
       "name": "Pidgey",
+      "base_experience": 50,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -1564,6 +1596,8 @@
     {
       "id": 17,
       "name": "Pidgeotto",
+      "base_experience": 122,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -1675,6 +1709,8 @@
     {
       "id": 18,
       "name": "Pidgeot",
+      "base_experience": 216,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -1786,6 +1822,8 @@
     {
       "id": 19,
       "name": "Rattata",
+      "base_experience": 51,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -1890,6 +1928,8 @@
     {
       "id": 20,
       "name": "Raticate",
+      "base_experience": 145,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -2006,6 +2046,8 @@
     {
       "id": 21,
       "name": "Spearow",
+      "base_experience": 52,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Flying"
@@ -2100,6 +2142,8 @@
     {
       "id": 22,
       "name": "Fearow",
+      "base_experience": 155,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Flying"
@@ -2206,6 +2250,8 @@
     {
       "id": 23,
       "name": "Ekans",
+      "base_experience": 58,
+      "growth_rate": "medium",
       "types": [
         "Poison"
       ],
@@ -2340,6 +2386,8 @@
     {
       "id": 24,
       "name": "Arbok",
+      "base_experience": 157,
+      "growth_rate": "medium",
       "types": [
         "Poison"
       ],
@@ -2498,6 +2546,8 @@
     {
       "id": 25,
       "name": "Pikachu",
+      "base_experience": 112,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -2651,6 +2701,8 @@
     {
       "id": 26,
       "name": "Raichu",
+      "base_experience": 218,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -2804,6 +2856,8 @@
     {
       "id": 27,
       "name": "Sandshrew",
+      "base_experience": 60,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -2939,6 +2993,8 @@
     {
       "id": 28,
       "name": "Sandslash",
+      "base_experience": 158,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -3074,6 +3130,8 @@
     {
       "id": 29,
       "name": "Nidoran F",
+      "base_experience": 55,
+      "growth_rate": "medium-slow",
       "types": [
         "Poison"
       ],
@@ -3190,6 +3248,8 @@
     {
       "id": 30,
       "name": "Nidorina",
+      "base_experience": 128,
+      "growth_rate": "medium-slow",
       "types": [
         "Poison"
       ],
@@ -3306,6 +3366,8 @@
     {
       "id": 31,
       "name": "Nidoqueen",
+      "base_experience": 227,
+      "growth_rate": "medium-slow",
       "types": [
         "Poison",
         "Ground"
@@ -3429,6 +3491,8 @@
     {
       "id": 32,
       "name": "Nidoran M",
+      "base_experience": 55,
+      "growth_rate": "medium-slow",
       "types": [
         "Poison"
       ],
@@ -3545,6 +3609,8 @@
     {
       "id": 33,
       "name": "Nidorino",
+      "base_experience": 128,
+      "growth_rate": "medium-slow",
       "types": [
         "Poison"
       ],
@@ -3661,6 +3727,8 @@
     {
       "id": 34,
       "name": "Nidoking",
+      "base_experience": 227,
+      "growth_rate": "medium-slow",
       "types": [
         "Poison",
         "Ground"
@@ -3784,6 +3852,8 @@
     {
       "id": 35,
       "name": "Clefairy",
+      "base_experience": 113,
+      "growth_rate": "fast",
       "types": [
         "Fairy"
       ],
@@ -3984,6 +4054,8 @@
     {
       "id": 36,
       "name": "Clefable",
+      "base_experience": 217,
+      "growth_rate": "fast",
       "types": [
         "Fairy"
       ],
@@ -4154,6 +4226,8 @@
     {
       "id": 37,
       "name": "Vulpix",
+      "base_experience": 60,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -4313,6 +4387,8 @@
     {
       "id": 38,
       "name": "Ninetales",
+      "base_experience": 177,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -4436,6 +4512,8 @@
     {
       "id": 39,
       "name": "Jigglypuff",
+      "base_experience": 95,
+      "growth_rate": "fast",
       "types": [
         "Normal",
         "Fairy"
@@ -4613,6 +4691,8 @@
     {
       "id": 40,
       "name": "Wigglytuff",
+      "base_experience": 196,
+      "growth_rate": "fast",
       "types": [
         "Normal",
         "Fairy"
@@ -4772,6 +4852,8 @@
     {
       "id": 41,
       "name": "Zubat",
+      "base_experience": 49,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Flying"
@@ -4890,6 +4972,8 @@
     {
       "id": 42,
       "name": "Golbat",
+      "base_experience": 159,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Flying"
@@ -5014,6 +5098,8 @@
     {
       "id": 43,
       "name": "Oddish",
+      "base_experience": 64,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Poison"
@@ -5132,6 +5218,8 @@
     {
       "id": 44,
       "name": "Gloom",
+      "base_experience": 138,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Poison"
@@ -5256,6 +5344,8 @@
     {
       "id": 45,
       "name": "Vileplume",
+      "base_experience": 221,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Poison"
@@ -5380,6 +5470,8 @@
     {
       "id": 46,
       "name": "Paras",
+      "base_experience": 57,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Grass"
@@ -5485,6 +5577,8 @@
     {
       "id": 47,
       "name": "Parasect",
+      "base_experience": 142,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Grass"
@@ -5596,6 +5690,8 @@
     {
       "id": 48,
       "name": "Venonat",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Poison"
@@ -5713,6 +5809,8 @@
     {
       "id": 49,
       "name": "Venomoth",
+      "base_experience": 158,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Poison"
@@ -5854,6 +5952,8 @@
     {
       "id": 50,
       "name": "Diglett",
+      "base_experience": 53,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -5970,6 +6070,8 @@
     {
       "id": 51,
       "name": "Dugtrio",
+      "base_experience": 149,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -6110,6 +6212,8 @@
     {
       "id": 52,
       "name": "Meowth",
+      "base_experience": 58,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -6232,6 +6336,8 @@
     {
       "id": 53,
       "name": "Persian",
+      "base_experience": 154,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -6372,6 +6478,8 @@
     {
       "id": 54,
       "name": "Psyduck",
+      "base_experience": 64,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -6494,6 +6602,8 @@
     {
       "id": 55,
       "name": "Golduck",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -6628,6 +6738,8 @@
     {
       "id": 56,
       "name": "Mankey",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Fighting"
       ],
@@ -6768,6 +6880,8 @@
     {
       "id": 57,
       "name": "Primeape",
+      "base_experience": 159,
+      "growth_rate": "medium",
       "types": [
         "Fighting"
       ],
@@ -6920,6 +7034,8 @@
     {
       "id": 58,
       "name": "Growlithe",
+      "base_experience": 70,
+      "growth_rate": "slow",
       "types": [
         "Fire"
       ],
@@ -7066,6 +7182,8 @@
     {
       "id": 59,
       "name": "Arcanine",
+      "base_experience": 194,
+      "growth_rate": "slow",
       "types": [
         "Fire"
       ],
@@ -7212,6 +7330,8 @@
     {
       "id": 60,
       "name": "Poliwag",
+      "base_experience": 60,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -7334,6 +7454,8 @@
     {
       "id": 61,
       "name": "Poliwhirl",
+      "base_experience": 135,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -7456,6 +7578,8 @@
     {
       "id": 62,
       "name": "Poliwrath",
+      "base_experience": 230,
+      "growth_rate": "medium-slow",
       "types": [
         "Water",
         "Fighting"
@@ -7579,6 +7703,8 @@
     {
       "id": 63,
       "name": "Abra",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic"
       ],
@@ -7611,6 +7737,8 @@
     {
       "id": 64,
       "name": "Kadabra",
+      "base_experience": 140,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic"
       ],
@@ -7739,6 +7867,8 @@
     {
       "id": 65,
       "name": "Alakazam",
+      "base_experience": 225,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic"
       ],
@@ -7867,6 +7997,8 @@
     {
       "id": 66,
       "name": "Machop",
+      "base_experience": 61,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting"
       ],
@@ -8007,6 +8139,8 @@
     {
       "id": 67,
       "name": "Machoke",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting"
       ],
@@ -8147,6 +8281,8 @@
     {
       "id": 68,
       "name": "Machamp",
+      "base_experience": 227,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting"
       ],
@@ -8293,6 +8429,8 @@
     {
       "id": 69,
       "name": "Bellsprout",
+      "base_experience": 60,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Poison"
@@ -8405,6 +8543,8 @@
     {
       "id": 70,
       "name": "Weepinbell",
+      "base_experience": 137,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Poison"
@@ -8517,6 +8657,8 @@
     {
       "id": 71,
       "name": "Victreebel",
+      "base_experience": 221,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Poison"
@@ -8599,6 +8741,8 @@
     {
       "id": 72,
       "name": "Tentacool",
+      "base_experience": 67,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Poison"
@@ -8746,6 +8890,8 @@
     {
       "id": 73,
       "name": "Tentacruel",
+      "base_experience": 180,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Poison"
@@ -8899,6 +9045,8 @@
     {
       "id": 74,
       "name": "Geodude",
+      "base_experience": 60,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock",
         "Ground"
@@ -9022,6 +9170,8 @@
     {
       "id": 75,
       "name": "Graveler",
+      "base_experience": 137,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock",
         "Ground"
@@ -9145,6 +9295,8 @@
     {
       "id": 76,
       "name": "Golem",
+      "base_experience": 223,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock",
         "Ground"
@@ -9274,6 +9426,8 @@
     {
       "id": 77,
       "name": "Ponyta",
+      "base_experience": 82,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -9384,6 +9538,8 @@
     {
       "id": 78,
       "name": "Rapidash",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -9524,6 +9680,8 @@
     {
       "id": 79,
       "name": "Slowpoke",
+      "base_experience": 63,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Psychic"
@@ -9653,6 +9811,8 @@
     {
       "id": 80,
       "name": "Slowbro",
+      "base_experience": 172,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Psychic"
@@ -9788,6 +9948,8 @@
     {
       "id": 81,
       "name": "Magnemite",
+      "base_experience": 65,
+      "growth_rate": "medium",
       "types": [
         "Electric",
         "Steel"
@@ -9923,6 +10085,8 @@
     {
       "id": 82,
       "name": "Magneton",
+      "base_experience": 163,
+      "growth_rate": "medium",
       "types": [
         "Electric",
         "Steel"
@@ -10070,6 +10234,8 @@
     {
       "id": 83,
       "name": "Farfetchd",
+      "base_experience": 132,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Flying"
@@ -10217,6 +10383,8 @@
     {
       "id": 84,
       "name": "Doduo",
+      "base_experience": 62,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Flying"
@@ -10340,6 +10508,8 @@
     {
       "id": 85,
       "name": "Dodrio",
+      "base_experience": 165,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Flying"
@@ -10469,6 +10639,8 @@
     {
       "id": 86,
       "name": "Seel",
+      "base_experience": 65,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -10609,6 +10781,8 @@
     {
       "id": 87,
       "name": "Dewgong",
+      "base_experience": 166,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Ice"
@@ -10750,6 +10924,8 @@
     {
       "id": 88,
       "name": "Grimer",
+      "base_experience": 65,
+      "growth_rate": "medium",
       "types": [
         "Poison"
       ],
@@ -10884,6 +11060,8 @@
     {
       "id": 89,
       "name": "Muk",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Poison"
       ],
@@ -11024,6 +11202,8 @@
     {
       "id": 90,
       "name": "Shellder",
+      "base_experience": 61,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -11152,6 +11332,8 @@
     {
       "id": 91,
       "name": "Cloyster",
+      "base_experience": 184,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Ice"
@@ -11293,6 +11475,8 @@
     {
       "id": 92,
       "name": "Gastly",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Ghost",
         "Poison"
@@ -11400,6 +11584,8 @@
     {
       "id": 93,
       "name": "Haunter",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Ghost",
         "Poison"
@@ -11513,6 +11699,8 @@
     {
       "id": 94,
       "name": "Gengar",
+      "base_experience": 225,
+      "growth_rate": "medium-slow",
       "types": [
         "Ghost",
         "Poison"
@@ -11638,6 +11826,8 @@
     {
       "id": 95,
       "name": "Onix",
+      "base_experience": 77,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Ground"
@@ -11797,6 +11987,8 @@
     {
       "id": 96,
       "name": "Drowzee",
+      "base_experience": 66,
+      "growth_rate": "medium",
       "types": [
         "Psychic"
       ],
@@ -11925,6 +12117,8 @@
     {
       "id": 97,
       "name": "Hypno",
+      "base_experience": 169,
+      "growth_rate": "medium",
       "types": [
         "Psychic"
       ],
@@ -12065,6 +12259,8 @@
     {
       "id": 98,
       "name": "Krabby",
+      "base_experience": 65,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -12199,6 +12395,8 @@
     {
       "id": 99,
       "name": "Kingler",
+      "base_experience": 166,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -12345,6 +12543,8 @@
     {
       "id": 100,
       "name": "Voltorb",
+      "base_experience": 66,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -12479,6 +12679,8 @@
     {
       "id": 101,
       "name": "Electrode",
+      "base_experience": 172,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -12619,6 +12821,8 @@
     {
       "id": 102,
       "name": "Exeggcute",
+      "base_experience": 65,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Psychic"
@@ -12761,6 +12965,8 @@
     {
       "id": 103,
       "name": "Exeggutor",
+      "base_experience": 186,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Psychic"
@@ -12903,6 +13109,8 @@
     {
       "id": 104,
       "name": "Cubone",
+      "base_experience": 64,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -13031,6 +13239,8 @@
     {
       "id": 105,
       "name": "Marowak",
+      "base_experience": 149,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -13159,6 +13369,8 @@
     {
       "id": 106,
       "name": "Hitmonlee",
+      "base_experience": 159,
+      "growth_rate": "medium",
       "types": [
         "Fighting"
       ],
@@ -13329,6 +13541,8 @@
     {
       "id": 107,
       "name": "Hitmonchan",
+      "base_experience": 159,
+      "growth_rate": "medium",
       "types": [
         "Fighting"
       ],
@@ -13499,6 +13713,8 @@
     {
       "id": 108,
       "name": "Lickitung",
+      "base_experience": 77,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -13621,6 +13837,8 @@
     {
       "id": 109,
       "name": "Koffing",
+      "base_experience": 68,
+      "growth_rate": "medium",
       "types": [
         "Poison"
       ],
@@ -13743,6 +13961,8 @@
     {
       "id": 110,
       "name": "Weezing",
+      "base_experience": 172,
+      "growth_rate": "medium",
       "types": [
         "Poison"
       ],
@@ -13877,6 +14097,8 @@
     {
       "id": 111,
       "name": "Rhyhorn",
+      "base_experience": 69,
+      "growth_rate": "slow",
       "types": [
         "Ground",
         "Rock"
@@ -14000,6 +14222,8 @@
     {
       "id": 112,
       "name": "Rhydon",
+      "base_experience": 170,
+      "growth_rate": "slow",
       "types": [
         "Ground",
         "Rock"
@@ -14129,6 +14353,8 @@
     {
       "id": 113,
       "name": "Chansey",
+      "base_experience": 395,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -14311,6 +14537,8 @@
     {
       "id": 114,
       "name": "Tangela",
+      "base_experience": 87,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -14451,6 +14679,8 @@
     {
       "id": 115,
       "name": "Kangaskhan",
+      "base_experience": 172,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -14603,6 +14833,8 @@
     {
       "id": 116,
       "name": "Horsea",
+      "base_experience": 59,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -14725,6 +14957,8 @@
     {
       "id": 117,
       "name": "Seadra",
+      "base_experience": 154,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -14847,6 +15081,8 @@
     {
       "id": 118,
       "name": "Goldeen",
+      "base_experience": 64,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -14957,6 +15193,8 @@
     {
       "id": 119,
       "name": "Seaking",
+      "base_experience": 158,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -15073,6 +15311,8 @@
     {
       "id": 120,
       "name": "Staryu",
+      "base_experience": 68,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -15225,6 +15465,8 @@
     {
       "id": 121,
       "name": "Starmie",
+      "base_experience": 182,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Psychic"
@@ -15354,6 +15596,8 @@
     {
       "id": 122,
       "name": "Mr Mime",
+      "base_experience": 161,
+      "growth_rate": "medium",
       "types": [
         "Psychic",
         "Fairy"
@@ -15555,6 +15799,8 @@
     {
       "id": 123,
       "name": "Scyther",
+      "base_experience": 100,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Flying"
@@ -15696,6 +15942,8 @@
     {
       "id": 124,
       "name": "Jynx",
+      "base_experience": 159,
+      "growth_rate": "medium",
       "types": [
         "Ice",
         "Psychic"
@@ -15855,6 +16103,8 @@
     {
       "id": 125,
       "name": "Electabuzz",
+      "base_experience": 172,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -15972,6 +16222,8 @@
     {
       "id": 126,
       "name": "Magmar",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -16101,6 +16353,8 @@
     {
       "id": 127,
       "name": "Pinsir",
+      "base_experience": 175,
+      "growth_rate": "slow",
       "types": [
         "Bug"
       ],
@@ -16235,6 +16489,8 @@
     {
       "id": 128,
       "name": "Tauros",
+      "base_experience": 172,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -16363,6 +16619,8 @@
     {
       "id": 129,
       "name": "Magikarp",
+      "base_experience": 40,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -16402,6 +16660,8 @@
     {
       "id": 130,
       "name": "Gyarados",
+      "base_experience": 189,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Flying"
@@ -16544,6 +16804,8 @@
     {
       "id": 131,
       "name": "Lapras",
+      "base_experience": 187,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Ice"
@@ -16667,6 +16929,8 @@
     {
       "id": 132,
       "name": "Ditto",
+      "base_experience": 101,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -16694,6 +16958,8 @@
     {
       "id": 133,
       "name": "Eevee",
+      "base_experience": 65,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -16828,6 +17094,8 @@
     {
       "id": 134,
       "name": "Vaporeon",
+      "base_experience": 184,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -16993,6 +17261,8 @@
     {
       "id": 135,
       "name": "Jolteon",
+      "base_experience": 184,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -17158,6 +17428,8 @@
     {
       "id": 136,
       "name": "Flareon",
+      "base_experience": 184,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -17323,6 +17595,8 @@
     {
       "id": 137,
       "name": "Porygon",
+      "base_experience": 79,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -17451,6 +17725,8 @@
     {
       "id": 138,
       "name": "Omanyte",
+      "base_experience": 71,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Water"
@@ -17580,6 +17856,8 @@
     {
       "id": 139,
       "name": "Omastar",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Water"
@@ -17721,6 +17999,8 @@
     {
       "id": 140,
       "name": "Kabuto",
+      "base_experience": 71,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Water"
@@ -17850,6 +18130,8 @@
     {
       "id": 141,
       "name": "Kabutops",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Water"
@@ -17997,6 +18279,8 @@
     {
       "id": 142,
       "name": "Aerodactyl",
+      "base_experience": 180,
+      "growth_rate": "slow",
       "types": [
         "Rock",
         "Flying"
@@ -18132,6 +18416,8 @@
     {
       "id": 143,
       "name": "Snorlax",
+      "base_experience": 189,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -18332,6 +18618,8 @@
     {
       "id": 144,
       "name": "Articuno",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Ice",
         "Flying"
@@ -18462,6 +18750,8 @@
     {
       "id": 145,
       "name": "Zapdos",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Electric",
         "Flying"
@@ -18580,6 +18870,8 @@
     {
       "id": 146,
       "name": "Moltres",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Fire",
         "Flying"
@@ -18722,6 +19014,8 @@
     {
       "id": 147,
       "name": "Dratini",
+      "base_experience": 60,
+      "growth_rate": "slow",
       "types": [
         "Dragon"
       ],
@@ -18833,6 +19127,8 @@
     {
       "id": 148,
       "name": "Dragonair",
+      "base_experience": 147,
+      "growth_rate": "slow",
       "types": [
         "Dragon"
       ],
@@ -18944,6 +19240,8 @@
     {
       "id": 149,
       "name": "Dragonite",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Flying"
@@ -19092,6 +19390,8 @@
     {
       "id": 150,
       "name": "Mewtwo",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Psychic"
       ],
@@ -19245,6 +19545,8 @@
     {
       "id": 151,
       "name": "Mew",
+      "base_experience": 270,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic"
       ],
@@ -19351,6 +19653,8 @@
     {
       "id": 152,
       "name": "Chikorita",
+      "base_experience": 64,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -19468,6 +19772,8 @@
     {
       "id": 153,
       "name": "Bayleef",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -19585,6 +19891,8 @@
     {
       "id": 154,
       "name": "Meganium",
+      "base_experience": 236,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -19714,6 +20022,8 @@
     {
       "id": 155,
       "name": "Cyndaquil",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -19837,6 +20147,8 @@
     {
       "id": 156,
       "name": "Quilava",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -19960,6 +20272,8 @@
     {
       "id": 157,
       "name": "Typhlosion",
+      "base_experience": 240,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -20089,6 +20403,8 @@
     {
       "id": 158,
       "name": "Totodile",
+      "base_experience": 63,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -20206,6 +20522,8 @@
     {
       "id": 159,
       "name": "Croconaw",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -20323,6 +20641,8 @@
     {
       "id": 160,
       "name": "Feraligatr",
+      "base_experience": 239,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -20446,6 +20766,8 @@
     {
       "id": 161,
       "name": "Sentret",
+      "base_experience": 43,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -20562,6 +20884,8 @@
     {
       "id": 162,
       "name": "Furret",
+      "base_experience": 145,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -20690,6 +21014,8 @@
     {
       "id": 163,
       "name": "Hoothoot",
+      "base_experience": 52,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Flying"
@@ -20831,6 +21157,8 @@
     {
       "id": 164,
       "name": "Noctowl",
+      "base_experience": 158,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Flying"
@@ -20972,6 +21300,8 @@
     {
       "id": 165,
       "name": "Ledyba",
+      "base_experience": 53,
+      "growth_rate": "fast",
       "types": [
         "Bug",
         "Flying"
@@ -21083,6 +21413,8 @@
     {
       "id": 166,
       "name": "Ledian",
+      "base_experience": 137,
+      "growth_rate": "fast",
       "types": [
         "Bug",
         "Flying"
@@ -21194,6 +21526,8 @@
     {
       "id": 167,
       "name": "Spinarak",
+      "base_experience": 50,
+      "growth_rate": "fast",
       "types": [
         "Bug",
         "Poison"
@@ -21335,6 +21669,8 @@
     {
       "id": 168,
       "name": "Ariados",
+      "base_experience": 140,
+      "growth_rate": "fast",
       "types": [
         "Bug",
         "Poison"
@@ -21506,6 +21842,8 @@
     {
       "id": 169,
       "name": "Crobat",
+      "base_experience": 241,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Flying"
@@ -21648,6 +21986,8 @@
     {
       "id": 170,
       "name": "Chinchou",
+      "base_experience": 66,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Electric"
@@ -21771,6 +22111,8 @@
     {
       "id": 171,
       "name": "Lanturn",
+      "base_experience": 161,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Electric"
@@ -21924,6 +22266,8 @@
     {
       "id": 172,
       "name": "Pichu",
+      "base_experience": 41,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -21993,6 +22337,8 @@
     {
       "id": 173,
       "name": "Cleffa",
+      "base_experience": 44,
+      "growth_rate": "fast",
       "types": [
         "Fairy"
       ],
@@ -22073,6 +22419,8 @@
     {
       "id": 174,
       "name": "Igglybuff",
+      "base_experience": 42,
+      "growth_rate": "fast",
       "types": [
         "Normal",
         "Fairy"
@@ -22148,6 +22496,8 @@
     {
       "id": 175,
       "name": "Togepi",
+      "base_experience": 49,
+      "growth_rate": "fast",
       "types": [
         "Fairy"
       ],
@@ -22276,6 +22626,8 @@
     {
       "id": 176,
       "name": "Togetic",
+      "base_experience": 142,
+      "growth_rate": "fast",
       "types": [
         "Fairy",
         "Flying"
@@ -22417,6 +22769,8 @@
     {
       "id": 177,
       "name": "Natu",
+      "base_experience": 64,
+      "growth_rate": "medium",
       "types": [
         "Psychic",
         "Flying"
@@ -22540,6 +22894,8 @@
     {
       "id": 178,
       "name": "Xatu",
+      "base_experience": 165,
+      "growth_rate": "medium",
       "types": [
         "Psychic",
         "Flying"
@@ -22675,6 +23031,8 @@
     {
       "id": 179,
       "name": "Mareep",
+      "base_experience": 56,
+      "growth_rate": "medium-slow",
       "types": [
         "Electric"
       ],
@@ -22792,6 +23150,8 @@
     {
       "id": 180,
       "name": "Flaaffy",
+      "base_experience": 128,
+      "growth_rate": "medium-slow",
       "types": [
         "Electric"
       ],
@@ -22909,6 +23269,8 @@
     {
       "id": 181,
       "name": "Ampharos",
+      "base_experience": 230,
+      "growth_rate": "medium-slow",
       "types": [
         "Electric"
       ],
@@ -23062,6 +23424,8 @@
     {
       "id": 182,
       "name": "Bellossom",
+      "base_experience": 221,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -23203,6 +23567,8 @@
     {
       "id": 183,
       "name": "Marill",
+      "base_experience": 88,
+      "growth_rate": "fast",
       "types": [
         "Water",
         "Fairy"
@@ -23344,6 +23710,8 @@
     {
       "id": 184,
       "name": "Azumarill",
+      "base_experience": 189,
+      "growth_rate": "fast",
       "types": [
         "Water",
         "Fairy"
@@ -23485,6 +23853,8 @@
     {
       "id": 185,
       "name": "Sudowoodo",
+      "base_experience": 144,
+      "growth_rate": "medium",
       "types": [
         "Rock"
       ],
@@ -23625,6 +23995,8 @@
     {
       "id": 186,
       "name": "Politoed",
+      "base_experience": 225,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -23747,6 +24119,8 @@
     {
       "id": 187,
       "name": "Hoppip",
+      "base_experience": 50,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Flying"
@@ -23894,6 +24268,8 @@
     {
       "id": 188,
       "name": "Skiploom",
+      "base_experience": 119,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Flying"
@@ -24041,6 +24417,8 @@
     {
       "id": 189,
       "name": "Jumpluff",
+      "base_experience": 207,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Flying"
@@ -24188,6 +24566,8 @@
     {
       "id": 190,
       "name": "Aipom",
+      "base_experience": 72,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -24298,6 +24678,8 @@
     {
       "id": 191,
       "name": "Sunkern",
+      "base_experience": 36,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -24426,6 +24808,8 @@
     {
       "id": 192,
       "name": "Sunflora",
+      "base_experience": 149,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -24572,6 +24956,8 @@
     {
       "id": 193,
       "name": "Yanma",
+      "base_experience": 78,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Flying"
@@ -24707,6 +25093,8 @@
     {
       "id": 194,
       "name": "Wooper",
+      "base_experience": 42,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Ground"
@@ -24824,6 +25212,8 @@
     {
       "id": 195,
       "name": "Quagsire",
+      "base_experience": 151,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Ground"
@@ -24941,6 +25331,8 @@
     {
       "id": 196,
       "name": "Espeon",
+      "base_experience": 184,
+      "growth_rate": "medium",
       "types": [
         "Psychic"
       ],
@@ -25100,6 +25492,8 @@
     {
       "id": 197,
       "name": "Umbreon",
+      "base_experience": 184,
+      "growth_rate": "medium",
       "types": [
         "Dark"
       ],
@@ -25277,6 +25671,8 @@
     {
       "id": 198,
       "name": "Murkrow",
+      "base_experience": 81,
+      "growth_rate": "medium-slow",
       "types": [
         "Dark",
         "Flying"
@@ -25400,6 +25796,8 @@
     {
       "id": 199,
       "name": "Slowking",
+      "base_experience": 172,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Psychic"
@@ -25559,6 +25957,8 @@
     {
       "id": 200,
       "name": "Misdreavus",
+      "base_experience": 87,
+      "growth_rate": "fast",
       "types": [
         "Ghost"
       ],
@@ -25665,6 +26065,8 @@
     {
       "id": 201,
       "name": "Unown",
+      "base_experience": 118,
+      "growth_rate": "medium",
       "types": [
         "Psychic"
       ],
@@ -25687,6 +26089,8 @@
     {
       "id": 202,
       "name": "Wobbuffet",
+      "base_experience": 142,
+      "growth_rate": "medium",
       "types": [
         "Psychic"
       ],
@@ -25756,6 +26160,8 @@
     {
       "id": 203,
       "name": "Girafarig",
+      "base_experience": 159,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Psychic"
@@ -25891,6 +26297,8 @@
     {
       "id": 204,
       "name": "Pineco",
+      "base_experience": 58,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -26008,6 +26416,8 @@
     {
       "id": 205,
       "name": "Forretress",
+      "base_experience": 163,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Steel"
@@ -26162,6 +26572,8 @@
     {
       "id": 206,
       "name": "Dunsparce",
+      "base_experience": 145,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -26326,6 +26738,8 @@
     {
       "id": 207,
       "name": "Gligar",
+      "base_experience": 86,
+      "growth_rate": "medium-slow",
       "types": [
         "Ground",
         "Flying"
@@ -26455,6 +26869,8 @@
     {
       "id": 208,
       "name": "Steelix",
+      "base_experience": 179,
+      "growth_rate": "medium",
       "types": [
         "Steel",
         "Ground"
@@ -26650,6 +27066,8 @@
     {
       "id": 209,
       "name": "Snubbull",
+      "base_experience": 60,
+      "growth_rate": "fast",
       "types": [
         "Fairy"
       ],
@@ -26784,6 +27202,8 @@
     {
       "id": 210,
       "name": "Granbull",
+      "base_experience": 158,
+      "growth_rate": "fast",
       "types": [
         "Fairy"
       ],
@@ -26924,6 +27344,8 @@
     {
       "id": 211,
       "name": "Qwilfish",
+      "base_experience": 88,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Poison"
@@ -27083,6 +27505,8 @@
     {
       "id": 212,
       "name": "Scizor",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Steel"
@@ -27242,6 +27666,8 @@
     {
       "id": 213,
       "name": "Shuckle",
+      "base_experience": 177,
+      "growth_rate": "medium-slow",
       "types": [
         "Bug",
         "Rock"
@@ -27383,6 +27809,8 @@
     {
       "id": 214,
       "name": "Heracross",
+      "base_experience": 175,
+      "growth_rate": "slow",
       "types": [
         "Bug",
         "Fighting"
@@ -27536,6 +27964,8 @@
     {
       "id": 215,
       "name": "Sneasel",
+      "base_experience": 86,
+      "growth_rate": "medium-slow",
       "types": [
         "Dark",
         "Ice"
@@ -27659,6 +28089,8 @@
     {
       "id": 216,
       "name": "Teddiursa",
+      "base_experience": 66,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -27793,6 +28225,8 @@
     {
       "id": 217,
       "name": "Ursaring",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -27927,6 +28361,8 @@
     {
       "id": 218,
       "name": "Slugma",
+      "base_experience": 50,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -28049,6 +28485,8 @@
     {
       "id": 219,
       "name": "Magcargo",
+      "base_experience": 151,
+      "growth_rate": "medium",
       "types": [
         "Fire",
         "Rock"
@@ -28178,6 +28616,8 @@
     {
       "id": 220,
       "name": "Swinub",
+      "base_experience": 50,
+      "growth_rate": "slow",
       "types": [
         "Ice",
         "Ground"
@@ -28295,6 +28735,8 @@
     {
       "id": 221,
       "name": "Piloswine",
+      "base_experience": 158,
+      "growth_rate": "slow",
       "types": [
         "Ice",
         "Ground"
@@ -28442,6 +28884,8 @@
     {
       "id": 222,
       "name": "Corsola",
+      "base_experience": 144,
+      "growth_rate": "fast",
       "types": [
         "Water",
         "Rock"
@@ -28589,6 +29033,8 @@
     {
       "id": 223,
       "name": "Remoraid",
+      "base_experience": 60,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -28699,6 +29145,8 @@
     {
       "id": 224,
       "name": "Octillery",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -28845,6 +29293,8 @@
     {
       "id": 225,
       "name": "Delibird",
+      "base_experience": 116,
+      "growth_rate": "fast",
       "types": [
         "Ice",
         "Flying"
@@ -28884,6 +29334,8 @@
     {
       "id": 226,
       "name": "Mantine",
+      "base_experience": 170,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Flying"
@@ -29031,6 +29483,8 @@
     {
       "id": 227,
       "name": "Skarmory",
+      "base_experience": 163,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Flying"
@@ -29184,6 +29638,8 @@
     {
       "id": 228,
       "name": "Houndour",
+      "base_experience": 66,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Fire"
@@ -29325,6 +29781,8 @@
     {
       "id": 229,
       "name": "Houndoom",
+      "base_experience": 175,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Fire"
@@ -29472,6 +29930,8 @@
     {
       "id": 230,
       "name": "Kingdra",
+      "base_experience": 243,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Dragon"
@@ -29613,6 +30073,8 @@
     {
       "id": 231,
       "name": "Phanpy",
+      "base_experience": 66,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -29718,6 +30180,8 @@
     {
       "id": 232,
       "name": "Donphan",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -29841,6 +30305,8 @@
     {
       "id": 233,
       "name": "Porygon2",
+      "base_experience": 180,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -29969,6 +30435,8 @@
     {
       "id": 234,
       "name": "Stantler",
+      "base_experience": 163,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -30091,6 +30559,8 @@
     {
       "id": 235,
       "name": "Smeargle",
+      "base_experience": 88,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -30123,6 +30593,8 @@
     {
       "id": 236,
       "name": "Tyrogue",
+      "base_experience": 42,
+      "growth_rate": "medium",
       "types": [
         "Fighting"
       ],
@@ -30179,6 +30651,8 @@
     {
       "id": 237,
       "name": "Hitmontop",
+      "base_experience": 159,
+      "growth_rate": "medium",
       "types": [
         "Fighting"
       ],
@@ -30331,6 +30805,8 @@
     {
       "id": 238,
       "name": "Smoochum",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Ice",
         "Psychic"
@@ -30460,6 +30936,8 @@
     {
       "id": 239,
       "name": "Elekid",
+      "base_experience": 72,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -30571,6 +31049,8 @@
     {
       "id": 240,
       "name": "Magby",
+      "base_experience": 73,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -30694,6 +31174,8 @@
     {
       "id": 241,
       "name": "Miltank",
+      "base_experience": 172,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -30822,6 +31304,8 @@
     {
       "id": 242,
       "name": "Blissey",
+      "base_experience": 608,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -31004,6 +31488,8 @@
     {
       "id": 243,
       "name": "Raikou",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Electric"
       ],
@@ -31133,6 +31619,8 @@
     {
       "id": 244,
       "name": "Entei",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Fire"
       ],
@@ -31280,6 +31768,8 @@
     {
       "id": 245,
       "name": "Suicune",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -31427,6 +31917,8 @@
     {
       "id": 246,
       "name": "Larvitar",
+      "base_experience": 60,
+      "growth_rate": "slow",
       "types": [
         "Rock",
         "Ground"
@@ -31557,6 +32049,8 @@
     {
       "id": 247,
       "name": "Pupitar",
+      "base_experience": 144,
+      "growth_rate": "slow",
       "types": [
         "Rock",
         "Ground"
@@ -31688,6 +32182,8 @@
     {
       "id": 248,
       "name": "Tyranitar",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Rock",
         "Dark"
@@ -31848,6 +32344,8 @@
     {
       "id": 249,
       "name": "Lugia",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Psychic",
         "Flying"
@@ -31972,6 +32470,8 @@
     {
       "id": 250,
       "name": "Ho Oh",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Fire",
         "Flying"
@@ -32108,6 +32608,8 @@
     {
       "id": 251,
       "name": "Celebi",
+      "base_experience": 270,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic",
         "Grass"
@@ -32215,6 +32717,8 @@
     {
       "id": 252,
       "name": "Treecko",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -32344,6 +32848,8 @@
     {
       "id": 253,
       "name": "Grovyle",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -32497,6 +33003,8 @@
     {
       "id": 254,
       "name": "Sceptile",
+      "base_experience": 239,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -32662,6 +33170,8 @@
     {
       "id": 255,
       "name": "Torchic",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -32797,6 +33307,8 @@
     {
       "id": 256,
       "name": "Combusken",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Fighting"
@@ -32945,6 +33457,8 @@
     {
       "id": 257,
       "name": "Blaziken",
+      "base_experience": 239,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Fighting"
@@ -33105,6 +33619,8 @@
     {
       "id": 258,
       "name": "Mudkip",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -33246,6 +33762,8 @@
     {
       "id": 259,
       "name": "Marshtomp",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Water",
         "Ground"
@@ -33400,6 +33918,8 @@
     {
       "id": 260,
       "name": "Swampert",
+      "base_experience": 241,
+      "growth_rate": "medium-slow",
       "types": [
         "Water",
         "Ground"
@@ -33560,6 +34080,8 @@
     {
       "id": 261,
       "name": "Poochyena",
+      "base_experience": 56,
+      "growth_rate": "medium",
       "types": [
         "Dark"
       ],
@@ -33688,6 +34210,8 @@
     {
       "id": 262,
       "name": "Mightyena",
+      "base_experience": 147,
+      "growth_rate": "medium",
       "types": [
         "Dark"
       ],
@@ -33846,6 +34370,8 @@
     {
       "id": 263,
       "name": "Zigzagoon",
+      "base_experience": 56,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -33974,6 +34500,8 @@
     {
       "id": 264,
       "name": "Linoone",
+      "base_experience": 147,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -34138,6 +34666,8 @@
     {
       "id": 265,
       "name": "Wurmple",
+      "base_experience": 56,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -34183,6 +34713,8 @@
     {
       "id": 266,
       "name": "Silcoon",
+      "base_experience": 72,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -34205,6 +34737,8 @@
     {
       "id": 267,
       "name": "Beautifly",
+      "base_experience": 178,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Flying"
@@ -34305,6 +34839,8 @@
     {
       "id": 268,
       "name": "Cascoon",
+      "base_experience": 72,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -34327,6 +34863,8 @@
     {
       "id": 269,
       "name": "Dustox",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Poison"
@@ -34427,6 +34965,8 @@
     {
       "id": 270,
       "name": "Lotad",
+      "base_experience": 44,
+      "growth_rate": "medium-slow",
       "types": [
         "Water",
         "Grass"
@@ -34550,6 +35090,8 @@
     {
       "id": 271,
       "name": "Lombre",
+      "base_experience": 119,
+      "growth_rate": "medium-slow",
       "types": [
         "Water",
         "Grass"
@@ -34709,6 +35251,8 @@
     {
       "id": 272,
       "name": "Ludicolo",
+      "base_experience": 216,
+      "growth_rate": "medium-slow",
       "types": [
         "Water",
         "Grass"
@@ -34844,6 +35388,8 @@
     {
       "id": 273,
       "name": "Seedot",
+      "base_experience": 44,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -34960,6 +35506,8 @@
     {
       "id": 274,
       "name": "Nuzleaf",
+      "base_experience": 119,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Dark"
@@ -35125,6 +35673,8 @@
     {
       "id": 275,
       "name": "Shiftry",
+      "base_experience": 216,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Dark"
@@ -35308,6 +35858,8 @@
     {
       "id": 276,
       "name": "Taillow",
+      "base_experience": 54,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -35408,6 +35960,8 @@
     {
       "id": 277,
       "name": "Swellow",
+      "base_experience": 159,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -35514,6 +36068,8 @@
     {
       "id": 278,
       "name": "Wingull",
+      "base_experience": 54,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Flying"
@@ -35625,6 +36181,8 @@
     {
       "id": 279,
       "name": "Pelipper",
+      "base_experience": 154,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Flying"
@@ -35784,6 +36342,8 @@
     {
       "id": 280,
       "name": "Ralts",
+      "base_experience": 40,
+      "growth_rate": "slow",
       "types": [
         "Psychic",
         "Fairy"
@@ -35925,6 +36485,8 @@
     {
       "id": 281,
       "name": "Kirlia",
+      "base_experience": 97,
+      "growth_rate": "slow",
       "types": [
         "Psychic",
         "Fairy"
@@ -36066,6 +36628,8 @@
     {
       "id": 282,
       "name": "Gardevoir",
+      "base_experience": 233,
+      "growth_rate": "slow",
       "types": [
         "Psychic",
         "Fairy"
@@ -36243,6 +36807,8 @@
     {
       "id": 283,
       "name": "Surskit",
+      "base_experience": 54,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Water"
@@ -36343,6 +36909,8 @@
     {
       "id": 284,
       "name": "Masquerain",
+      "base_experience": 159,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Flying"
@@ -36467,6 +37035,8 @@
     {
       "id": 285,
       "name": "Shroomish",
+      "base_experience": 59,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Grass"
       ],
@@ -36571,6 +37141,8 @@
     {
       "id": 286,
       "name": "Breloom",
+      "base_experience": 161,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Grass",
         "Fighting"
@@ -36718,6 +37290,8 @@
     {
       "id": 287,
       "name": "Slakoth",
+      "base_experience": 56,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -36812,6 +37386,8 @@
     {
       "id": 288,
       "name": "Vigoroth",
+      "base_experience": 154,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -36900,6 +37476,8 @@
     {
       "id": 289,
       "name": "Slaking",
+      "base_experience": 252,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -37018,6 +37596,8 @@
     {
       "id": 290,
       "name": "Nincada",
+      "base_experience": 53,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Bug",
         "Ground"
@@ -37112,6 +37692,8 @@
     {
       "id": 291,
       "name": "Ninjask",
+      "base_experience": 160,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Bug",
         "Flying"
@@ -37260,6 +37842,8 @@
     {
       "id": 292,
       "name": "Shedinja",
+      "base_experience": 83,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Bug",
         "Ghost"
@@ -37391,6 +37975,8 @@
     {
       "id": 293,
       "name": "Whismur",
+      "base_experience": 48,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal"
       ],
@@ -37490,6 +38076,8 @@
     {
       "id": 294,
       "name": "Loudred",
+      "base_experience": 126,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal"
       ],
@@ -37595,6 +38183,8 @@
     {
       "id": 295,
       "name": "Exploud",
+      "base_experience": 221,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal"
       ],
@@ -37736,6 +38326,8 @@
     {
       "id": 296,
       "name": "Makuhita",
+      "base_experience": 47,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Fighting"
       ],
@@ -37882,6 +38474,8 @@
     {
       "id": 297,
       "name": "Hariyama",
+      "base_experience": 166,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Fighting"
       ],
@@ -38040,6 +38634,8 @@
     {
       "id": 298,
       "name": "Azurill",
+      "base_experience": 38,
+      "growth_rate": "fast",
       "types": [
         "Normal",
         "Fairy"
@@ -38127,6 +38723,8 @@
     {
       "id": 299,
       "name": "Nosepass",
+      "base_experience": 75,
+      "growth_rate": "medium",
       "types": [
         "Rock"
       ],
@@ -38249,6 +38847,8 @@
     {
       "id": 300,
       "name": "Skitty",
+      "base_experience": 52,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -38389,6 +38989,8 @@
     {
       "id": 301,
       "name": "Delcatty",
+      "base_experience": 140,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -38439,6 +39041,8 @@
     {
       "id": 302,
       "name": "Sableye",
+      "base_experience": 133,
+      "growth_rate": "medium-slow",
       "types": [
         "Dark",
         "Ghost"
@@ -38592,6 +39196,8 @@
     {
       "id": 303,
       "name": "Mawile",
+      "base_experience": 133,
+      "growth_rate": "fast",
       "types": [
         "Steel",
         "Fairy"
@@ -38727,6 +39333,8 @@
     {
       "id": 304,
       "name": "Aron",
+      "base_experience": 66,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Rock"
@@ -38862,6 +39470,8 @@
     {
       "id": 305,
       "name": "Lairon",
+      "base_experience": 151,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Rock"
@@ -38997,6 +39607,8 @@
     {
       "id": 306,
       "name": "Aggron",
+      "base_experience": 239,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Rock"
@@ -39132,6 +39744,8 @@
     {
       "id": 307,
       "name": "Meditite",
+      "base_experience": 56,
+      "growth_rate": "medium",
       "types": [
         "Fighting",
         "Psychic"
@@ -39274,6 +39888,8 @@
     {
       "id": 308,
       "name": "Medicham",
+      "base_experience": 144,
+      "growth_rate": "medium",
       "types": [
         "Fighting",
         "Psychic"
@@ -39440,6 +40056,8 @@
     {
       "id": 309,
       "name": "Electrike",
+      "base_experience": 59,
+      "growth_rate": "slow",
       "types": [
         "Electric"
       ],
@@ -39556,6 +40174,8 @@
     {
       "id": 310,
       "name": "Manectric",
+      "base_experience": 166,
+      "growth_rate": "slow",
       "types": [
         "Electric"
       ],
@@ -39684,6 +40304,8 @@
     {
       "id": 311,
       "name": "Plusle",
+      "base_experience": 142,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -39843,6 +40465,8 @@
     {
       "id": 312,
       "name": "Minun",
+      "base_experience": 142,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -40002,6 +40626,8 @@
     {
       "id": 313,
       "name": "Volbeat",
+      "base_experience": 151,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Bug"
       ],
@@ -40124,6 +40750,8 @@
     {
       "id": 314,
       "name": "Illumise",
+      "base_experience": 151,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Bug"
       ],
@@ -40246,6 +40874,8 @@
     {
       "id": 315,
       "name": "Roselia",
+      "base_experience": 140,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Poison"
@@ -40381,6 +41011,8 @@
     {
       "id": 316,
       "name": "Gulpin",
+      "base_experience": 60,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Poison"
       ],
@@ -40509,6 +41141,8 @@
     {
       "id": 317,
       "name": "Swalot",
+      "base_experience": 163,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Poison"
       ],
@@ -40643,6 +41277,8 @@
     {
       "id": 318,
       "name": "Carvanha",
+      "base_experience": 61,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Dark"
@@ -40755,6 +41391,8 @@
     {
       "id": 319,
       "name": "Sharpedo",
+      "base_experience": 161,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Dark"
@@ -40897,6 +41535,8 @@
     {
       "id": 320,
       "name": "Wailmer",
+      "base_experience": 80,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Water"
       ],
@@ -41025,6 +41665,8 @@
     {
       "id": 321,
       "name": "Wailord",
+      "base_experience": 175,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Water"
       ],
@@ -41165,6 +41807,8 @@
     {
       "id": 322,
       "name": "Numel",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Fire",
         "Ground"
@@ -41294,6 +41938,8 @@
     {
       "id": 323,
       "name": "Camerupt",
+      "base_experience": 161,
+      "growth_rate": "medium",
       "types": [
         "Fire",
         "Ground"
@@ -41429,6 +42075,8 @@
     {
       "id": 324,
       "name": "Torkoal",
+      "base_experience": 165,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -41575,6 +42223,8 @@
     {
       "id": 325,
       "name": "Spoink",
+      "base_experience": 66,
+      "growth_rate": "fast",
       "types": [
         "Psychic"
       ],
@@ -41703,6 +42353,8 @@
     {
       "id": 326,
       "name": "Grumpig",
+      "base_experience": 165,
+      "growth_rate": "fast",
       "types": [
         "Psychic"
       ],
@@ -41837,6 +42489,8 @@
     {
       "id": 327,
       "name": "Spinda",
+      "base_experience": 126,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -41941,6 +42595,8 @@
     {
       "id": 328,
       "name": "Trapinch",
+      "base_experience": 58,
+      "growth_rate": "medium-slow",
       "types": [
         "Ground"
       ],
@@ -42081,6 +42737,8 @@
     {
       "id": 329,
       "name": "Vibrava",
+      "base_experience": 119,
+      "growth_rate": "medium-slow",
       "types": [
         "Ground",
         "Dragon"
@@ -42260,6 +42918,8 @@
     {
       "id": 330,
       "name": "Flygon",
+      "base_experience": 234,
+      "growth_rate": "medium-slow",
       "types": [
         "Ground",
         "Dragon"
@@ -42457,6 +43117,8 @@
     {
       "id": 331,
       "name": "Cacnea",
+      "base_experience": 67,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -42592,6 +43254,8 @@
     {
       "id": 332,
       "name": "Cacturne",
+      "base_experience": 166,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Dark"
@@ -42740,6 +43404,8 @@
     {
       "id": 333,
       "name": "Swablu",
+      "base_experience": 62,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Normal",
         "Flying"
@@ -42870,6 +43536,8 @@
     {
       "id": 334,
       "name": "Altaria",
+      "base_experience": 172,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Dragon",
         "Flying"
@@ -43012,6 +43680,8 @@
     {
       "id": 335,
       "name": "Zangoose",
+      "base_experience": 160,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Normal"
       ],
@@ -43147,6 +43817,8 @@
     {
       "id": 336,
       "name": "Seviper",
+      "base_experience": 160,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Poison"
       ],
@@ -43294,6 +43966,8 @@
     {
       "id": 337,
       "name": "Lunatone",
+      "base_experience": 161,
+      "growth_rate": "fast",
       "types": [
         "Rock",
         "Psychic"
@@ -43431,6 +44105,8 @@
     {
       "id": 338,
       "name": "Solrock",
+      "base_experience": 161,
+      "growth_rate": "fast",
       "types": [
         "Rock",
         "Psychic"
@@ -43568,6 +44244,8 @@
     {
       "id": 339,
       "name": "Barboach",
+      "base_experience": 58,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Ground"
@@ -43685,6 +44363,8 @@
     {
       "id": 340,
       "name": "Whiscash",
+      "base_experience": 164,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Ground"
@@ -43826,6 +44506,8 @@
     {
       "id": 341,
       "name": "Corphish",
+      "base_experience": 62,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Water"
       ],
@@ -43954,6 +44636,8 @@
     {
       "id": 342,
       "name": "Crawdaunt",
+      "base_experience": 164,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Water",
         "Dark"
@@ -44089,6 +44773,8 @@
     {
       "id": 343,
       "name": "Baltoy",
+      "base_experience": 60,
+      "growth_rate": "medium",
       "types": [
         "Ground",
         "Psychic"
@@ -44214,6 +44900,8 @@
     {
       "id": 344,
       "name": "Claydol",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Ground",
         "Psychic"
@@ -44351,6 +45039,8 @@
     {
       "id": 345,
       "name": "Lileep",
+      "base_experience": 71,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Rock",
         "Grass"
@@ -44475,6 +45165,8 @@
     {
       "id": 346,
       "name": "Cradily",
+      "base_experience": 173,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Rock",
         "Grass"
@@ -44605,6 +45297,8 @@
     {
       "id": 347,
       "name": "Anorith",
+      "base_experience": 71,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Rock",
         "Bug"
@@ -44717,6 +45411,8 @@
     {
       "id": 348,
       "name": "Armaldo",
+      "base_experience": 173,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Rock",
         "Bug"
@@ -44829,6 +45525,8 @@
     {
       "id": 349,
       "name": "Feebas",
+      "base_experience": 40,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Water"
       ],
@@ -44873,6 +45571,8 @@
     {
       "id": 350,
       "name": "Milotic",
+      "base_experience": 189,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Water"
       ],
@@ -45031,6 +45731,8 @@
     {
       "id": 351,
       "name": "Castform",
+      "base_experience": 147,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -45125,6 +45827,8 @@
     {
       "id": 352,
       "name": "Kecleon",
+      "base_experience": 154,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal"
       ],
@@ -45260,6 +45964,8 @@
     {
       "id": 353,
       "name": "Shuppet",
+      "base_experience": 59,
+      "growth_rate": "fast",
       "types": [
         "Ghost"
       ],
@@ -45394,6 +46100,8 @@
     {
       "id": 354,
       "name": "Banette",
+      "base_experience": 159,
+      "growth_rate": "fast",
       "types": [
         "Ghost"
       ],
@@ -45522,6 +46230,8 @@
     {
       "id": 355,
       "name": "Duskull",
+      "base_experience": 59,
+      "growth_rate": "fast",
       "types": [
         "Ghost"
       ],
@@ -45633,6 +46343,8 @@
     {
       "id": 356,
       "name": "Dusclops",
+      "base_experience": 159,
+      "growth_rate": "fast",
       "types": [
         "Ghost"
       ],
@@ -45780,6 +46492,8 @@
     {
       "id": 357,
       "name": "Tropius",
+      "base_experience": 161,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Flying"
@@ -45915,6 +46629,8 @@
     {
       "id": 358,
       "name": "Chimecho",
+      "base_experience": 159,
+      "growth_rate": "fast",
       "types": [
         "Psychic"
       ],
@@ -46027,6 +46743,8 @@
     {
       "id": 359,
       "name": "Absol",
+      "base_experience": 163,
+      "growth_rate": "medium-slow",
       "types": [
         "Dark"
       ],
@@ -46173,6 +46891,8 @@
     {
       "id": 360,
       "name": "Wynaut",
+      "base_experience": 52,
+      "growth_rate": "medium",
       "types": [
         "Psychic"
       ],
@@ -46242,6 +46962,8 @@
     {
       "id": 361,
       "name": "Snorunt",
+      "base_experience": 60,
+      "growth_rate": "medium",
       "types": [
         "Ice"
       ],
@@ -46364,6 +47086,8 @@
     {
       "id": 362,
       "name": "Glalie",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Ice"
       ],
@@ -46504,6 +47228,8 @@
     {
       "id": 363,
       "name": "Spheal",
+      "base_experience": 58,
+      "growth_rate": "medium-slow",
       "types": [
         "Ice",
         "Water"
@@ -46627,6 +47353,8 @@
     {
       "id": 364,
       "name": "Sealeo",
+      "base_experience": 144,
+      "growth_rate": "medium-slow",
       "types": [
         "Ice",
         "Water"
@@ -46756,6 +47484,8 @@
     {
       "id": 365,
       "name": "Walrein",
+      "base_experience": 239,
+      "growth_rate": "medium-slow",
       "types": [
         "Ice",
         "Water"
@@ -46897,6 +47627,8 @@
     {
       "id": 366,
       "name": "Clamperl",
+      "base_experience": 69,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Water"
       ],
@@ -46948,6 +47680,8 @@
     {
       "id": 367,
       "name": "Huntail",
+      "base_experience": 170,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Water"
       ],
@@ -47059,6 +47793,8 @@
     {
       "id": 368,
       "name": "Gorebyss",
+      "base_experience": 170,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Water"
       ],
@@ -47170,6 +47906,8 @@
     {
       "id": 369,
       "name": "Relicanth",
+      "base_experience": 170,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Rock"
@@ -47287,6 +48025,8 @@
     {
       "id": 370,
       "name": "Luvdisc",
+      "base_experience": 116,
+      "growth_rate": "fast",
       "types": [
         "Water"
       ],
@@ -47422,6 +48162,8 @@
     {
       "id": 371,
       "name": "Bagon",
+      "base_experience": 60,
+      "growth_rate": "slow",
       "types": [
         "Dragon"
       ],
@@ -47527,6 +48269,8 @@
     {
       "id": 372,
       "name": "Shelgon",
+      "base_experience": 147,
+      "growth_rate": "slow",
       "types": [
         "Dragon"
       ],
@@ -47638,6 +48382,8 @@
     {
       "id": 373,
       "name": "Salamence",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Flying"
@@ -47786,6 +48532,8 @@
     {
       "id": 374,
       "name": "Beldum",
+      "base_experience": 60,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Psychic"
@@ -47820,6 +48568,8 @@
     {
       "id": 375,
       "name": "Metang",
+      "base_experience": 147,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Psychic"
@@ -47944,6 +48694,8 @@
     {
       "id": 376,
       "name": "Metagross",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Psychic"
@@ -48068,6 +48820,8 @@
     {
       "id": 377,
       "name": "Regirock",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Rock"
       ],
@@ -48179,6 +48933,8 @@
     {
       "id": 378,
       "name": "Regice",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Ice"
       ],
@@ -48290,6 +49046,8 @@
     {
       "id": 379,
       "name": "Registeel",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Steel"
       ],
@@ -48413,6 +49171,8 @@
     {
       "id": 380,
       "name": "Latias",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Psychic"
@@ -48556,6 +49316,8 @@
     {
       "id": 381,
       "name": "Latios",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Psychic"
@@ -48711,6 +49473,8 @@
     {
       "id": 382,
       "name": "Kyogre",
+      "base_experience": 302,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -48811,6 +49575,8 @@
     {
       "id": 383,
       "name": "Groudon",
+      "base_experience": 302,
+      "growth_rate": "slow",
       "types": [
         "Ground"
       ],
@@ -48911,6 +49677,8 @@
     {
       "id": 384,
       "name": "Rayquaza",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Flying"
@@ -49018,6 +49786,8 @@
     {
       "id": 385,
       "name": "Jirachi",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Psychic"
@@ -49143,6 +49913,8 @@
     {
       "id": 386,
       "name": "Deoxys Normal",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Psychic"
       ],
@@ -49261,6 +50033,8 @@
     {
       "id": 387,
       "name": "Turtwig",
+      "base_experience": 64,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -49354,6 +50128,8 @@
     {
       "id": 388,
       "name": "Grotle",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -49447,6 +50223,8 @@
     {
       "id": 389,
       "name": "Torterra",
+      "base_experience": 236,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Ground"
@@ -49559,6 +50337,8 @@
     {
       "id": 390,
       "name": "Chimchar",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -49658,6 +50438,8 @@
     {
       "id": 391,
       "name": "Monferno",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Fighting"
@@ -49764,6 +50546,8 @@
     {
       "id": 392,
       "name": "Infernape",
+      "base_experience": 240,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Fighting"
@@ -49882,6 +50666,8 @@
     {
       "id": 393,
       "name": "Piplup",
+      "base_experience": 63,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -49999,6 +50785,8 @@
     {
       "id": 394,
       "name": "Prinplup",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -50116,6 +50904,8 @@
     {
       "id": 395,
       "name": "Empoleon",
+      "base_experience": 239,
+      "growth_rate": "medium-slow",
       "types": [
         "Water",
         "Steel"
@@ -50240,6 +51030,8 @@
     {
       "id": 396,
       "name": "Starly",
+      "base_experience": 49,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -50334,6 +51126,8 @@
     {
       "id": 397,
       "name": "Staravia",
+      "base_experience": 119,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -50428,6 +51222,8 @@
     {
       "id": 398,
       "name": "Staraptor",
+      "base_experience": 218,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -50528,6 +51324,8 @@
     {
       "id": 399,
       "name": "Bidoof",
+      "base_experience": 50,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -50638,6 +51436,8 @@
     {
       "id": 400,
       "name": "Bibarel",
+      "base_experience": 144,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Water"
@@ -50767,6 +51567,8 @@
     {
       "id": 401,
       "name": "Kricketot",
+      "base_experience": 39,
+      "growth_rate": "medium-slow",
       "types": [
         "Bug"
       ],
@@ -50818,6 +51620,8 @@
     {
       "id": 402,
       "name": "Kricketune",
+      "base_experience": 134,
+      "growth_rate": "medium-slow",
       "types": [
         "Bug"
       ],
@@ -50941,6 +51745,8 @@
     {
       "id": 403,
       "name": "Shinx",
+      "base_experience": 53,
+      "growth_rate": "medium-slow",
       "types": [
         "Electric"
       ],
@@ -51063,6 +51869,8 @@
     {
       "id": 404,
       "name": "Luxio",
+      "base_experience": 127,
+      "growth_rate": "medium-slow",
       "types": [
         "Electric"
       ],
@@ -51179,6 +51987,8 @@
     {
       "id": 405,
       "name": "Luxray",
+      "base_experience": 235,
+      "growth_rate": "medium-slow",
       "types": [
         "Electric"
       ],
@@ -51301,6 +52111,8 @@
     {
       "id": 406,
       "name": "Budew",
+      "base_experience": 56,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Poison"
@@ -51364,6 +52176,8 @@
     {
       "id": 407,
       "name": "Roserade",
+      "base_experience": 232,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Poison"
@@ -51511,6 +52325,8 @@
     {
       "id": 408,
       "name": "Cranidos",
+      "base_experience": 70,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Rock"
       ],
@@ -51616,6 +52432,8 @@
     {
       "id": 409,
       "name": "Rampardos",
+      "base_experience": 173,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Rock"
       ],
@@ -51727,6 +52545,8 @@
     {
       "id": 410,
       "name": "Shieldon",
+      "base_experience": 70,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Rock",
         "Steel"
@@ -51821,6 +52641,8 @@
     {
       "id": 411,
       "name": "Bastiodon",
+      "base_experience": 173,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Rock",
         "Steel"
@@ -51921,6 +52743,8 @@
     {
       "id": 412,
       "name": "Burmy",
+      "base_experience": 45,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -51966,6 +52790,8 @@
     {
       "id": 413,
       "name": "Wormadam Plant",
+      "base_experience": 148,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Grass"
@@ -52084,6 +52910,8 @@
     {
       "id": 414,
       "name": "Mothim",
+      "base_experience": 148,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Flying"
@@ -52196,6 +53024,8 @@
     {
       "id": 415,
       "name": "Combee",
+      "base_experience": 49,
+      "growth_rate": "medium-slow",
       "types": [
         "Bug",
         "Flying"
@@ -52248,6 +53078,8 @@
     {
       "id": 416,
       "name": "Vespiquen",
+      "base_experience": 166,
+      "growth_rate": "medium-slow",
       "types": [
         "Bug",
         "Flying"
@@ -52408,6 +53240,8 @@
     {
       "id": 417,
       "name": "Pachirisu",
+      "base_experience": 142,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -52536,6 +53370,8 @@
     {
       "id": 418,
       "name": "Buizel",
+      "base_experience": 66,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -52671,6 +53507,8 @@
     {
       "id": 419,
       "name": "Floatzel",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -52812,6 +53650,8 @@
     {
       "id": 420,
       "name": "Cherubi",
+      "base_experience": 55,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -52906,6 +53746,8 @@
     {
       "id": 421,
       "name": "Cherrim",
+      "base_experience": 158,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -53012,6 +53854,8 @@
     {
       "id": 422,
       "name": "Shellos",
+      "base_experience": 65,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -53122,6 +53966,8 @@
     {
       "id": 423,
       "name": "Gastrodon",
+      "base_experience": 166,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Ground"
@@ -53233,6 +54079,8 @@
     {
       "id": 424,
       "name": "Ambipom",
+      "base_experience": 169,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -53349,6 +54197,8 @@
     {
       "id": 425,
       "name": "Drifloon",
+      "base_experience": 70,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Ghost",
         "Flying"
@@ -53484,6 +54334,8 @@
     {
       "id": 426,
       "name": "Drifblim",
+      "base_experience": 174,
+      "growth_rate": "fast-then-very-slow",
       "types": [
         "Ghost",
         "Flying"
@@ -53631,6 +54483,8 @@
     {
       "id": 427,
       "name": "Buneary",
+      "base_experience": 70,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -53777,6 +54631,8 @@
     {
       "id": 428,
       "name": "Lopunny",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -53947,6 +54803,8 @@
     {
       "id": 429,
       "name": "Mismagius",
+      "base_experience": 173,
+      "growth_rate": "fast",
       "types": [
         "Ghost"
       ],
@@ -54017,6 +54875,8 @@
     {
       "id": 430,
       "name": "Honchkrow",
+      "base_experience": 177,
+      "growth_rate": "medium-slow",
       "types": [
         "Dark",
         "Flying"
@@ -54116,6 +54976,8 @@
     {
       "id": 431,
       "name": "Glameow",
+      "base_experience": 62,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -54226,6 +55088,8 @@
     {
       "id": 432,
       "name": "Purugly",
+      "base_experience": 158,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -54336,6 +55200,8 @@
     {
       "id": 433,
       "name": "Chingling",
+      "base_experience": 57,
+      "growth_rate": "fast",
       "types": [
         "Psychic"
       ],
@@ -54400,6 +55266,8 @@
     {
       "id": 434,
       "name": "Stunky",
+      "base_experience": 66,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Dark"
@@ -54535,6 +55403,8 @@
     {
       "id": 435,
       "name": "Skuntank",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Dark"
@@ -54676,6 +55546,8 @@
     {
       "id": 436,
       "name": "Bronzor",
+      "base_experience": 60,
+      "growth_rate": "medium",
       "types": [
         "Steel",
         "Psychic"
@@ -54799,6 +55671,8 @@
     {
       "id": 437,
       "name": "Bronzong",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Steel",
         "Psychic"
@@ -54946,6 +55820,8 @@
     {
       "id": 438,
       "name": "Bonsly",
+      "base_experience": 58,
+      "growth_rate": "medium",
       "types": [
         "Rock"
       ],
@@ -55062,6 +55938,8 @@
     {
       "id": 439,
       "name": "Mime Jr",
+      "base_experience": 62,
+      "growth_rate": "medium",
       "types": [
         "Psychic",
         "Fairy"
@@ -55227,6 +56105,8 @@
     {
       "id": 440,
       "name": "Happiny",
+      "base_experience": 110,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -55307,6 +56187,8 @@
     {
       "id": 441,
       "name": "Chatot",
+      "base_experience": 144,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -55430,6 +56312,8 @@
     {
       "id": 442,
       "name": "Spiritomb",
+      "base_experience": 170,
+      "growth_rate": "medium",
       "types": [
         "Ghost",
         "Dark"
@@ -55554,6 +56438,8 @@
     {
       "id": 443,
       "name": "Gible",
+      "base_experience": 60,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Ground"
@@ -55654,6 +56540,8 @@
     {
       "id": 444,
       "name": "Gabite",
+      "base_experience": 144,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Ground"
@@ -55760,6 +56648,8 @@
     {
       "id": 445,
       "name": "Garchomp",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Ground"
@@ -55878,6 +56768,8 @@
     {
       "id": 446,
       "name": "Munchlax",
+      "base_experience": 78,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -56030,6 +56922,8 @@
     {
       "id": 447,
       "name": "Riolu",
+      "base_experience": 57,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting"
       ],
@@ -56164,6 +57058,8 @@
     {
       "id": 448,
       "name": "Lucario",
+      "base_experience": 184,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting",
         "Steel"
@@ -56383,6 +57279,8 @@
     {
       "id": 449,
       "name": "Hippopotas",
+      "base_experience": 66,
+      "growth_rate": "slow",
       "types": [
         "Ground"
       ],
@@ -56494,6 +57392,8 @@
     {
       "id": 450,
       "name": "Hippowdon",
+      "base_experience": 184,
+      "growth_rate": "slow",
       "types": [
         "Ground"
       ],
@@ -56623,6 +57523,8 @@
     {
       "id": 451,
       "name": "Skorupi",
+      "base_experience": 66,
+      "growth_rate": "slow",
       "types": [
         "Poison",
         "Bug"
@@ -56764,6 +57666,8 @@
     {
       "id": 452,
       "name": "Drapion",
+      "base_experience": 175,
+      "growth_rate": "slow",
       "types": [
         "Poison",
         "Dark"
@@ -56923,6 +57827,8 @@
     {
       "id": 453,
       "name": "Croagunk",
+      "base_experience": 60,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Fighting"
@@ -57058,6 +57964,8 @@
     {
       "id": 454,
       "name": "Toxicroak",
+      "base_experience": 172,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Fighting"
@@ -57193,6 +58101,8 @@
     {
       "id": 455,
       "name": "Carnivine",
+      "base_experience": 159,
+      "growth_rate": "slow",
       "types": [
         "Grass"
       ],
@@ -57293,6 +58203,8 @@
     {
       "id": 456,
       "name": "Finneon",
+      "base_experience": 66,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Water"
       ],
@@ -57409,6 +58321,8 @@
     {
       "id": 457,
       "name": "Lumineon",
+      "base_experience": 161,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Water"
       ],
@@ -57525,6 +58439,8 @@
     {
       "id": 458,
       "name": "Mantyke",
+      "base_experience": 69,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Flying"
@@ -57648,6 +58564,8 @@
     {
       "id": 459,
       "name": "Snover",
+      "base_experience": 67,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Ice"
@@ -57748,6 +58666,8 @@
     {
       "id": 460,
       "name": "Abomasnow",
+      "base_experience": 173,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Ice"
@@ -57860,6 +58780,8 @@
     {
       "id": 461,
       "name": "Weavile",
+      "base_experience": 179,
+      "growth_rate": "medium-slow",
       "types": [
         "Dark",
         "Ice"
@@ -58020,6 +58942,8 @@
     {
       "id": 462,
       "name": "Magnezone",
+      "base_experience": 241,
+      "growth_rate": "medium",
       "types": [
         "Electric",
         "Steel"
@@ -58185,6 +59109,8 @@
     {
       "id": 463,
       "name": "Lickilicky",
+      "base_experience": 180,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -58313,6 +59239,8 @@
     {
       "id": 464,
       "name": "Rhyperior",
+      "base_experience": 241,
+      "growth_rate": "slow",
       "types": [
         "Ground",
         "Rock"
@@ -58454,6 +59382,8 @@
     {
       "id": 465,
       "name": "Tangrowth",
+      "base_experience": 187,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -58600,6 +59530,8 @@
     {
       "id": 466,
       "name": "Electivire",
+      "base_experience": 243,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -58735,6 +59667,8 @@
     {
       "id": 467,
       "name": "Magmortar",
+      "base_experience": 243,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -58870,6 +59804,8 @@
     {
       "id": 468,
       "name": "Togekiss",
+      "base_experience": 245,
+      "growth_rate": "fast",
       "types": [
         "Fairy",
         "Flying"
@@ -59023,6 +59959,8 @@
     {
       "id": 469,
       "name": "Yanmega",
+      "base_experience": 180,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Flying"
@@ -59158,6 +60096,8 @@
     {
       "id": 470,
       "name": "Leafeon",
+      "base_experience": 184,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -59329,6 +60269,8 @@
     {
       "id": 471,
       "name": "Glaceon",
+      "base_experience": 184,
+      "growth_rate": "medium",
       "types": [
         "Ice"
       ],
@@ -59500,6 +60442,8 @@
     {
       "id": 472,
       "name": "Gliscor",
+      "base_experience": 179,
+      "growth_rate": "medium-slow",
       "types": [
         "Ground",
         "Flying"
@@ -59641,6 +60585,8 @@
     {
       "id": 473,
       "name": "Mamoswine",
+      "base_experience": 239,
+      "growth_rate": "slow",
       "types": [
         "Ice",
         "Ground"
@@ -59806,6 +60752,8 @@
     {
       "id": 474,
       "name": "Porygon Z",
+      "base_experience": 241,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -59958,6 +60906,8 @@
     {
       "id": 475,
       "name": "Gallade",
+      "base_experience": 233,
+      "growth_rate": "slow",
       "types": [
         "Psychic",
         "Fighting"
@@ -60189,6 +61139,8 @@
     {
       "id": 476,
       "name": "Probopass",
+      "base_experience": 184,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Steel"
@@ -60342,6 +61294,8 @@
     {
       "id": 477,
       "name": "Dusknoir",
+      "base_experience": 236,
+      "growth_rate": "fast",
       "types": [
         "Ghost"
       ],
@@ -60495,6 +61449,8 @@
     {
       "id": 478,
       "name": "Froslass",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Ice",
         "Ghost"
@@ -60667,6 +61623,8 @@
     {
       "id": 479,
       "name": "Rotom",
+      "base_experience": 154,
+      "growth_rate": "medium",
       "types": [
         "Electric",
         "Ghost"
@@ -60768,6 +61726,8 @@
     {
       "id": 480,
       "name": "Uxie",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Psychic"
       ],
@@ -60874,6 +61834,8 @@
     {
       "id": 481,
       "name": "Mesprit",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Psychic"
       ],
@@ -60986,6 +61948,8 @@
     {
       "id": 482,
       "name": "Azelf",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Psychic"
       ],
@@ -61092,6 +62056,8 @@
     {
       "id": 483,
       "name": "Dialga",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Dragon"
@@ -61192,6 +62158,8 @@
     {
       "id": 484,
       "name": "Palkia",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Dragon"
@@ -61292,6 +62260,8 @@
     {
       "id": 485,
       "name": "Heatran",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Fire",
         "Steel"
@@ -61398,6 +62368,8 @@
     {
       "id": 486,
       "name": "Regigigas",
+      "base_experience": 302,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -61540,6 +62512,8 @@
     {
       "id": 487,
       "name": "Giratina Altered",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Ghost",
         "Dragon"
@@ -61652,6 +62626,8 @@
     {
       "id": 488,
       "name": "Cresselia",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Psychic"
       ],
@@ -61764,6 +62740,8 @@
     {
       "id": 489,
       "name": "Phione",
+      "base_experience": 216,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -61858,6 +62836,8 @@
     {
       "id": 490,
       "name": "Manaphy",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -61964,6 +62944,8 @@
     {
       "id": 491,
       "name": "Darkrai",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Dark"
       ],
@@ -62064,6 +63046,8 @@
     {
       "id": 492,
       "name": "Shaymin Land",
+      "base_experience": 270,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -62164,6 +63148,8 @@
     {
       "id": 493,
       "name": "Arceus",
+      "base_experience": 324,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -62270,6 +63256,8 @@
     {
       "id": 494,
       "name": "Victini",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Psychic",
         "Fire"
@@ -62401,6 +63389,8 @@
     {
       "id": 495,
       "name": "Snivy",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -62518,6 +63508,8 @@
     {
       "id": 496,
       "name": "Servine",
+      "base_experience": 145,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -62635,6 +63627,8 @@
     {
       "id": 497,
       "name": "Serperior",
+      "base_experience": 238,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -62752,6 +63746,8 @@
     {
       "id": 498,
       "name": "Tepig",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -62869,6 +63865,8 @@
     {
       "id": 499,
       "name": "Pignite",
+      "base_experience": 146,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Fighting"
@@ -62993,6 +63991,8 @@
     {
       "id": 500,
       "name": "Emboar",
+      "base_experience": 238,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Fighting"
@@ -63117,6 +64117,8 @@
     {
       "id": 501,
       "name": "Oshawott",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -63240,6 +64242,8 @@
     {
       "id": 502,
       "name": "Dewott",
+      "base_experience": 145,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -63363,6 +64367,8 @@
     {
       "id": 503,
       "name": "Samurott",
+      "base_experience": 238,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -63498,6 +64504,8 @@
     {
       "id": 504,
       "name": "Patrat",
+      "base_experience": 51,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -63626,6 +64634,8 @@
     {
       "id": 505,
       "name": "Watchog",
+      "base_experience": 147,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -63772,6 +64782,8 @@
     {
       "id": 506,
       "name": "Lillipup",
+      "base_experience": 55,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal"
       ],
@@ -63888,6 +64900,8 @@
     {
       "id": 507,
       "name": "Herdier",
+      "base_experience": 130,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal"
       ],
@@ -64004,6 +65018,8 @@
     {
       "id": 508,
       "name": "Stoutland",
+      "base_experience": 225,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal"
       ],
@@ -64138,6 +65154,8 @@
     {
       "id": 509,
       "name": "Purrloin",
+      "base_experience": 56,
+      "growth_rate": "medium",
       "types": [
         "Dark"
       ],
@@ -64266,6 +65284,8 @@
     {
       "id": 510,
       "name": "Liepard",
+      "base_experience": 156,
+      "growth_rate": "medium",
       "types": [
         "Dark"
       ],
@@ -64394,6 +65414,8 @@
     {
       "id": 511,
       "name": "Pansage",
+      "base_experience": 63,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -64511,6 +65533,8 @@
     {
       "id": 512,
       "name": "Simisage",
+      "base_experience": 174,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -64556,6 +65580,8 @@
     {
       "id": 513,
       "name": "Pansear",
+      "base_experience": 63,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -64673,6 +65699,8 @@
     {
       "id": 514,
       "name": "Simisear",
+      "base_experience": 174,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -64718,6 +65746,8 @@
     {
       "id": 515,
       "name": "Panpour",
+      "base_experience": 63,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -64835,6 +65865,8 @@
     {
       "id": 516,
       "name": "Simipour",
+      "base_experience": 174,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -64880,6 +65912,8 @@
     {
       "id": 517,
       "name": "Munna",
+      "base_experience": 58,
+      "growth_rate": "fast",
       "types": [
         "Psychic"
       ],
@@ -65026,6 +66060,8 @@
     {
       "id": 518,
       "name": "Musharna",
+      "base_experience": 170,
+      "growth_rate": "fast",
       "types": [
         "Psychic"
       ],
@@ -65154,6 +66190,8 @@
     {
       "id": 519,
       "name": "Pidove",
+      "base_experience": 53,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -65271,6 +66309,8 @@
     {
       "id": 520,
       "name": "Tranquill",
+      "base_experience": 125,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -65388,6 +66428,8 @@
     {
       "id": 521,
       "name": "Unfezant",
+      "base_experience": 220,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -65505,6 +66547,8 @@
     {
       "id": 522,
       "name": "Blitzle",
+      "base_experience": 59,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -65609,6 +66653,8 @@
     {
       "id": 523,
       "name": "Zebstrika",
+      "base_experience": 174,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -65719,6 +66765,8 @@
     {
       "id": 524,
       "name": "Roggenrola",
+      "base_experience": 56,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock"
       ],
@@ -65823,6 +66871,8 @@
     {
       "id": 525,
       "name": "Boldore",
+      "base_experience": 137,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock"
       ],
@@ -65933,6 +66983,8 @@
     {
       "id": 526,
       "name": "Gigalith",
+      "base_experience": 232,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock"
       ],
@@ -66043,6 +67095,8 @@
     {
       "id": 527,
       "name": "Woobat",
+      "base_experience": 65,
+      "growth_rate": "medium",
       "types": [
         "Psychic",
         "Flying"
@@ -66160,6 +67214,8 @@
     {
       "id": 528,
       "name": "Swoobat",
+      "base_experience": 149,
+      "growth_rate": "medium",
       "types": [
         "Psychic",
         "Flying"
@@ -66277,6 +67333,8 @@
     {
       "id": 529,
       "name": "Drilbur",
+      "base_experience": 66,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -66399,6 +67457,8 @@
     {
       "id": 530,
       "name": "Excadrill",
+      "base_experience": 178,
+      "growth_rate": "medium",
       "types": [
         "Ground",
         "Steel"
@@ -66534,6 +67594,8 @@
     {
       "id": 531,
       "name": "Audino",
+      "base_experience": 390,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -66686,6 +67748,8 @@
     {
       "id": 532,
       "name": "Timburr",
+      "base_experience": 61,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting"
       ],
@@ -66814,6 +67878,8 @@
     {
       "id": 533,
       "name": "Gurdurr",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting"
       ],
@@ -66942,6 +68008,8 @@
     {
       "id": 534,
       "name": "Conkeldurr",
+      "base_experience": 227,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting"
       ],
@@ -67070,6 +68138,8 @@
     {
       "id": 535,
       "name": "Tympole",
+      "base_experience": 59,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -67186,6 +68256,8 @@
     {
       "id": 536,
       "name": "Palpitoad",
+      "base_experience": 134,
+      "growth_rate": "medium-slow",
       "types": [
         "Water",
         "Ground"
@@ -67303,6 +68375,8 @@
     {
       "id": 537,
       "name": "Seismitoad",
+      "base_experience": 229,
+      "growth_rate": "medium-slow",
       "types": [
         "Water",
         "Ground"
@@ -67432,6 +68506,8 @@
     {
       "id": 538,
       "name": "Throh",
+      "base_experience": 163,
+      "growth_rate": "medium",
       "types": [
         "Fighting"
       ],
@@ -67554,6 +68630,8 @@
     {
       "id": 539,
       "name": "Sawk",
+      "base_experience": 163,
+      "growth_rate": "medium",
       "types": [
         "Fighting"
       ],
@@ -67670,6 +68748,8 @@
     {
       "id": 540,
       "name": "Sewaddle",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Bug",
         "Grass"
@@ -67751,6 +68831,8 @@
     {
       "id": 541,
       "name": "Swadloon",
+      "base_experience": 133,
+      "growth_rate": "medium-slow",
       "types": [
         "Bug",
         "Grass"
@@ -67844,6 +68926,8 @@
     {
       "id": 542,
       "name": "Leavanny",
+      "base_experience": 225,
+      "growth_rate": "medium-slow",
       "types": [
         "Bug",
         "Grass"
@@ -67955,6 +69039,8 @@
     {
       "id": 543,
       "name": "Venipede",
+      "base_experience": 52,
+      "growth_rate": "medium-slow",
       "types": [
         "Bug",
         "Poison"
@@ -68078,6 +69164,8 @@
     {
       "id": 544,
       "name": "Whirlipede",
+      "base_experience": 126,
+      "growth_rate": "medium-slow",
       "types": [
         "Bug",
         "Poison"
@@ -68207,6 +69295,8 @@
     {
       "id": 545,
       "name": "Scolipede",
+      "base_experience": 218,
+      "growth_rate": "medium-slow",
       "types": [
         "Bug",
         "Poison"
@@ -68348,6 +69438,8 @@
     {
       "id": 546,
       "name": "Cottonee",
+      "base_experience": 56,
+      "growth_rate": "medium",
       "types": [
         "Grass",
         "Fairy"
@@ -68477,6 +69569,8 @@
     {
       "id": 547,
       "name": "Whimsicott",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Grass",
         "Fairy"
@@ -68636,6 +69730,8 @@
     {
       "id": 548,
       "name": "Petilil",
+      "base_experience": 56,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -68764,6 +69860,8 @@
     {
       "id": 549,
       "name": "Lilligant",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -68916,6 +70014,8 @@
     {
       "id": 550,
       "name": "Basculin Red Striped",
+      "base_experience": 161,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -69056,6 +70156,8 @@
     {
       "id": 551,
       "name": "Sandile",
+      "base_experience": 58,
+      "growth_rate": "medium-slow",
       "types": [
         "Ground",
         "Dark"
@@ -69197,6 +70299,8 @@
     {
       "id": 552,
       "name": "Krokorok",
+      "base_experience": 123,
+      "growth_rate": "medium-slow",
       "types": [
         "Ground",
         "Dark"
@@ -69338,6 +70442,8 @@
     {
       "id": 553,
       "name": "Krookodile",
+      "base_experience": 234,
+      "growth_rate": "medium-slow",
       "types": [
         "Ground",
         "Dark"
@@ -69485,6 +70591,8 @@
     {
       "id": 554,
       "name": "Darumaka",
+      "base_experience": 63,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -69614,6 +70722,8 @@
     {
       "id": 555,
       "name": "Darmanitan Standard",
+      "base_experience": 168,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -69755,6 +70865,8 @@
     {
       "id": 556,
       "name": "Maractus",
+      "base_experience": 161,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -69907,6 +71019,8 @@
     {
       "id": 557,
       "name": "Dwebble",
+      "base_experience": 65,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Rock"
@@ -70024,6 +71138,8 @@
     {
       "id": 558,
       "name": "Crustle",
+      "base_experience": 170,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Rock"
@@ -70141,6 +71257,8 @@
     {
       "id": 559,
       "name": "Scraggy",
+      "base_experience": 70,
+      "growth_rate": "medium",
       "types": [
         "Dark",
         "Fighting"
@@ -70282,6 +71400,8 @@
     {
       "id": 560,
       "name": "Scrafty",
+      "base_experience": 171,
+      "growth_rate": "medium",
       "types": [
         "Dark",
         "Fighting"
@@ -70423,6 +71543,8 @@
     {
       "id": 561,
       "name": "Sigilyph",
+      "base_experience": 172,
+      "growth_rate": "medium",
       "types": [
         "Psychic",
         "Flying"
@@ -70564,6 +71686,8 @@
     {
       "id": 562,
       "name": "Yamask",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Ghost"
       ],
@@ -70682,6 +71806,8 @@
     {
       "id": 563,
       "name": "Cofagrigus",
+      "base_experience": 169,
+      "growth_rate": "medium",
       "types": [
         "Ghost"
       ],
@@ -70812,6 +71938,8 @@
     {
       "id": 564,
       "name": "Tirtouga",
+      "base_experience": 71,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Rock"
@@ -70953,6 +72081,8 @@
     {
       "id": 565,
       "name": "Carracosta",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Rock"
@@ -71094,6 +72224,8 @@
     {
       "id": 566,
       "name": "Archen",
+      "base_experience": 71,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Flying"
@@ -71225,6 +72357,8 @@
     {
       "id": 567,
       "name": "Archeops",
+      "base_experience": 177,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Flying"
@@ -71356,6 +72490,8 @@
     {
       "id": 568,
       "name": "Trubbish",
+      "base_experience": 66,
+      "growth_rate": "medium",
       "types": [
         "Poison"
       ],
@@ -71490,6 +72626,8 @@
     {
       "id": 569,
       "name": "Garbodor",
+      "base_experience": 166,
+      "growth_rate": "medium",
       "types": [
         "Poison"
       ],
@@ -71636,6 +72774,8 @@
     {
       "id": 570,
       "name": "Zorua",
+      "base_experience": 66,
+      "growth_rate": "medium-slow",
       "types": [
         "Dark"
       ],
@@ -71760,6 +72900,8 @@
     {
       "id": 571,
       "name": "Zoroark",
+      "base_experience": 179,
+      "growth_rate": "medium-slow",
       "types": [
         "Dark"
       ],
@@ -71896,6 +73038,8 @@
     {
       "id": 572,
       "name": "Minccino",
+      "base_experience": 60,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -72030,6 +73174,8 @@
     {
       "id": 573,
       "name": "Cinccino",
+      "base_experience": 165,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -72152,6 +73298,8 @@
     {
       "id": 574,
       "name": "Gothita",
+      "base_experience": 58,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic"
       ],
@@ -72292,6 +73440,8 @@
     {
       "id": 575,
       "name": "Gothorita",
+      "base_experience": 137,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic"
       ],
@@ -72432,6 +73582,8 @@
     {
       "id": 576,
       "name": "Gothitelle",
+      "base_experience": 221,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic"
       ],
@@ -72572,6 +73724,8 @@
     {
       "id": 577,
       "name": "Solosis",
+      "base_experience": 58,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic"
       ],
@@ -72718,6 +73872,8 @@
     {
       "id": 578,
       "name": "Duosion",
+      "base_experience": 130,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic"
       ],
@@ -72864,6 +74020,8 @@
     {
       "id": 579,
       "name": "Reuniclus",
+      "base_experience": 221,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic"
       ],
@@ -73022,6 +74180,8 @@
     {
       "id": 580,
       "name": "Ducklett",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Flying"
@@ -73139,6 +74299,8 @@
     {
       "id": 581,
       "name": "Swanna",
+      "base_experience": 166,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Flying"
@@ -73256,6 +74418,8 @@
     {
       "id": 582,
       "name": "Vanillite",
+      "base_experience": 61,
+      "growth_rate": "slow",
       "types": [
         "Ice"
       ],
@@ -73372,6 +74536,8 @@
     {
       "id": 583,
       "name": "Vanillish",
+      "base_experience": 138,
+      "growth_rate": "slow",
       "types": [
         "Ice"
       ],
@@ -73488,6 +74654,8 @@
     {
       "id": 584,
       "name": "Vanilluxe",
+      "base_experience": 241,
+      "growth_rate": "slow",
       "types": [
         "Ice"
       ],
@@ -73622,6 +74790,8 @@
     {
       "id": 585,
       "name": "Deerling",
+      "base_experience": 67,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Grass"
@@ -73751,6 +74921,8 @@
     {
       "id": 586,
       "name": "Sawsbuck",
+      "base_experience": 166,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Grass"
@@ -73892,6 +75064,8 @@
     {
       "id": 587,
       "name": "Emolga",
+      "base_experience": 150,
+      "growth_rate": "medium",
       "types": [
         "Electric",
         "Flying"
@@ -74010,6 +75184,8 @@
     {
       "id": 588,
       "name": "Karrablast",
+      "base_experience": 63,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -74132,6 +75308,8 @@
     {
       "id": 589,
       "name": "Escavalier",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Steel"
@@ -74303,6 +75481,8 @@
     {
       "id": 590,
       "name": "Foongus",
+      "base_experience": 59,
+      "growth_rate": "medium",
       "types": [
         "Grass",
         "Poison"
@@ -74421,6 +75601,8 @@
     {
       "id": 591,
       "name": "Amoonguss",
+      "base_experience": 162,
+      "growth_rate": "medium",
       "types": [
         "Grass",
         "Poison"
@@ -74539,6 +75721,8 @@
     {
       "id": 592,
       "name": "Frillish Male",
+      "base_experience": 67,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Ghost"
@@ -74680,6 +75864,8 @@
     {
       "id": 593,
       "name": "Jellicent Male",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Ghost"
@@ -74827,6 +76013,8 @@
     {
       "id": 594,
       "name": "Alomomola",
+      "base_experience": 165,
+      "growth_rate": "fast",
       "types": [
         "Water"
       ],
@@ -74967,6 +76155,8 @@
     {
       "id": 595,
       "name": "Joltik",
+      "base_experience": 64,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Electric"
@@ -75096,6 +76286,8 @@
     {
       "id": 596,
       "name": "Galvantula",
+      "base_experience": 165,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Electric"
@@ -75231,6 +76423,8 @@
     {
       "id": 597,
       "name": "Ferroseed",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Grass",
         "Steel"
@@ -75338,6 +76532,8 @@
     {
       "id": 598,
       "name": "Ferrothorn",
+      "base_experience": 171,
+      "growth_rate": "medium",
       "types": [
         "Grass",
         "Steel"
@@ -75462,6 +76658,8 @@
     {
       "id": 599,
       "name": "Klink",
+      "base_experience": 60,
+      "growth_rate": "medium-slow",
       "types": [
         "Steel"
       ],
@@ -75578,6 +76776,8 @@
     {
       "id": 600,
       "name": "Klang",
+      "base_experience": 154,
+      "growth_rate": "medium-slow",
       "types": [
         "Steel"
       ],
@@ -75694,6 +76894,8 @@
     {
       "id": 601,
       "name": "Klinklang",
+      "base_experience": 234,
+      "growth_rate": "medium-slow",
       "types": [
         "Steel"
       ],
@@ -75828,6 +77030,8 @@
     {
       "id": 602,
       "name": "Tynamo",
+      "base_experience": 55,
+      "growth_rate": "slow",
       "types": [
         "Electric"
       ],
@@ -75868,6 +77072,8 @@
     {
       "id": 603,
       "name": "Eelektrik",
+      "base_experience": 142,
+      "growth_rate": "slow",
       "types": [
         "Electric"
       ],
@@ -75974,6 +77180,8 @@
     {
       "id": 604,
       "name": "Eelektross",
+      "base_experience": 232,
+      "growth_rate": "slow",
       "types": [
         "Electric"
       ],
@@ -76056,6 +77264,8 @@
     {
       "id": 605,
       "name": "Elgyem",
+      "base_experience": 67,
+      "growth_rate": "medium",
       "types": [
         "Psychic"
       ],
@@ -76196,6 +77406,8 @@
     {
       "id": 606,
       "name": "Beheeyem",
+      "base_experience": 170,
+      "growth_rate": "medium",
       "types": [
         "Psychic"
       ],
@@ -76342,6 +77554,8 @@
     {
       "id": 607,
       "name": "Litwick",
+      "base_experience": 55,
+      "growth_rate": "medium-slow",
       "types": [
         "Ghost",
         "Fire"
@@ -76471,6 +77685,8 @@
     {
       "id": 608,
       "name": "Lampent",
+      "base_experience": 130,
+      "growth_rate": "medium-slow",
       "types": [
         "Ghost",
         "Fire"
@@ -76600,6 +77816,8 @@
     {
       "id": 609,
       "name": "Chandelure",
+      "base_experience": 234,
+      "growth_rate": "medium-slow",
       "types": [
         "Ghost",
         "Fire"
@@ -76729,6 +77947,8 @@
     {
       "id": 610,
       "name": "Axew",
+      "base_experience": 64,
+      "growth_rate": "slow",
       "types": [
         "Dragon"
       ],
@@ -76881,6 +78101,8 @@
     {
       "id": 611,
       "name": "Fraxure",
+      "base_experience": 144,
+      "growth_rate": "slow",
       "types": [
         "Dragon"
       ],
@@ -77033,6 +78255,8 @@
     {
       "id": 612,
       "name": "Haxorus",
+      "base_experience": 243,
+      "growth_rate": "slow",
       "types": [
         "Dragon"
       ],
@@ -77185,6 +78409,8 @@
     {
       "id": 613,
       "name": "Cubchoo",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Ice"
       ],
@@ -77319,6 +78545,8 @@
     {
       "id": 614,
       "name": "Beartic",
+      "base_experience": 177,
+      "growth_rate": "medium",
       "types": [
         "Ice"
       ],
@@ -77477,6 +78705,8 @@
     {
       "id": 615,
       "name": "Cryogonal",
+      "base_experience": 180,
+      "growth_rate": "medium",
       "types": [
         "Ice"
       ],
@@ -77619,6 +78849,8 @@
     {
       "id": 616,
       "name": "Shelmet",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -77741,6 +78973,8 @@
     {
       "id": 617,
       "name": "Accelgor",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -77911,6 +79145,8 @@
     {
       "id": 618,
       "name": "Stunfisk",
+      "base_experience": 165,
+      "growth_rate": "medium",
       "types": [
         "Ground",
         "Electric"
@@ -78058,6 +79294,8 @@
     {
       "id": 619,
       "name": "Mienfoo",
+      "base_experience": 70,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting"
       ],
@@ -78192,6 +79430,8 @@
     {
       "id": 620,
       "name": "Mienshao",
+      "base_experience": 179,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting"
       ],
@@ -78332,6 +79572,8 @@
     {
       "id": 621,
       "name": "Druddigon",
+      "base_experience": 170,
+      "growth_rate": "medium",
       "types": [
         "Dragon"
       ],
@@ -78466,6 +79708,8 @@
     {
       "id": 622,
       "name": "Golett",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Ground",
         "Ghost"
@@ -78607,6 +79851,8 @@
     {
       "id": 623,
       "name": "Golurk",
+      "base_experience": 169,
+      "growth_rate": "medium",
       "types": [
         "Ground",
         "Ghost"
@@ -78754,6 +80000,8 @@
     {
       "id": 624,
       "name": "Pawniard",
+      "base_experience": 68,
+      "growth_rate": "medium",
       "types": [
         "Dark",
         "Steel"
@@ -78889,6 +80137,8 @@
     {
       "id": 625,
       "name": "Bisharp",
+      "base_experience": 172,
+      "growth_rate": "medium",
       "types": [
         "Dark",
         "Steel"
@@ -79030,6 +80280,8 @@
     {
       "id": 626,
       "name": "Bouffalant",
+      "base_experience": 172,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -79152,6 +80404,8 @@
     {
       "id": 627,
       "name": "Rufflet",
+      "base_experience": 70,
+      "growth_rate": "slow",
       "types": [
         "Normal",
         "Flying"
@@ -79275,6 +80529,8 @@
     {
       "id": 628,
       "name": "Braviary",
+      "base_experience": 179,
+      "growth_rate": "slow",
       "types": [
         "Normal",
         "Flying"
@@ -79410,6 +80666,8 @@
     {
       "id": 629,
       "name": "Vullaby",
+      "base_experience": 74,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Flying"
@@ -79551,6 +80809,8 @@
     {
       "id": 630,
       "name": "Mandibuzz",
+      "base_experience": 179,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Flying"
@@ -79710,6 +80970,8 @@
     {
       "id": 631,
       "name": "Heatmor",
+      "base_experience": 169,
+      "growth_rate": "medium",
       "types": [
         "Fire"
       ],
@@ -79856,6 +81118,8 @@
     {
       "id": 632,
       "name": "Durant",
+      "base_experience": 169,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Steel"
@@ -79979,6 +81243,8 @@
     {
       "id": 633,
       "name": "Deino",
+      "base_experience": 60,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Dragon"
@@ -80104,6 +81370,8 @@
     {
       "id": 634,
       "name": "Zweilous",
+      "base_experience": 147,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Dragon"
@@ -80235,6 +81503,8 @@
     {
       "id": 635,
       "name": "Hydreigon",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Dragon"
@@ -80378,6 +81648,8 @@
     {
       "id": 636,
       "name": "Larvesta",
+      "base_experience": 72,
+      "growth_rate": "slow",
       "types": [
         "Bug",
         "Fire"
@@ -80490,6 +81762,8 @@
     {
       "id": 637,
       "name": "Volcarona",
+      "base_experience": 248,
+      "growth_rate": "slow",
       "types": [
         "Bug",
         "Fire"
@@ -80662,6 +81936,8 @@
     {
       "id": 638,
       "name": "Cobalion",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Fighting"
@@ -80763,6 +82039,8 @@
     {
       "id": 639,
       "name": "Terrakion",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Rock",
         "Fighting"
@@ -80864,6 +82142,8 @@
     {
       "id": 640,
       "name": "Virizion",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Fighting"
@@ -80971,6 +82251,8 @@
     {
       "id": 641,
       "name": "Tornadus Incarnate",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Flying"
       ],
@@ -81106,6 +82388,8 @@
     {
       "id": 642,
       "name": "Thundurus Incarnate",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Electric",
         "Flying"
@@ -81254,6 +82538,8 @@
     {
       "id": 643,
       "name": "Reshiram",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Fire"
@@ -81367,6 +82653,8 @@
     {
       "id": 644,
       "name": "Zekrom",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Electric"
@@ -81480,6 +82768,8 @@
     {
       "id": 645,
       "name": "Landorus Incarnate",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Ground",
         "Flying"
@@ -81628,6 +82918,8 @@
     {
       "id": 646,
       "name": "Kyurem",
+      "base_experience": 297,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Ice"
@@ -81747,6 +83039,8 @@
     {
       "id": 647,
       "name": "Keldeo Ordinary",
+      "base_experience": 261,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Fighting"
@@ -81854,6 +83148,8 @@
     {
       "id": 648,
       "name": "Meloetta Aria",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Normal",
         "Psychic"
@@ -81967,6 +83263,8 @@
     {
       "id": 649,
       "name": "Genesect",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Bug",
         "Steel"
@@ -82104,6 +83402,8 @@
     {
       "id": 650,
       "name": "Chespin",
+      "base_experience": 63,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -82209,6 +83509,8 @@
     {
       "id": 651,
       "name": "Quilladin",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -82320,6 +83622,8 @@
     {
       "id": 652,
       "name": "Chesnaught",
+      "base_experience": 239,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Fighting"
@@ -82462,6 +83766,8 @@
     {
       "id": 653,
       "name": "Fennekin",
+      "base_experience": 61,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -82579,6 +83885,8 @@
     {
       "id": 654,
       "name": "Braixen",
+      "base_experience": 143,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -82696,6 +84004,8 @@
     {
       "id": 655,
       "name": "Delphox",
+      "base_experience": 240,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Psychic"
@@ -82844,6 +84154,8 @@
     {
       "id": 656,
       "name": "Froakie",
+      "base_experience": 63,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -82955,6 +84267,8 @@
     {
       "id": 657,
       "name": "Frogadier",
+      "base_experience": 142,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -83066,6 +84380,8 @@
     {
       "id": 658,
       "name": "Greninja",
+      "base_experience": 239,
+      "growth_rate": "medium-slow",
       "types": [
         "Water",
         "Dark"
@@ -83214,6 +84530,8 @@
     {
       "id": 659,
       "name": "Bunnelby",
+      "base_experience": 47,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -83354,6 +84672,8 @@
     {
       "id": 660,
       "name": "Diggersby",
+      "base_experience": 148,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Ground"
@@ -83507,6 +84827,8 @@
     {
       "id": 661,
       "name": "Fletchling",
+      "base_experience": 56,
+      "growth_rate": "medium-slow",
       "types": [
         "Normal",
         "Flying"
@@ -83631,6 +84953,8 @@
     {
       "id": 662,
       "name": "Fletchinder",
+      "base_experience": 134,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Flying"
@@ -83761,6 +85085,8 @@
     {
       "id": 663,
       "name": "Talonflame",
+      "base_experience": 175,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Flying"
@@ -83903,6 +85229,8 @@
     {
       "id": 664,
       "name": "Scatterbug",
+      "base_experience": 40,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -83953,6 +85281,8 @@
     {
       "id": 665,
       "name": "Spewpa",
+      "base_experience": 75,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -83986,6 +85316,8 @@
     {
       "id": 666,
       "name": "Vivillon",
+      "base_experience": 185,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Flying"
@@ -84103,6 +85435,8 @@
     {
       "id": 667,
       "name": "Litleo",
+      "base_experience": 74,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Normal"
@@ -84220,6 +85554,8 @@
     {
       "id": 668,
       "name": "Pyroar Male",
+      "base_experience": 177,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Normal"
@@ -84343,6 +85679,8 @@
     {
       "id": 669,
       "name": "Flabebe",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Fairy"
       ],
@@ -84460,6 +85798,8 @@
     {
       "id": 670,
       "name": "Floette",
+      "base_experience": 130,
+      "growth_rate": "medium",
       "types": [
         "Fairy"
       ],
@@ -84577,6 +85917,8 @@
     {
       "id": 671,
       "name": "Florges",
+      "base_experience": 248,
+      "growth_rate": "medium",
       "types": [
         "Fairy"
       ],
@@ -84688,6 +86030,8 @@
     {
       "id": 672,
       "name": "Skiddo",
+      "base_experience": 70,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -84805,6 +86149,8 @@
     {
       "id": 673,
       "name": "Gogoat",
+      "base_experience": 186,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -84934,6 +86280,8 @@
     {
       "id": 674,
       "name": "Pancham",
+      "base_experience": 70,
+      "growth_rate": "medium",
       "types": [
         "Fighting"
       ],
@@ -85056,6 +86404,8 @@
     {
       "id": 675,
       "name": "Pangoro",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Fighting",
         "Dark"
@@ -85197,6 +86547,8 @@
     {
       "id": 676,
       "name": "Furfrou",
+      "base_experience": 165,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -85291,6 +86643,8 @@
     {
       "id": 677,
       "name": "Espurr",
+      "base_experience": 71,
+      "growth_rate": "medium",
       "types": [
         "Psychic"
       ],
@@ -85377,6 +86731,8 @@
     {
       "id": 678,
       "name": "Meowstic Male",
+      "base_experience": 163,
+      "growth_rate": "medium",
       "types": [
         "Psychic"
       ],
@@ -85523,6 +86879,8 @@
     {
       "id": 679,
       "name": "Honedge",
+      "base_experience": 65,
+      "growth_rate": "medium",
       "types": [
         "Steel",
         "Ghost"
@@ -85630,6 +86988,8 @@
     {
       "id": 680,
       "name": "Doublade",
+      "base_experience": 157,
+      "growth_rate": "medium",
       "types": [
         "Steel",
         "Ghost"
@@ -85737,6 +87097,8 @@
     {
       "id": 681,
       "name": "Aegislash Shield",
+      "base_experience": 234,
+      "growth_rate": "medium",
       "types": [
         "Steel",
         "Ghost"
@@ -85856,6 +87218,8 @@
     {
       "id": 682,
       "name": "Spritzee",
+      "base_experience": 68,
+      "growth_rate": "medium",
       "types": [
         "Fairy"
       ],
@@ -85973,6 +87337,8 @@
     {
       "id": 683,
       "name": "Aromatisse",
+      "base_experience": 162,
+      "growth_rate": "medium",
       "types": [
         "Fairy"
       ],
@@ -86114,6 +87480,8 @@
     {
       "id": 684,
       "name": "Swirlix",
+      "base_experience": 68,
+      "growth_rate": "medium",
       "types": [
         "Fairy"
       ],
@@ -86237,6 +87605,8 @@
     {
       "id": 685,
       "name": "Slurpuff",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Fairy"
       ],
@@ -86366,6 +87736,8 @@
     {
       "id": 686,
       "name": "Inkay",
+      "base_experience": 58,
+      "growth_rate": "medium",
       "types": [
         "Dark",
         "Psychic"
@@ -86507,6 +87879,8 @@
     {
       "id": 687,
       "name": "Malamar",
+      "base_experience": 169,
+      "growth_rate": "medium",
       "types": [
         "Dark",
         "Psychic"
@@ -86654,6 +88028,8 @@
     {
       "id": 688,
       "name": "Binacle",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Water"
@@ -86777,6 +88153,8 @@
     {
       "id": 689,
       "name": "Barbaracle",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Water"
@@ -86912,6 +88290,8 @@
     {
       "id": 690,
       "name": "Skrelp",
+      "base_experience": 64,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Water"
@@ -87035,6 +88415,8 @@
     {
       "id": 691,
       "name": "Dragalge",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Dragon"
@@ -87176,6 +88558,8 @@
     {
       "id": 692,
       "name": "Clauncher",
+      "base_experience": 66,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -87288,6 +88672,8 @@
     {
       "id": 693,
       "name": "Clawitzer",
+      "base_experience": 100,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -87418,6 +88804,8 @@
     {
       "id": 694,
       "name": "Helioptile",
+      "base_experience": 58,
+      "growth_rate": "medium",
       "types": [
         "Electric",
         "Normal"
@@ -87529,6 +88917,8 @@
     {
       "id": 695,
       "name": "Heliolisk",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Electric",
         "Normal"
@@ -87652,6 +89042,8 @@
     {
       "id": 696,
       "name": "Tyrunt",
+      "base_experience": 72,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Dragon"
@@ -87770,6 +89162,8 @@
     {
       "id": 697,
       "name": "Tyrantrum",
+      "base_experience": 182,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Dragon"
@@ -87900,6 +89294,8 @@
     {
       "id": 698,
       "name": "Amaura",
+      "base_experience": 72,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Ice"
@@ -88036,6 +89432,8 @@
     {
       "id": 699,
       "name": "Aurorus",
+      "base_experience": 104,
+      "growth_rate": "medium",
       "types": [
         "Rock",
         "Ice"
@@ -88172,6 +89570,8 @@
     {
       "id": 700,
       "name": "Sylveon",
+      "base_experience": 184,
+      "growth_rate": "medium",
       "types": [
         "Fairy"
       ],
@@ -88337,6 +89737,8 @@
     {
       "id": 701,
       "name": "Hawlucha",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Fighting",
         "Flying"
@@ -88484,6 +89886,8 @@
     {
       "id": 702,
       "name": "Dedenne",
+      "base_experience": 151,
+      "growth_rate": "medium",
       "types": [
         "Electric",
         "Fairy"
@@ -88613,6 +90017,8 @@
     {
       "id": 703,
       "name": "Carbink",
+      "base_experience": 100,
+      "growth_rate": "slow",
       "types": [
         "Rock",
         "Fairy"
@@ -88743,6 +90149,8 @@
     {
       "id": 704,
       "name": "Goomy",
+      "base_experience": 60,
+      "growth_rate": "slow",
       "types": [
         "Dragon"
       ],
@@ -88853,6 +90261,8 @@
     {
       "id": 705,
       "name": "Sliggoo",
+      "base_experience": 158,
+      "growth_rate": "slow",
       "types": [
         "Dragon"
       ],
@@ -88975,6 +90385,8 @@
     {
       "id": 706,
       "name": "Goodra",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Dragon"
       ],
@@ -89127,6 +90539,8 @@
     {
       "id": 707,
       "name": "Klefki",
+      "base_experience": 165,
+      "growth_rate": "fast",
       "types": [
         "Steel",
         "Fairy"
@@ -89257,6 +90671,8 @@
     {
       "id": 708,
       "name": "Phantump",
+      "base_experience": 62,
+      "growth_rate": "medium",
       "types": [
         "Ghost",
         "Grass"
@@ -89380,6 +90796,8 @@
     {
       "id": 709,
       "name": "Trevenant",
+      "base_experience": 166,
+      "growth_rate": "medium",
       "types": [
         "Ghost",
         "Grass"
@@ -89509,6 +90927,8 @@
     {
       "id": 710,
       "name": "Pumpkaboo Average",
+      "base_experience": 67,
+      "growth_rate": "medium",
       "types": [
         "Ghost",
         "Grass"
@@ -89614,6 +91034,8 @@
     {
       "id": 711,
       "name": "Gourgeist Average",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Ghost",
         "Grass"
@@ -89737,6 +91159,8 @@
     {
       "id": 712,
       "name": "Bergmite",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Ice"
       ],
@@ -89871,6 +91295,8 @@
     {
       "id": 713,
       "name": "Avalugg",
+      "base_experience": 180,
+      "growth_rate": "medium",
       "types": [
         "Ice"
       ],
@@ -90029,6 +91455,8 @@
     {
       "id": 714,
       "name": "Noibat",
+      "base_experience": 49,
+      "growth_rate": "medium",
       "types": [
         "Flying",
         "Dragon"
@@ -90164,6 +91592,8 @@
     {
       "id": 715,
       "name": "Noivern",
+      "base_experience": 187,
+      "growth_rate": "medium",
       "types": [
         "Flying",
         "Dragon"
@@ -90317,6 +91747,8 @@
     {
       "id": 716,
       "name": "Xerneas",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Fairy"
       ],
@@ -90447,6 +91879,8 @@
     {
       "id": 717,
       "name": "Yveltal",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Flying"
@@ -90584,6 +92018,8 @@
     {
       "id": 718,
       "name": "Zygarde 50",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Ground"
@@ -90727,6 +92163,8 @@
     {
       "id": 719,
       "name": "Diancie",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Rock",
         "Fairy"
@@ -90864,6 +92302,8 @@
     {
       "id": 720,
       "name": "Hoopa",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Psychic",
         "Ghost"
@@ -90995,6 +92435,8 @@
     {
       "id": 721,
       "name": "Volcanion",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Fire",
         "Water"
@@ -91126,6 +92568,8 @@
     {
       "id": 722,
       "name": "Rowlet",
+      "base_experience": 64,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Flying"
@@ -91250,6 +92694,8 @@
     {
       "id": 723,
       "name": "Dartrix",
+      "base_experience": 147,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Flying"
@@ -91374,6 +92820,8 @@
     {
       "id": 724,
       "name": "Decidueye",
+      "base_experience": 239,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Ghost"
@@ -91528,6 +92976,8 @@
     {
       "id": 725,
       "name": "Litten",
+      "base_experience": 64,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -91645,6 +93095,8 @@
     {
       "id": 726,
       "name": "Torracat",
+      "base_experience": 147,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -91762,6 +93214,8 @@
     {
       "id": 727,
       "name": "Incineroar",
+      "base_experience": 239,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Dark"
@@ -91904,6 +93358,8 @@
     {
       "id": 728,
       "name": "Popplio",
+      "base_experience": 64,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -92021,6 +93477,8 @@
     {
       "id": 729,
       "name": "Brionne",
+      "base_experience": 147,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -92138,6 +93596,8 @@
     {
       "id": 730,
       "name": "Primarina",
+      "base_experience": 239,
+      "growth_rate": "medium-slow",
       "types": [
         "Water",
         "Fairy"
@@ -92262,6 +93722,8 @@
     {
       "id": 731,
       "name": "Pikipek",
+      "base_experience": 53,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Flying"
@@ -92367,6 +93829,8 @@
     {
       "id": 732,
       "name": "Trumbeak",
+      "base_experience": 124,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Flying"
@@ -92478,6 +93942,8 @@
     {
       "id": 733,
       "name": "Toucannon",
+      "base_experience": 218,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Flying"
@@ -92595,6 +94061,8 @@
     {
       "id": 734,
       "name": "Yungoos",
+      "base_experience": 51,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -92729,6 +94197,8 @@
     {
       "id": 735,
       "name": "Gumshoos",
+      "base_experience": 146,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -92863,6 +94333,8 @@
     {
       "id": 736,
       "name": "Grubbin",
+      "base_experience": 60,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -92945,6 +94417,8 @@
     {
       "id": 737,
       "name": "Charjabug",
+      "base_experience": 140,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Electric"
@@ -93046,6 +94520,8 @@
     {
       "id": 738,
       "name": "Vikavolt",
+      "base_experience": 225,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Electric"
@@ -93189,6 +94665,8 @@
     {
       "id": 739,
       "name": "Crabrawler",
+      "base_experience": 68,
+      "growth_rate": "medium",
       "types": [
         "Fighting"
       ],
@@ -93311,6 +94789,8 @@
     {
       "id": 740,
       "name": "Crabominable",
+      "base_experience": 167,
+      "growth_rate": "medium",
       "types": [
         "Fighting",
         "Ice"
@@ -93440,6 +94920,8 @@
     {
       "id": 741,
       "name": "Oricorio Baile",
+      "base_experience": 167,
+      "growth_rate": "medium",
       "types": [
         "Fire",
         "Flying"
@@ -93565,6 +95047,8 @@
     {
       "id": 742,
       "name": "Cutiefly",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Fairy"
@@ -93670,6 +95154,8 @@
     {
       "id": 743,
       "name": "Ribombee",
+      "base_experience": 162,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Fairy"
@@ -93781,6 +95267,8 @@
     {
       "id": 744,
       "name": "Rockruff",
+      "base_experience": 56,
+      "growth_rate": "medium",
       "types": [
         "Rock"
       ],
@@ -93903,6 +95391,8 @@
     {
       "id": 745,
       "name": "Lycanroc Midday",
+      "base_experience": 170,
+      "growth_rate": "medium",
       "types": [
         "Rock"
       ],
@@ -94049,6 +95539,8 @@
     {
       "id": 746,
       "name": "Wishiwashi Solo",
+      "base_experience": 61,
+      "growth_rate": "fast",
       "types": [
         "Water"
       ],
@@ -94161,6 +95653,8 @@
     {
       "id": 747,
       "name": "Mareanie",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Water"
@@ -94272,6 +95766,8 @@
     {
       "id": 748,
       "name": "Toxapex",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Water"
@@ -94389,6 +95885,8 @@
     {
       "id": 749,
       "name": "Mudbray",
+      "base_experience": 77,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -94511,6 +96009,8 @@
     {
       "id": 750,
       "name": "Mudsdale",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -94633,6 +96133,8 @@
     {
       "id": 751,
       "name": "Dewpider",
+      "base_experience": 54,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Bug"
@@ -94757,6 +96259,8 @@
     {
       "id": 752,
       "name": "Araquanid",
+      "base_experience": 159,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Bug"
@@ -94881,6 +96385,8 @@
     {
       "id": 753,
       "name": "Fomantis",
+      "base_experience": 50,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -94974,6 +96480,8 @@
     {
       "id": 754,
       "name": "Lurantis",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -95091,6 +96599,8 @@
     {
       "id": 755,
       "name": "Morelull",
+      "base_experience": 57,
+      "growth_rate": "medium",
       "types": [
         "Grass",
         "Fairy"
@@ -95208,6 +96718,8 @@
     {
       "id": 756,
       "name": "Shiinotic",
+      "base_experience": 142,
+      "growth_rate": "medium",
       "types": [
         "Grass",
         "Fairy"
@@ -95325,6 +96837,8 @@
     {
       "id": 757,
       "name": "Salandit",
+      "base_experience": 64,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Fire"
@@ -95449,6 +96963,8 @@
     {
       "id": 758,
       "name": "Salazzle",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Fire"
@@ -95621,6 +97137,8 @@
     {
       "id": 759,
       "name": "Stufful",
+      "base_experience": 68,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Fighting"
@@ -95738,6 +97256,8 @@
     {
       "id": 760,
       "name": "Bewear",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Fighting"
@@ -95861,6 +97381,8 @@
     {
       "id": 761,
       "name": "Bounsweet",
+      "base_experience": 42,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -95947,6 +97469,8 @@
     {
       "id": 762,
       "name": "Steenee",
+      "base_experience": 102,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -96057,6 +97581,8 @@
     {
       "id": 763,
       "name": "Tsareena",
+      "base_experience": 230,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -96197,6 +97723,8 @@
     {
       "id": 764,
       "name": "Comfey",
+      "base_experience": 170,
+      "growth_rate": "fast",
       "types": [
         "Fairy"
       ],
@@ -96349,6 +97877,8 @@
     {
       "id": 765,
       "name": "Oranguru",
+      "base_experience": 172,
+      "growth_rate": "slow",
       "types": [
         "Normal",
         "Psychic"
@@ -96466,6 +97996,8 @@
     {
       "id": 766,
       "name": "Passimian",
+      "base_experience": 172,
+      "growth_rate": "slow",
       "types": [
         "Fighting"
       ],
@@ -96577,6 +98109,8 @@
     {
       "id": 767,
       "name": "Wimpod",
+      "base_experience": 46,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Water"
@@ -96612,6 +98146,8 @@
     {
       "id": 768,
       "name": "Golisopod",
+      "base_experience": 186,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Water"
@@ -96725,6 +98261,8 @@
     {
       "id": 769,
       "name": "Sandygast",
+      "base_experience": 64,
+      "growth_rate": "medium",
       "types": [
         "Ghost",
         "Ground"
@@ -96831,6 +98369,8 @@
     {
       "id": 770,
       "name": "Palossand",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Ghost",
         "Ground"
@@ -96937,6 +98477,8 @@
     {
       "id": 771,
       "name": "Pyukumuku",
+      "base_experience": 144,
+      "growth_rate": "fast",
       "types": [
         "Water"
       ],
@@ -97060,6 +98602,8 @@
     {
       "id": 772,
       "name": "Type Null",
+      "base_experience": 107,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -97184,6 +98728,8 @@
     {
       "id": 773,
       "name": "Silvally",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -97362,6 +98908,8 @@
     {
       "id": 774,
       "name": "Minior Red Meteor",
+      "base_experience": 154,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock",
         "Flying"
@@ -97475,6 +99023,8 @@
     {
       "id": 775,
       "name": "Komala",
+      "base_experience": 168,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -97569,6 +99119,8 @@
     {
       "id": 776,
       "name": "Turtonator",
+      "base_experience": 170,
+      "growth_rate": "medium",
       "types": [
         "Fire",
         "Dragon"
@@ -97676,6 +99228,8 @@
     {
       "id": 777,
       "name": "Togedemaru",
+      "base_experience": 152,
+      "growth_rate": "medium",
       "types": [
         "Electric",
         "Steel"
@@ -97793,6 +99347,8 @@
     {
       "id": 778,
       "name": "Mimikyu Disguised",
+      "base_experience": 167,
+      "growth_rate": "medium",
       "types": [
         "Ghost",
         "Fairy"
@@ -97906,6 +99462,8 @@
     {
       "id": 779,
       "name": "Bruxish",
+      "base_experience": 166,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Psychic"
@@ -98017,6 +99575,8 @@
     {
       "id": 780,
       "name": "Drampa",
+      "base_experience": 170,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Dragon"
@@ -98134,6 +99694,8 @@
     {
       "id": 781,
       "name": "Dhelmise",
+      "base_experience": 181,
+      "growth_rate": "medium",
       "types": [
         "Ghost",
         "Grass"
@@ -98259,6 +99821,8 @@
     {
       "id": 782,
       "name": "Jangmo O",
+      "base_experience": 60,
+      "growth_rate": "slow",
       "types": [
         "Dragon"
       ],
@@ -98369,6 +99933,8 @@
     {
       "id": 783,
       "name": "Hakamo O",
+      "base_experience": 147,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Fighting"
@@ -98498,6 +100064,8 @@
     {
       "id": 784,
       "name": "Kommo O",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Fighting"
@@ -98651,6 +100219,8 @@
     {
       "id": 785,
       "name": "Tapu Koko",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Electric",
         "Fairy"
@@ -98787,6 +100357,8 @@
     {
       "id": 786,
       "name": "Tapu Lele",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Psychic",
         "Fairy"
@@ -98917,6 +100489,8 @@
     {
       "id": 787,
       "name": "Tapu Bulu",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Fairy"
@@ -99059,6 +100633,8 @@
     {
       "id": 788,
       "name": "Tapu Fini",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Fairy"
@@ -99201,6 +100777,8 @@
     {
       "id": 789,
       "name": "Cosmog",
+      "base_experience": 40,
+      "growth_rate": "slow",
       "types": [
         "Psychic"
       ],
@@ -99229,6 +100807,8 @@
     {
       "id": 790,
       "name": "Cosmoem",
+      "base_experience": 140,
+      "growth_rate": "slow",
       "types": [
         "Psychic"
       ],
@@ -99257,6 +100837,8 @@
     {
       "id": 791,
       "name": "Solgaleo",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Psychic",
         "Steel"
@@ -99382,6 +100964,8 @@
     {
       "id": 792,
       "name": "Lunala",
+      "base_experience": 306,
+      "growth_rate": "slow",
       "types": [
         "Psychic",
         "Ghost"
@@ -99507,6 +101091,8 @@
     {
       "id": 793,
       "name": "Nihilego",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Rock",
         "Poison"
@@ -99644,6 +101230,8 @@
     {
       "id": 794,
       "name": "Buzzwole",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Bug",
         "Fighting"
@@ -99781,6 +101369,8 @@
     {
       "id": 795,
       "name": "Pheromosa",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Bug",
         "Fighting"
@@ -99918,6 +101508,8 @@
     {
       "id": 796,
       "name": "Xurkitree",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Electric"
       ],
@@ -100048,6 +101640,8 @@
     {
       "id": 797,
       "name": "Celesteela",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Flying"
@@ -100179,6 +101773,8 @@
     {
       "id": 798,
       "name": "Kartana",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Steel"
@@ -100310,6 +101906,8 @@
     {
       "id": 799,
       "name": "Guzzlord",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Dragon"
@@ -100459,6 +102057,8 @@
     {
       "id": 800,
       "name": "Necrozma",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Psychic"
       ],
@@ -100589,6 +102189,8 @@
     {
       "id": 801,
       "name": "Magearna",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Fairy"
@@ -100762,6 +102364,8 @@
     {
       "id": 802,
       "name": "Marshadow",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Fighting",
         "Ghost"
@@ -100905,6 +102509,8 @@
     {
       "id": 803,
       "name": "Poipole",
+      "base_experience": 189,
+      "growth_rate": "slow",
       "types": [
         "Poison"
       ],
@@ -101005,6 +102611,8 @@
     {
       "id": 804,
       "name": "Naganadel",
+      "base_experience": 243,
+      "growth_rate": "slow",
       "types": [
         "Poison",
         "Dragon"
@@ -101124,6 +102732,8 @@
     {
       "id": 805,
       "name": "Stakataka",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Rock",
         "Steel"
@@ -101243,6 +102853,8 @@
     {
       "id": 806,
       "name": "Blacephalon",
+      "base_experience": 257,
+      "growth_rate": "slow",
       "types": [
         "Fire",
         "Ghost"
@@ -101368,6 +102980,8 @@
     {
       "id": 807,
       "name": "Zeraora",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Electric"
       ],
@@ -101492,6 +103106,8 @@
     {
       "id": 808,
       "name": "Meltan",
+      "base_experience": 135,
+      "growth_rate": "slow",
       "types": [
         "Steel"
       ],
@@ -101550,6 +103166,8 @@
     {
       "id": 809,
       "name": "Melmetal",
+      "base_experience": 270,
+      "growth_rate": "slow",
       "types": [
         "Steel"
       ],
@@ -101656,6 +103274,8 @@
     {
       "id": 810,
       "name": "Grookey",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -101743,6 +103363,8 @@
     {
       "id": 811,
       "name": "Thwackey",
+      "base_experience": 147,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -101836,6 +103458,8 @@
     {
       "id": 812,
       "name": "Rillaboom",
+      "base_experience": 265,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -101953,6 +103577,8 @@
     {
       "id": 813,
       "name": "Scorbunny",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -102040,6 +103666,8 @@
     {
       "id": 814,
       "name": "Raboot",
+      "base_experience": 147,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -102127,6 +103755,8 @@
     {
       "id": 815,
       "name": "Cinderace",
+      "base_experience": 265,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -102232,6 +103862,8 @@
     {
       "id": 816,
       "name": "Sobble",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -102319,6 +103951,8 @@
     {
       "id": 817,
       "name": "Drizzile",
+      "base_experience": 147,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -102406,6 +104040,8 @@
     {
       "id": 818,
       "name": "Inteleon",
+      "base_experience": 265,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -102511,6 +104147,8 @@
     {
       "id": 819,
       "name": "Skwovet",
+      "base_experience": 55,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -102610,6 +104248,8 @@
     {
       "id": 820,
       "name": "Greedent",
+      "base_experience": 161,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -102715,6 +104355,8 @@
     {
       "id": 821,
       "name": "Rookidee",
+      "base_experience": 49,
+      "growth_rate": "medium-slow",
       "types": [
         "Flying"
       ],
@@ -102807,6 +104449,8 @@
     {
       "id": 822,
       "name": "Corvisquire",
+      "base_experience": 128,
+      "growth_rate": "medium-slow",
       "types": [
         "Flying"
       ],
@@ -102899,6 +104543,8 @@
     {
       "id": 823,
       "name": "Corviknight",
+      "base_experience": 248,
+      "growth_rate": "medium-slow",
       "types": [
         "Flying",
         "Steel"
@@ -103016,6 +104662,8 @@
     {
       "id": 824,
       "name": "Blipbug",
+      "base_experience": 36,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -103048,6 +104696,8 @@
     {
       "id": 825,
       "name": "Dottler",
+      "base_experience": 117,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Psychic"
@@ -103099,6 +104749,8 @@
     {
       "id": 826,
       "name": "Orbeetle",
+      "base_experience": 253,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Psychic"
@@ -103222,6 +104874,8 @@
     {
       "id": 827,
       "name": "Nickit",
+      "base_experience": 49,
+      "growth_rate": "fast",
       "types": [
         "Dark"
       ],
@@ -103314,6 +104968,8 @@
     {
       "id": 828,
       "name": "Thievul",
+      "base_experience": 159,
+      "growth_rate": "fast",
       "types": [
         "Dark"
       ],
@@ -103418,6 +105074,8 @@
     {
       "id": 829,
       "name": "Gossifleur",
+      "base_experience": 50,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -103510,6 +105168,8 @@
     {
       "id": 830,
       "name": "Eldegoss",
+      "base_experience": 161,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -103614,6 +105274,8 @@
     {
       "id": 831,
       "name": "Wooloo",
+      "base_experience": 122,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -103712,6 +105374,8 @@
     {
       "id": 832,
       "name": "Dubwool",
+      "base_experience": 172,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -103816,6 +105480,8 @@
     {
       "id": 833,
       "name": "Chewtle",
+      "base_experience": 57,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -103896,6 +105562,8 @@
     {
       "id": 834,
       "name": "Drednaw",
+      "base_experience": 170,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Rock"
@@ -104007,6 +105675,8 @@
     {
       "id": 835,
       "name": "Yamper",
+      "base_experience": 54,
+      "growth_rate": "fast",
       "types": [
         "Electric"
       ],
@@ -104094,6 +105764,8 @@
     {
       "id": 836,
       "name": "Boltund",
+      "base_experience": 172,
+      "growth_rate": "fast",
       "types": [
         "Electric"
       ],
@@ -104193,6 +105865,8 @@
     {
       "id": 837,
       "name": "Rolycoly",
+      "base_experience": 48,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock"
       ],
@@ -104279,6 +105953,8 @@
     {
       "id": 838,
       "name": "Carkol",
+      "base_experience": 144,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock",
         "Fire"
@@ -104384,6 +106060,8 @@
     {
       "id": 839,
       "name": "Coalossal",
+      "base_experience": 255,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock",
         "Fire"
@@ -104495,6 +106173,8 @@
     {
       "id": 840,
       "name": "Applin",
+      "base_experience": 52,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Grass",
         "Dragon"
@@ -104534,6 +106214,8 @@
     {
       "id": 841,
       "name": "Flapple",
+      "base_experience": 170,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Grass",
         "Dragon"
@@ -104663,6 +106345,8 @@
     {
       "id": 842,
       "name": "Appletun",
+      "base_experience": 170,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Grass",
         "Dragon"
@@ -104792,6 +106476,8 @@
     {
       "id": 843,
       "name": "Silicobra",
+      "base_experience": 63,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -104890,6 +106576,8 @@
     {
       "id": 844,
       "name": "Sandaconda",
+      "base_experience": 179,
+      "growth_rate": "medium",
       "types": [
         "Ground"
       ],
@@ -104994,6 +106682,8 @@
     {
       "id": 845,
       "name": "Cramorant",
+      "base_experience": 166,
+      "growth_rate": "medium",
       "types": [
         "Flying",
         "Water"
@@ -105089,6 +106779,8 @@
     {
       "id": 846,
       "name": "Arrokuda",
+      "base_experience": 56,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -105176,6 +106868,8 @@
     {
       "id": 847,
       "name": "Barraskewda",
+      "base_experience": 172,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -105269,6 +106963,8 @@
     {
       "id": 848,
       "name": "Toxel",
+      "base_experience": 48,
+      "growth_rate": "medium-slow",
       "types": [
         "Electric",
         "Poison"
@@ -105332,6 +107028,8 @@
     {
       "id": 849,
       "name": "Toxtricity Amped",
+      "base_experience": 176,
+      "growth_rate": "medium-slow",
       "types": [
         "Electric",
         "Poison"
@@ -105509,6 +107207,8 @@
     {
       "id": 850,
       "name": "Sizzlipede",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Fire",
         "Bug"
@@ -105614,6 +107314,8 @@
     {
       "id": 851,
       "name": "Centiskorch",
+      "base_experience": 184,
+      "growth_rate": "medium",
       "types": [
         "Fire",
         "Bug"
@@ -105725,6 +107427,8 @@
     {
       "id": 852,
       "name": "Clobbopus",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting"
       ],
@@ -105812,6 +107516,8 @@
     {
       "id": 853,
       "name": "Grapploct",
+      "base_experience": 168,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting"
       ],
@@ -105917,6 +107623,8 @@
     {
       "id": 854,
       "name": "Sinistea",
+      "base_experience": 62,
+      "growth_rate": "medium",
       "types": [
         "Ghost"
       ],
@@ -106016,6 +107724,8 @@
     {
       "id": 855,
       "name": "Polteageist",
+      "base_experience": 178,
+      "growth_rate": "medium",
       "types": [
         "Ghost"
       ],
@@ -106133,6 +107843,8 @@
     {
       "id": 856,
       "name": "Hatenna",
+      "base_experience": 53,
+      "growth_rate": "slow",
       "types": [
         "Psychic"
       ],
@@ -106231,6 +107943,8 @@
     {
       "id": 857,
       "name": "Hattrem",
+      "base_experience": 130,
+      "growth_rate": "slow",
       "types": [
         "Psychic"
       ],
@@ -106335,6 +108049,8 @@
     {
       "id": 858,
       "name": "Hatterene",
+      "base_experience": 255,
+      "growth_rate": "slow",
       "types": [
         "Psychic",
         "Fairy"
@@ -106452,6 +108168,8 @@
     {
       "id": 859,
       "name": "Impidimp",
+      "base_experience": 53,
+      "growth_rate": "medium",
       "types": [
         "Dark",
         "Fairy"
@@ -106557,6 +108275,8 @@
     {
       "id": 860,
       "name": "Morgrem",
+      "base_experience": 130,
+      "growth_rate": "medium",
       "types": [
         "Dark",
         "Fairy"
@@ -106668,6 +108388,8 @@
     {
       "id": 861,
       "name": "Grimmsnarl",
+      "base_experience": 255,
+      "growth_rate": "medium",
       "types": [
         "Dark",
         "Fairy"
@@ -106803,6 +108525,8 @@
     {
       "id": 862,
       "name": "Obstagoon",
+      "base_experience": 260,
+      "growth_rate": "medium",
       "types": [
         "Dark",
         "Normal"
@@ -106956,6 +108680,8 @@
     {
       "id": 863,
       "name": "Perrserker",
+      "base_experience": 154,
+      "growth_rate": "medium",
       "types": [
         "Steel"
       ],
@@ -107078,6 +108804,8 @@
     {
       "id": 864,
       "name": "Cursola",
+      "base_experience": 179,
+      "growth_rate": "fast",
       "types": [
         "Ghost"
       ],
@@ -107183,6 +108911,8 @@
     {
       "id": 865,
       "name": "Sirfetchd",
+      "base_experience": 177,
+      "growth_rate": "medium",
       "types": [
         "Fighting"
       ],
@@ -107312,6 +109042,8 @@
     {
       "id": 866,
       "name": "Mr Rime",
+      "base_experience": 182,
+      "growth_rate": "medium",
       "types": [
         "Ice",
         "Psychic"
@@ -107519,6 +109251,8 @@
     {
       "id": 867,
       "name": "Runerigus",
+      "base_experience": 169,
+      "growth_rate": "medium",
       "types": [
         "Ground",
         "Ghost"
@@ -107644,6 +109378,8 @@
     {
       "id": 868,
       "name": "Milcery",
+      "base_experience": 54,
+      "growth_rate": "medium",
       "types": [
         "Fairy"
       ],
@@ -107743,6 +109479,8 @@
     {
       "id": 869,
       "name": "Alcremie",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Fairy"
       ],
@@ -107848,6 +109586,8 @@
     {
       "id": 870,
       "name": "Falinks",
+      "base_experience": 165,
+      "growth_rate": "medium",
       "types": [
         "Fighting"
       ],
@@ -107953,6 +109693,8 @@
     {
       "id": 871,
       "name": "Pincurchin",
+      "base_experience": 152,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -108058,6 +109800,8 @@
     {
       "id": 872,
       "name": "Snom",
+      "base_experience": 37,
+      "growth_rate": "medium",
       "types": [
         "Ice",
         "Bug"
@@ -108092,6 +109836,8 @@
     {
       "id": 873,
       "name": "Frosmoth",
+      "base_experience": 166,
+      "growth_rate": "medium",
       "types": [
         "Ice",
         "Bug"
@@ -108228,6 +109974,8 @@
     {
       "id": 874,
       "name": "Stonjourner",
+      "base_experience": 165,
+      "growth_rate": "slow",
       "types": [
         "Rock"
       ],
@@ -108322,6 +110070,8 @@
     {
       "id": 875,
       "name": "Eiscue Ice",
+      "base_experience": 165,
+      "growth_rate": "slow",
       "types": [
         "Ice"
       ],
@@ -108416,6 +110166,8 @@
     {
       "id": 876,
       "name": "Indeedee Male",
+      "base_experience": 166,
+      "growth_rate": "fast",
       "types": [
         "Psychic",
         "Normal"
@@ -108527,6 +110279,8 @@
     {
       "id": 877,
       "name": "Morpeko Full Belly",
+      "base_experience": 153,
+      "growth_rate": "medium",
       "types": [
         "Electric",
         "Dark"
@@ -108628,6 +110382,8 @@
     {
       "id": 878,
       "name": "Cufant",
+      "base_experience": 66,
+      "growth_rate": "medium",
       "types": [
         "Steel"
       ],
@@ -108727,6 +110483,8 @@
     {
       "id": 879,
       "name": "Copperajah",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Steel"
       ],
@@ -108832,6 +110590,8 @@
     {
       "id": 880,
       "name": "Dracozolt",
+      "base_experience": 177,
+      "growth_rate": "slow",
       "types": [
         "Electric",
         "Dragon"
@@ -108937,6 +110697,8 @@
     {
       "id": 881,
       "name": "Arctozolt",
+      "base_experience": 177,
+      "growth_rate": "slow",
       "types": [
         "Electric",
         "Ice"
@@ -109042,6 +110804,8 @@
     {
       "id": 882,
       "name": "Dracovish",
+      "base_experience": 177,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Dragon"
@@ -109147,6 +110911,8 @@
     {
       "id": 883,
       "name": "Arctovish",
+      "base_experience": 177,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Ice"
@@ -109252,6 +111018,8 @@
     {
       "id": 884,
       "name": "Duraludon",
+      "base_experience": 187,
+      "growth_rate": "medium",
       "types": [
         "Steel",
         "Dragon"
@@ -109363,6 +111131,8 @@
     {
       "id": 885,
       "name": "Dreepy",
+      "base_experience": 54,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Ghost"
@@ -109414,6 +111184,8 @@
     {
       "id": 886,
       "name": "Drakloak",
+      "base_experience": 144,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Ghost"
@@ -109543,6 +111315,8 @@
     {
       "id": 887,
       "name": "Dragapult",
+      "base_experience": 300,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Ghost"
@@ -109684,6 +111458,8 @@
     {
       "id": 888,
       "name": "Zacian",
+      "base_experience": 335,
+      "growth_rate": "slow",
       "types": [
         "Fairy"
       ],
@@ -109790,6 +111566,8 @@
     {
       "id": 889,
       "name": "Zamazenta",
+      "base_experience": 335,
+      "growth_rate": "slow",
       "types": [
         "Fighting"
       ],
@@ -109890,6 +111668,8 @@
     {
       "id": 890,
       "name": "Eternatus",
+      "base_experience": 345,
+      "growth_rate": "slow",
       "types": [
         "Poison",
         "Dragon"
@@ -110003,6 +111783,8 @@
     {
       "id": 891,
       "name": "Kubfu",
+      "base_experience": 77,
+      "growth_rate": "slow",
       "types": [
         "Fighting"
       ],
@@ -110109,6 +111891,8 @@
     {
       "id": 892,
       "name": "Urshifu Single Strike",
+      "base_experience": 275,
+      "growth_rate": "slow",
       "types": [
         "Fighting",
         "Dark"
@@ -110228,6 +112012,8 @@
     {
       "id": 893,
       "name": "Zarude",
+      "base_experience": 300,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Grass"
@@ -110347,6 +112133,8 @@
     {
       "id": 894,
       "name": "Regieleki",
+      "base_experience": 290,
+      "growth_rate": "slow",
       "types": [
         "Electric"
       ],
@@ -110453,6 +112241,8 @@
     {
       "id": 895,
       "name": "Regidrago",
+      "base_experience": 290,
+      "growth_rate": "slow",
       "types": [
         "Dragon"
       ],
@@ -110559,6 +112349,8 @@
     {
       "id": 896,
       "name": "Glastrier",
+      "base_experience": 290,
+      "growth_rate": "slow",
       "types": [
         "Ice"
       ],
@@ -110659,6 +112451,8 @@
     {
       "id": 897,
       "name": "Spectrier",
+      "base_experience": 290,
+      "growth_rate": "slow",
       "types": [
         "Ghost"
       ],
@@ -110759,6 +112553,8 @@
     {
       "id": 898,
       "name": "Calyrex",
+      "base_experience": 250,
+      "growth_rate": "slow",
       "types": [
         "Psychic",
         "Grass"
@@ -110878,6 +112674,8 @@
     {
       "id": 899,
       "name": "Wyrdeer",
+      "base_experience": 263,
+      "growth_rate": "slow",
       "types": [
         "Normal",
         "Psychic"
@@ -110995,6 +112793,8 @@
     {
       "id": 900,
       "name": "Kleavor",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Rock"
@@ -111106,6 +112906,8 @@
     {
       "id": 901,
       "name": "Ursaluna",
+      "base_experience": 275,
+      "growth_rate": "medium",
       "types": [
         "Ground",
         "Normal"
@@ -111241,6 +113043,8 @@
     {
       "id": 902,
       "name": "Basculegion Male",
+      "base_experience": 265,
+      "growth_rate": "medium",
       "types": [
         "Water",
         "Ghost"
@@ -111376,6 +113180,8 @@
     {
       "id": 903,
       "name": "Sneasler",
+      "base_experience": 102,
+      "growth_rate": "medium-slow",
       "types": [
         "Fighting",
         "Poison"
@@ -111493,6 +113299,8 @@
     {
       "id": 904,
       "name": "Overqwil",
+      "base_experience": 179,
+      "growth_rate": "medium",
       "types": [
         "Dark",
         "Poison"
@@ -111622,6 +113430,8 @@
     {
       "id": 905,
       "name": "Enamorus Incarnate",
+      "base_experience": 116,
+      "growth_rate": "slow",
       "types": [
         "Fairy",
         "Flying"
@@ -111746,6 +113556,8 @@
     {
       "id": 906,
       "name": "Sprigatito",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -111845,6 +113657,8 @@
     {
       "id": 907,
       "name": "Floragato",
+      "base_experience": 144,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass"
       ],
@@ -111950,6 +113764,8 @@
     {
       "id": 908,
       "name": "Meowscarada",
+      "base_experience": 265,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Dark"
@@ -112080,6 +113896,8 @@
     {
       "id": 909,
       "name": "Fuecoco",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -112173,6 +113991,8 @@
     {
       "id": 910,
       "name": "Crocalor",
+      "base_experience": 144,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire"
       ],
@@ -112278,6 +114098,8 @@
     {
       "id": 911,
       "name": "Skeledirge",
+      "base_experience": 265,
+      "growth_rate": "medium-slow",
       "types": [
         "Fire",
         "Ghost"
@@ -112408,6 +114230,8 @@
     {
       "id": 912,
       "name": "Quaxly",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -112501,6 +114325,8 @@
     {
       "id": 913,
       "name": "Quaxwell",
+      "base_experience": 144,
+      "growth_rate": "medium-slow",
       "types": [
         "Water"
       ],
@@ -112612,6 +114438,8 @@
     {
       "id": 914,
       "name": "Quaquaval",
+      "base_experience": 265,
+      "growth_rate": "medium-slow",
       "types": [
         "Water",
         "Fighting"
@@ -112748,6 +114576,8 @@
     {
       "id": 915,
       "name": "Lechonk",
+      "base_experience": 51,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -112852,6 +114682,8 @@
     {
       "id": 916,
       "name": "Oinkologne Male",
+      "base_experience": 171,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -112968,6 +114800,8 @@
     {
       "id": 917,
       "name": "Tarountula",
+      "base_experience": 42,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Bug"
       ],
@@ -113073,6 +114907,8 @@
     {
       "id": 918,
       "name": "Spidops",
+      "base_experience": 141,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Bug"
       ],
@@ -113184,6 +115020,8 @@
     {
       "id": 919,
       "name": "Nymble",
+      "base_experience": 42,
+      "growth_rate": "medium",
       "types": [
         "Bug"
       ],
@@ -113283,6 +115121,8 @@
     {
       "id": 920,
       "name": "Lokix",
+      "base_experience": 158,
+      "growth_rate": "medium",
       "types": [
         "Bug",
         "Dark"
@@ -113419,6 +115259,8 @@
     {
       "id": 921,
       "name": "Pawmi",
+      "base_experience": 48,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -113535,6 +115377,8 @@
     {
       "id": 922,
       "name": "Pawmo",
+      "base_experience": 123,
+      "growth_rate": "medium",
       "types": [
         "Electric",
         "Fighting"
@@ -113658,6 +115502,8 @@
     {
       "id": 923,
       "name": "Pawmot",
+      "base_experience": 245,
+      "growth_rate": "medium",
       "types": [
         "Electric",
         "Fighting"
@@ -113799,6 +115645,8 @@
     {
       "id": 924,
       "name": "Tandemaus",
+      "base_experience": 61,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -113909,6 +115757,8 @@
     {
       "id": 925,
       "name": "Maushold Family Of Four",
+      "base_experience": 165,
+      "growth_rate": "fast",
       "types": [
         "Normal"
       ],
@@ -114031,6 +115881,8 @@
     {
       "id": 926,
       "name": "Fidough",
+      "base_experience": 62,
+      "growth_rate": "medium-slow",
       "types": [
         "Fairy"
       ],
@@ -114142,6 +115994,8 @@
     {
       "id": 927,
       "name": "Dachsbun",
+      "base_experience": 167,
+      "growth_rate": "medium-slow",
       "types": [
         "Fairy"
       ],
@@ -114253,6 +116107,8 @@
     {
       "id": 928,
       "name": "Smoliv",
+      "base_experience": 52,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Normal"
@@ -114353,6 +116209,8 @@
     {
       "id": 929,
       "name": "Dolliv",
+      "base_experience": 124,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Normal"
@@ -114453,6 +116311,8 @@
     {
       "id": 930,
       "name": "Arboliva",
+      "base_experience": 255,
+      "growth_rate": "medium-slow",
       "types": [
         "Grass",
         "Normal"
@@ -114577,6 +116437,8 @@
     {
       "id": 931,
       "name": "Squawkabilly Green Plumage",
+      "base_experience": 146,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Normal",
         "Flying"
@@ -114700,6 +116562,8 @@
     {
       "id": 932,
       "name": "Nacli",
+      "base_experience": 56,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock"
       ],
@@ -114810,6 +116674,8 @@
     {
       "id": 933,
       "name": "Naclstack",
+      "base_experience": 124,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock"
       ],
@@ -114926,6 +116792,8 @@
     {
       "id": 934,
       "name": "Garganacl",
+      "base_experience": 250,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock"
       ],
@@ -115066,6 +116934,8 @@
     {
       "id": 935,
       "name": "Charcadet",
+      "base_experience": 51,
+      "growth_rate": "slow",
       "types": [
         "Fire"
       ],
@@ -115147,6 +117017,8 @@
     {
       "id": 936,
       "name": "Armarouge",
+      "base_experience": 263,
+      "growth_rate": "slow",
       "types": [
         "Fire",
         "Psychic"
@@ -115277,6 +117149,8 @@
     {
       "id": 937,
       "name": "Ceruledge",
+      "base_experience": 263,
+      "growth_rate": "slow",
       "types": [
         "Fire",
         "Ghost"
@@ -115395,6 +117269,8 @@
     {
       "id": 938,
       "name": "Tadbulb",
+      "base_experience": 54,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -115499,6 +117375,8 @@
     {
       "id": 939,
       "name": "Bellibolt",
+      "base_experience": 173,
+      "growth_rate": "medium",
       "types": [
         "Electric"
       ],
@@ -115609,6 +117487,8 @@
     {
       "id": 940,
       "name": "Wattrel",
+      "base_experience": 56,
+      "growth_rate": "medium-slow",
       "types": [
         "Electric",
         "Flying"
@@ -115708,6 +117588,8 @@
     {
       "id": 941,
       "name": "Kilowattrel",
+      "base_experience": 172,
+      "growth_rate": "medium-slow",
       "types": [
         "Electric",
         "Flying"
@@ -115819,6 +117701,8 @@
     {
       "id": 942,
       "name": "Maschiff",
+      "base_experience": 68,
+      "growth_rate": "medium-slow",
       "types": [
         "Dark"
       ],
@@ -115935,6 +117819,8 @@
     {
       "id": 943,
       "name": "Mabosstiff",
+      "base_experience": 177,
+      "growth_rate": "medium-slow",
       "types": [
         "Dark"
       ],
@@ -116063,6 +117949,8 @@
     {
       "id": 944,
       "name": "Shroodle",
+      "base_experience": 58,
+      "growth_rate": "medium-slow",
       "types": [
         "Poison",
         "Normal"
@@ -116180,6 +118068,8 @@
     {
       "id": 945,
       "name": "Grafaiai",
+      "base_experience": 170,
+      "growth_rate": "medium-slow",
       "types": [
         "Poison",
         "Normal"
@@ -116297,6 +118187,8 @@
     {
       "id": 946,
       "name": "Bramblin",
+      "base_experience": 55,
+      "growth_rate": "medium",
       "types": [
         "Grass",
         "Ghost"
@@ -116409,6 +118301,8 @@
     {
       "id": 947,
       "name": "Brambleghast",
+      "base_experience": 168,
+      "growth_rate": "medium",
       "types": [
         "Grass",
         "Ghost"
@@ -116521,6 +118415,8 @@
     {
       "id": 948,
       "name": "Toedscool",
+      "base_experience": 67,
+      "growth_rate": "medium-slow",
       "types": [
         "Ground",
         "Grass"
@@ -116640,6 +118536,8 @@
     {
       "id": 949,
       "name": "Toedscruel",
+      "base_experience": 180,
+      "growth_rate": "medium-slow",
       "types": [
         "Ground",
         "Grass"
@@ -116765,6 +118663,8 @@
     {
       "id": 950,
       "name": "Klawf",
+      "base_experience": 158,
+      "growth_rate": "medium",
       "types": [
         "Rock"
       ],
@@ -116875,6 +118775,8 @@
     {
       "id": 951,
       "name": "Capsakid",
+      "base_experience": 61,
+      "growth_rate": "medium",
       "types": [
         "Grass"
       ],
@@ -116973,6 +118875,8 @@
     {
       "id": 952,
       "name": "Scovillain",
+      "base_experience": 170,
+      "growth_rate": "medium",
       "types": [
         "Grass",
         "Fire"
@@ -117102,6 +119006,8 @@
     {
       "id": 953,
       "name": "Rellor",
+      "base_experience": 54,
+      "growth_rate": "fast",
       "types": [
         "Bug"
       ],
@@ -117183,6 +119089,8 @@
     {
       "id": 954,
       "name": "Rabsca",
+      "base_experience": 165,
+      "growth_rate": "fast",
       "types": [
         "Bug",
         "Psychic"
@@ -117307,6 +119215,8 @@
     {
       "id": 955,
       "name": "Flittle",
+      "base_experience": 51,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic"
       ],
@@ -117393,6 +119303,8 @@
     {
       "id": 956,
       "name": "Espathra",
+      "base_experience": 168,
+      "growth_rate": "medium-slow",
       "types": [
         "Psychic"
       ],
@@ -117515,6 +119427,8 @@
     {
       "id": 957,
       "name": "Tinkatink",
+      "base_experience": 59,
+      "growth_rate": "medium-slow",
       "types": [
         "Fairy",
         "Steel"
@@ -117638,6 +119552,8 @@
     {
       "id": 958,
       "name": "Tinkatuff",
+      "base_experience": 133,
+      "growth_rate": "medium-slow",
       "types": [
         "Fairy",
         "Steel"
@@ -117761,6 +119677,8 @@
     {
       "id": 959,
       "name": "Tinkaton",
+      "base_experience": 253,
+      "growth_rate": "medium-slow",
       "types": [
         "Fairy",
         "Steel"
@@ -117890,6 +119808,8 @@
     {
       "id": 960,
       "name": "Wiglett",
+      "base_experience": 49,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -117988,6 +119908,8 @@
     {
       "id": 961,
       "name": "Wugtrio",
+      "base_experience": 149,
+      "growth_rate": "medium",
       "types": [
         "Water"
       ],
@@ -118092,6 +120014,8 @@
     {
       "id": 962,
       "name": "Bombirdier",
+      "base_experience": 243,
+      "growth_rate": "slow",
       "types": [
         "Flying",
         "Dark"
@@ -118215,6 +120139,8 @@
     {
       "id": 963,
       "name": "Finizen",
+      "base_experience": 63,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -118309,6 +120235,8 @@
     {
       "id": 964,
       "name": "Palafin Zero",
+      "base_experience": 160,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -118427,6 +120355,8 @@
     {
       "id": 965,
       "name": "Varoom",
+      "base_experience": 60,
+      "growth_rate": "medium",
       "types": [
         "Steel",
         "Poison"
@@ -118539,6 +120469,8 @@
     {
       "id": 966,
       "name": "Revavroom",
+      "base_experience": 175,
+      "growth_rate": "medium",
       "types": [
         "Steel",
         "Poison"
@@ -118663,6 +120595,8 @@
     {
       "id": 967,
       "name": "Cyclizar",
+      "base_experience": 175,
+      "growth_rate": "medium-slow",
       "types": [
         "Dragon",
         "Normal"
@@ -118769,6 +120703,8 @@
     {
       "id": 968,
       "name": "Orthworm",
+      "base_experience": 240,
+      "growth_rate": "slow",
       "types": [
         "Steel"
       ],
@@ -118874,6 +120810,8 @@
     {
       "id": 969,
       "name": "Glimmet",
+      "base_experience": 70,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock",
         "Poison"
@@ -118980,6 +120918,8 @@
     {
       "id": 970,
       "name": "Glimmora",
+      "base_experience": 184,
+      "growth_rate": "medium-slow",
       "types": [
         "Rock",
         "Poison"
@@ -119104,6 +121044,8 @@
     {
       "id": 971,
       "name": "Greavard",
+      "base_experience": 58,
+      "growth_rate": "medium-slow",
       "types": [
         "Ghost"
       ],
@@ -119215,6 +121157,8 @@
     {
       "id": 972,
       "name": "Houndstone",
+      "base_experience": 171,
+      "growth_rate": "medium-slow",
       "types": [
         "Ghost"
       ],
@@ -119332,6 +121276,8 @@
     {
       "id": 973,
       "name": "Flamigo",
+      "base_experience": 175,
+      "growth_rate": "medium-slow",
       "types": [
         "Flying",
         "Fighting"
@@ -119449,6 +121395,8 @@
     {
       "id": 974,
       "name": "Cetoddle",
+      "base_experience": 67,
+      "growth_rate": "medium-slow",
       "types": [
         "Ice"
       ],
@@ -119565,6 +121513,8 @@
     {
       "id": 975,
       "name": "Cetitan",
+      "base_experience": 182,
+      "growth_rate": "medium-slow",
       "types": [
         "Ice"
       ],
@@ -119681,6 +121631,8 @@
     {
       "id": 976,
       "name": "Veluza",
+      "base_experience": 167,
+      "growth_rate": "fast",
       "types": [
         "Water",
         "Psychic"
@@ -119781,6 +121733,8 @@
     {
       "id": 977,
       "name": "Dondozo",
+      "base_experience": 265,
+      "growth_rate": "slow",
       "types": [
         "Water"
       ],
@@ -119909,6 +121863,8 @@
     {
       "id": 978,
       "name": "Tatsugiri Curly",
+      "base_experience": 166,
+      "growth_rate": "medium-slow",
       "types": [
         "Dragon",
         "Water"
@@ -120003,6 +121959,8 @@
     {
       "id": 979,
       "name": "Annihilape",
+      "base_experience": 268,
+      "growth_rate": "medium",
       "types": [
         "Fighting",
         "Ghost"
@@ -120144,6 +122102,8 @@
     {
       "id": 980,
       "name": "Clodsire",
+      "base_experience": 151,
+      "growth_rate": "medium",
       "types": [
         "Poison",
         "Ground"
@@ -120249,6 +122209,8 @@
     {
       "id": 981,
       "name": "Farigiraf",
+      "base_experience": 260,
+      "growth_rate": "medium",
       "types": [
         "Normal",
         "Psychic"
@@ -120372,6 +122334,8 @@
     {
       "id": 982,
       "name": "Dudunsparce Two Segment",
+      "base_experience": 182,
+      "growth_rate": "medium",
       "types": [
         "Normal"
       ],
@@ -120500,6 +122464,8 @@
     {
       "id": 983,
       "name": "Kingambit",
+      "base_experience": 275,
+      "growth_rate": "medium",
       "types": [
         "Dark",
         "Steel"
@@ -120629,6 +122595,8 @@
     {
       "id": 984,
       "name": "Great Tusk",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Ground",
         "Fighting"
@@ -120748,6 +122716,8 @@
     {
       "id": 985,
       "name": "Scream Tail",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Fairy",
         "Psychic"
@@ -120861,6 +122831,8 @@
     {
       "id": 986,
       "name": "Brute Bonnet",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Dark"
@@ -120968,6 +122940,8 @@
     {
       "id": 987,
       "name": "Flutter Mane",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Ghost",
         "Fairy"
@@ -121081,6 +123055,8 @@
     {
       "id": 988,
       "name": "Slither Wing",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Bug",
         "Fighting"
@@ -121200,6 +123176,8 @@
     {
       "id": 989,
       "name": "Sandy Shocks",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Electric",
         "Ground"
@@ -121319,6 +123297,8 @@
     {
       "id": 990,
       "name": "Iron Treads",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Ground",
         "Steel"
@@ -121432,6 +123412,8 @@
     {
       "id": 991,
       "name": "Iron Bundle",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Ice",
         "Water"
@@ -121533,6 +123515,8 @@
     {
       "id": 992,
       "name": "Iron Hands",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Fighting",
         "Electric"
@@ -121652,6 +123636,8 @@
     {
       "id": 993,
       "name": "Iron Jugulis",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Flying"
@@ -121771,6 +123757,8 @@
     {
       "id": 994,
       "name": "Iron Moth",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Fire",
         "Poison"
@@ -121890,6 +123878,8 @@
     {
       "id": 995,
       "name": "Iron Thorns",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Rock",
         "Electric"
@@ -122009,6 +123999,8 @@
     {
       "id": 996,
       "name": "Frigibax",
+      "base_experience": 64,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Ice"
@@ -122109,6 +124101,8 @@
     {
       "id": 997,
       "name": "Arctibax",
+      "base_experience": 148,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Ice"
@@ -122203,6 +124197,8 @@
     {
       "id": 998,
       "name": "Baxcalibur",
+      "base_experience": 300,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Ice"
@@ -122327,6 +124323,8 @@
     {
       "id": 999,
       "name": "Gimmighoul",
+      "base_experience": 60,
+      "growth_rate": "slow",
       "types": [
         "Ghost"
       ],
@@ -122355,6 +124353,8 @@
     {
       "id": 1000,
       "name": "Gholdengo",
+      "base_experience": 275,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Ghost"
@@ -122444,6 +124444,8 @@
     {
       "id": 1001,
       "name": "Wo Chien",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Grass"
@@ -122575,6 +124577,8 @@
     {
       "id": 1002,
       "name": "Chien Pao",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Ice"
@@ -122706,6 +124710,8 @@
     {
       "id": 1003,
       "name": "Ting Lu",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Ground"
@@ -122831,6 +124837,8 @@
     {
       "id": 1004,
       "name": "Chi Yu",
+      "base_experience": 285,
+      "growth_rate": "slow",
       "types": [
         "Dark",
         "Fire"
@@ -122956,6 +124964,8 @@
     {
       "id": 1005,
       "name": "Roaring Moon",
+      "base_experience": 295,
+      "growth_rate": "slow",
       "types": [
         "Dragon",
         "Dark"
@@ -123075,6 +125085,8 @@
     {
       "id": 1006,
       "name": "Iron Valiant",
+      "base_experience": 295,
+      "growth_rate": "slow",
       "types": [
         "Fairy",
         "Fighting"
@@ -123200,6 +125212,8 @@
     {
       "id": 1007,
       "name": "Koraidon",
+      "base_experience": 335,
+      "growth_rate": "slow",
       "types": [
         "Fighting",
         "Dragon"
@@ -123313,6 +125327,8 @@
     {
       "id": 1008,
       "name": "Miraidon",
+      "base_experience": 335,
+      "growth_rate": "slow",
       "types": [
         "Electric",
         "Dragon"
@@ -123426,6 +125442,8 @@
     {
       "id": 1009,
       "name": "Walking Wake",
+      "base_experience": 295,
+      "growth_rate": "slow",
       "types": [
         "Water",
         "Dragon"
@@ -123533,6 +125551,8 @@
     {
       "id": 1010,
       "name": "Iron Leaves",
+      "base_experience": 295,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Psychic"
@@ -123652,6 +125672,8 @@
     {
       "id": 1011,
       "name": "Dipplin",
+      "base_experience": 170,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Dragon"
@@ -123769,6 +125791,8 @@
     {
       "id": 1012,
       "name": "Poltchageist",
+      "base_experience": 62,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Ghost"
@@ -123869,6 +125893,8 @@
     {
       "id": 1013,
       "name": "Sinistcha",
+      "base_experience": 178,
+      "growth_rate": "slow",
       "types": [
         "Grass",
         "Ghost"
@@ -123975,6 +126001,8 @@
     {
       "id": 1014,
       "name": "Okidogi",
+      "base_experience": 278,
+      "growth_rate": "slow",
       "types": [
         "Poison",
         "Fighting"
@@ -124069,6 +126097,8 @@
     {
       "id": 1015,
       "name": "Munkidori",
+      "base_experience": 278,
+      "growth_rate": "slow",
       "types": [
         "Poison",
         "Psychic"
@@ -124169,6 +126199,8 @@
     {
       "id": 1016,
       "name": "Fezandipiti",
+      "base_experience": 278,
+      "growth_rate": "slow",
       "types": [
         "Poison",
         "Fairy"
@@ -124275,6 +126307,8 @@
     {
       "id": 1017,
       "name": "Ogerpon",
+      "base_experience": 275,
+      "growth_rate": "slow",
       "types": [
         "Grass"
       ],
@@ -124381,6 +126415,8 @@
     {
       "id": 1018,
       "name": "Archaludon",
+      "base_experience": 300,
+      "growth_rate": "medium",
       "types": [
         "Steel",
         "Dragon"
@@ -124492,6 +126528,8 @@
     {
       "id": 1019,
       "name": "Hydrapple",
+      "base_experience": 270,
+      "growth_rate": "slow-then-very-fast",
       "types": [
         "Grass",
         "Dragon"
@@ -124615,6 +126653,8 @@
     {
       "id": 1020,
       "name": "Gouging Fire",
+      "base_experience": 295,
+      "growth_rate": "slow",
       "types": [
         "Fire",
         "Dragon"
@@ -124734,6 +126774,8 @@
     {
       "id": 1021,
       "name": "Raging Bolt",
+      "base_experience": 295,
+      "growth_rate": "slow",
       "types": [
         "Electric",
         "Dragon"
@@ -124853,6 +126895,8 @@
     {
       "id": 1022,
       "name": "Iron Boulder",
+      "base_experience": 295,
+      "growth_rate": "slow",
       "types": [
         "Rock",
         "Psychic"
@@ -124972,6 +127016,8 @@
     {
       "id": 1023,
       "name": "Iron Crown",
+      "base_experience": 295,
+      "growth_rate": "slow",
       "types": [
         "Steel",
         "Psychic"
@@ -125091,6 +127137,8 @@
     {
       "id": 1024,
       "name": "Terapagos",
+      "base_experience": 90,
+      "growth_rate": "slow",
       "types": [
         "Normal"
       ],
@@ -125179,6 +127227,8 @@
     {
       "id": 1025,
       "name": "Pecharunt",
+      "base_experience": 300,
+      "growth_rate": "slow",
       "types": [
         "Poison",
         "Ghost"

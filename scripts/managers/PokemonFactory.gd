@@ -50,6 +50,9 @@ func build_randomized_pokemon(pokedex_id: int, level: int) -> Dictionary:
 	var ability: String = _pick_species_ability_name(pokedex_id)
 	var nature: String = str(natures[rng.randi_range(0, natures.size() - 1)])
 	var stats: Dictionary = scaled_stats(base_entry["base_stats"], level)
+	var growth_rate: String = _growth_rate_for_species(pokedex_id)
+	var total_experience: int = experience_for_level(level, growth_rate)
+	var base_experience: int = _base_experience_for_species(pokedex_id)
 
 	return {
 		"id": base_entry["id"],
@@ -61,6 +64,9 @@ func build_randomized_pokemon(pokedex_id: int, level: int) -> Dictionary:
 		"move_pp_max": move_pp.duplicate(),
 		"ability": ability,
 		"nature": nature,
+		"growth_rate": growth_rate,
+		"experience": total_experience,
+		"base_experience_yield": base_experience,
 		"base_stats": base_entry["base_stats"],
 		"stats": stats,
 		"current_hp": int(stats["hp"]),
@@ -126,6 +132,14 @@ func get_base_entry(pokedex_id: int) -> Dictionary:
 	return _get_pokedex_entry(pokedex_id)
 
 
+func get_base_experience_yield_for_species(pokedex_id: int) -> int:
+	return _base_experience_for_species(pokedex_id)
+
+
+func get_growth_rate_for_species(pokedex_id: int) -> String:
+	return _growth_rate_for_species(pokedex_id)
+
+
 func get_random_pokedex_id() -> int:
 	if pokedex.is_empty():
 		return 0
@@ -146,6 +160,20 @@ func _types_for_species(pokedex_id: int) -> Array:
 	if resolved.is_empty():
 		resolved.append("Normal")
 	return resolved
+
+
+func _base_experience_for_species(pokedex_id: int) -> int:
+	var profile: Dictionary = _species_profile_for_id(pokedex_id)
+	var value: int = int(profile.get("base_experience", 64))
+	return max(1, value)
+
+
+func _growth_rate_for_species(pokedex_id: int) -> String:
+	var profile: Dictionary = _species_profile_for_id(pokedex_id)
+	var value: String = str(profile.get("growth_rate", "medium")).to_lower()
+	if value.is_empty():
+		return "medium"
+	return value
 
 
 func _pick_species_moves_for_level(pokedex_id: int, level: int, species_types: Array) -> Array:
@@ -458,6 +486,37 @@ func scaled_stats(base_stats: Dictionary, level: int) -> Dictionary:
 		"spd": max(1, spd),
 		"spe": max(1, spe)
 	}
+
+
+func experience_for_level(level: int, growth_rate: String) -> int:
+	var n: int = clamp(level, 1, 100)
+	var n_f: float = float(n)
+	var cubic: float = n_f * n_f * n_f
+	var rate: String = str(growth_rate).to_lower()
+	if rate == "fast":
+		return int(floor((4.0 * cubic) / 5.0))
+	if rate == "medium" or rate == "medium-fast" or rate == "medium fast":
+		return int(floor(cubic))
+	if rate == "medium-slow" or rate == "medium slow":
+		return int(floor((6.0 / 5.0) * cubic - 15.0 * n_f * n_f + 100.0 * n_f - 140.0))
+	if rate == "slow":
+		return int(floor((5.0 * cubic) / 4.0))
+	if rate == "fluctuating":
+		if n <= 15:
+			return int(floor(cubic * ((floor((n_f + 1.0) / 3.0) + 24.0) / 50.0)))
+		if n <= 35:
+			return int(floor(cubic * ((n_f + 14.0) / 50.0)))
+		return int(floor(cubic * ((floor(n_f / 2.0) + 32.0) / 50.0)))
+	if rate == "erratic":
+		if n <= 50:
+			return int(floor(cubic * ((100.0 - n_f) / 50.0)))
+		if n <= 68:
+			return int(floor(cubic * ((150.0 - n_f) / 100.0)))
+		if n <= 98:
+			return int(floor(cubic * floor((1911.0 - 10.0 * n_f) / 3.0) / 500.0))
+		return int(floor(cubic * ((160.0 - n_f) / 100.0)))
+	# Default to medium-fast if unknown.
+	return int(floor(cubic))
 
 
 func _get_pokedex_entry(pokedex_id: int) -> Dictionary:
